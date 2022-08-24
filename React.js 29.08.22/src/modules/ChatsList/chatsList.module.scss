@@ -1,9 +1,9 @@
 .mainBlock {
-  padding: 15px 3vw 5px 3vw;
+  padding: 15px 0 5px 0;
 }
 
 .chatsListTitle {
-  margin-bottom: 15px;
+  margin-left: 3vw;
   font-size: 24px;
   font-weight: lighter;
   color: #36a0da;
@@ -14,8 +14,9 @@
   flex-direction: row;
   align-items: center;
   height: 100px;
-  // padding-top: 25px;
+  padding: 0 3vw;
   border-bottom: 2px solid var(--mainBorderColor);
+
   &:last-child {
     border-bottom: 0;
   }
