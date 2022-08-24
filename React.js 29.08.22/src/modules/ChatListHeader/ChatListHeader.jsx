@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import Container from "../../shared/Container/Container";
 import Form from "../../shared/Form/Form";
-import SearchIcon from "../../shared/SvgIcon/SvgIcon";
+import Icon from "../../shared/Icon/Icon";
 
 import person from "../../images/person.png";
 
@@ -41,7 +41,12 @@ const ChatListHeader = () => {
           inputIsRequired={true}
           onInput={onInput}
         >
-          <SearchIcon />
+          <Icon
+            className={style.searchIcon}
+            iconId="searchIcon"
+            width="50px"
+            fill="red"
+          />
         </Form>
       </div>
     </Container>
