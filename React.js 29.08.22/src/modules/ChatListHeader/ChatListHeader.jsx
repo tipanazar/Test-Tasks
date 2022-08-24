@@ -1,10 +1,8 @@
 import { useState } from "react";
 
-import Container from "../../shared/Container/Container";
 import Form from "../../shared/Form/Form";
 import Icon from "../../shared/Icon/Icon";
-
-import person from "../../images/person.png";
+import UserAvatar from "../../shared/UserAvatar/UserAvatar";
 
 import style from "./chatListHeader.module.scss";
 
@@ -23,14 +21,13 @@ const ChatListHeader = () => {
 
   console.log(inputValue);
   return (
-    <Container>
       <div className={style.mainBlock}>
-        <img
+        <UserAvatar
           className={style.personAvatar}
-          src={person}
           width="50px"
-          alt="person avatar"
-        ></img>
+          isStatusNeeds={true}
+          isOnline={true}
+        />
         <Form
           formClass={style.searchForm}
           inputClass={style.searchInput}
@@ -44,12 +41,12 @@ const ChatListHeader = () => {
           <Icon
             className={style.searchIcon}
             iconId="searchIcon"
-            width="50px"
-            fill="red"
+            width="15px"
+            height="15px"
+            fill="#969696"
           />
         </Form>
       </div>
-    </Container>
   );
 };
 

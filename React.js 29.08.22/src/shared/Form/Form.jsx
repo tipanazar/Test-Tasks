@@ -13,7 +13,6 @@ const Form = ({
 }) => {
   return (
     <form className={formClass} onSubmit={handleSubmit}>
-      {children}
       <input
         className={inputClass}
         name={inputName}
@@ -21,7 +20,8 @@ const Form = ({
         placeholder={inputPlaceholder}
         required={inputIsRequired}
         onInput={onInput}
-      ></input>
+      />
+      {children}
     </form>
   );
 };

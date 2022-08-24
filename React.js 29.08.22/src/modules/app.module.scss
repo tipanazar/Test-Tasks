@@ -1,9 +1,16 @@
+@import "../sass/main.scss";
+
 .chatListSection {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .chatSection {
-  display: flex;
-  flex-direction: column;
+  display: none;
+
+  @include mq(desktop) {
+    display: flex;
+    flex-direction: column;
+  }
 }
