@@ -10,7 +10,11 @@ const UserAvatar = ({ className, src, width, isStatusNeeds, isOnline }) => {
   return (
     <div
       className={className}
-      style={{ position: "relative", width: "fit-content" }}
+      style={{
+        position: "relative",
+        width: "fit-content",
+        height: "fit-content",
+      }}
     >
       <img
         className={style.image}

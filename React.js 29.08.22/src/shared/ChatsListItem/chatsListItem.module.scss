@@ -1,0 +1,28 @@
+.userAvatar {
+  margin-right: 3vw;
+}
+
+.textBlock {
+  display: flex;
+  flex-direction: column;
+  margin-right: auto;
+  font-family: Montserrat;
+}
+
+.userName {
+  font-size: 17px;
+}
+
+.userLastMessage {
+  font-size: 14px;
+  color: #858383;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.lastMessageDate {
+  white-space: nowrap;
+  margin-left: 3vw;
+}
