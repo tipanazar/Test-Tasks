@@ -1,0 +1,30 @@
+.mainBlock {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 70px;
+  border-bottom: 2px solid var(--mainBorderColor);
+  background-color: var(--mainGreyColor);
+
+  .backButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 102%;
+    width: 70px;
+    margin-right: 3vw;
+    padding: 0;
+    border: 0;
+    border-right: 2px solid var(--mainBorderColor);
+    background-color: white;
+  }
+
+  .userAvatar {
+    margin-right: 2vw;
+  }
+
+  .userName {
+    font-family: Montserrat;
+    font-size: 19px;
+}
+}

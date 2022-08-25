@@ -1,4 +1,5 @@
 import { createAction } from "@reduxjs/toolkit";
 
-export const openChatIdx = createAction("openChatIdxw");
-export const isModalOpen = createAction("isModalOpen");
+export const setChatsArr = createAction("chatsArr");
+export const setOpenChatIdx = createAction("openChatIdx");
+// export const setIsChatOpen = createAction("isChatOpen");

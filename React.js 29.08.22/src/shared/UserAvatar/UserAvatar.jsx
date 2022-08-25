@@ -20,6 +20,7 @@ const UserAvatar = ({ className, src, width, isStatusNeeds, isOnline }) => {
         className={style.image}
         src={src || person}
         width={width}
+        loading="lazy"
         alt="Person avatar"
       />
       {!isStatusNeeds || (

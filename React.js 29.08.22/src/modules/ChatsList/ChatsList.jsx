@@ -1,41 +1,39 @@
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
 
-import { getGlobalState } from "../../redux/selectors";
-import { openChatIdx } from "../../redux/actions";
+import { getChatsArr, getGlobalState } from "../../redux/selectors";
+import { setOpenChatIdx } from "../../redux/actions";
 
 import ChatsListItem from "../../shared/ChatsListItem/ChatsListItem";
-
-import { chatsListArr } from "./chatsListArr";
 
 import style from "./chatsList.module.scss";
 
 const ChatsList = () => {
   const dispatch = useDispatch();
+  const chatsArr = useSelector(getChatsArr, shallowEqual);
   const globalStore = useSelector(getGlobalState, shallowEqual);
-  console.log(globalStore);
-  // console.log(dispatch(openChatIdx(1)))
+  // console.log(globalStore);
+  // console.log(chatsArr);
+  // console.log()
+  // dispatch(setOpenChatIdx(1))
 
-  const chatsList = chatsListArr
-    .sort((first, second) => {
-      return new Date(second.date).getTime() - new Date(first.date).getTime();
-    })
-    .map((item, idx) => {
-      return (
-        <li
-          className={style.chatsListItem}
-          key={idx}
-          onClick={()=>dispatch(openChatIdx(idx))}
-        >
-          <ChatsListItem
-            avatar={item.avatar}
-            name={item.name}
-            lastMessage={item.lastMessage}
-            date={item.date}
-            isOnline={item.isOnline}
-          />
-        </li>
-      );
-    });
+  const chatsList = chatsArr.map((item, idx) => {
+    // console.log(item)
+    return (
+      <li
+        className={style.chatsListItem}
+        key={idx}
+        onClick={() => dispatch(setOpenChatIdx(idx))}
+      >
+        <ChatsListItem
+          avatar={item.avatar}
+          name={item.name}
+          lastMessage={item.messages[0].text}
+          date={item.messages[0].date}
+          isOnline={item.isOnline}
+        />
+      </li>
+    );
+  });
 
   return (
     <div className={style.mainBlock}>

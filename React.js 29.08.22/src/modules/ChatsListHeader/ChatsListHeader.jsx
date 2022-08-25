@@ -19,7 +19,7 @@ const ChatsListHeader = () => {
     // console.log(ev.target.value)
   };
 
-  console.log(inputValue);
+  // console.log(inputValue);
   return (
     <div className={style.mainBlock}>
       <UserAvatar
