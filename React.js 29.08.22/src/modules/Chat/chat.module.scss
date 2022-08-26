@@ -1,0 +1,28 @@
+.mainBlock {
+    padding: 10px 3vw;
+}
+
+.messageBlock {
+    // display: flex;
+    // max-width: 80%;
+    .messageMainBlock {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 20px;
+
+        .userAvatar {
+            margin-right: 2vw;
+        }
+        .messageText {
+            max-width: 70vw;
+            padding: 10px 15px;
+            border-radius: 10px;
+            color: white;
+            font-size: 14px;
+            // letter-spacing: 0.01em;
+            // line-height: ;
+            word-wrap: break-word;
+            background-color: #3c4154;
+        }
+    }
+}

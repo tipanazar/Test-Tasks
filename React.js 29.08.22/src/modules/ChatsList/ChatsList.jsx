@@ -27,8 +27,8 @@ const ChatsList = () => {
         <ChatsListItem
           avatar={item.avatar}
           name={item.name}
-          lastMessage={item.messages[0].text}
-          date={item.messages[0].date}
+          lastMessage={item.messages[item.messages.length - 1].text}
+          date={item.messages[item.messages.length - 1].date}
           isOnline={item.isOnline}
         />
       </li>
