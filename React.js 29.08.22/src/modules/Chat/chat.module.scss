@@ -10,11 +10,11 @@
   word-wrap: break-word;
   @include mq(mobile-big) {
     font-size: 14px;
-    max-width: 58vw;
+    max-width: 60%;
   }
-  @include mq(tablet) {
-    font-size: 16px;
-    max-width: 60vw;
+
+  @include mq(desktop) {
+    font-size: 14px;
   }
 }
 
@@ -33,76 +33,108 @@
   letter-spacing: 0.05em;
 }
 
-.noMessagesBlock {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  font-size: 50px;
-  color: #7e7f82;
-}
+.mainBlock {
+  flex-grow: 1;
 
-.chatList {
-  padding: 10px 3vw;
-  max-height: 73vh;
-  overflow: auto;
-
-  .chatListItem {
-    margin-bottom: 15px;
-    // height: 10vh;
-
-    .messageDate {
-      @extend %messageDateRules;
-    }
-
-    .messageBlock {
-      display: flex;
-      align-items: flex-start;
-      margin-bottom: 3px;
-
-      .userAvatar {
-        margin-right: 2vw;
-        height: 40px;
-      }
-
-      .messageText {
-        @extend %messageTextRules;
-        color: white;
-        background-color: #3c4154;
-      }
-    }
-  }
-
-  .messageTime {
-    @extend %messageTimeRules;
-    color: #858585;
-    border-top: 1px solid #858585;
-  }
-
-  .myChatListItem {
+  .noMessagesBlock {
     display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    margin-bottom: 15px;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    font-size: 50px;
+    color: #7e7f82;
+  }
 
-    .messageDate {
-      @extend %messageDateRules;
+  .chatList {
+    padding: 10px 3vw;
+    max-height: 73vh;
+    overflow: auto;
+    @include mq(desktop) {
+      max-height: 78vh;
     }
 
-    .myMessageText {
-      @extend %messageTextRules;
-      margin-bottom: 3px;
-      background-color: #e0e0e0;
+    .chatListItem {
+      margin-bottom: 15px;
+      // height: 10vh;
 
-      .myMessageTime {
-        @extend %messageTimeRules;
-        color: #4b4848d4;
-        border-top: 1px solid rgb(157 157 157 / 75%);
+      .messageDate {
+        @extend %messageDateRules;
+      }
+
+      .messageBlock {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 3px;
+
+        .userAvatar {
+          margin-right: 2vw;
+          height: 40px;
+        }
+
+        .messageText {
+          @extend %messageTextRules;
+          color: white;
+          background-color: #3c4154;
+        }
+      }
+    }
+
+    .messageTime {
+      @extend %messageTimeRules;
+      color: #858585;
+      border-top: 1px solid #858585;
+    }
+
+    .myChatListItem {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      margin-bottom: 15px;
+
+      .messageDate {
+        @extend %messageDateRules;
+      }
+
+      .myMessageText {
+        @extend %messageTextRules;
+        margin-bottom: 3px;
+        background-color: #e0e0e0;
+
+        .myMessageTime {
+          @extend %messageTimeRules;
+          color: #4b4848d4;
+          border-top: 1px solid rgb(157 157 157 / 75%);
+        }
       }
     }
   }
-}
 
+  .downwardBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    height: 50px;
+    width: 50px;
+    bottom: 16vh;
+    right: 3vw;
+    padding: 0;
+    border: 0;
+    border-radius: 50px;
+    background-color: #ff6b01;
+    transition: box-shadow 200ms;
+
+    &:hover {
+      box-shadow: 0 0 17px -4px rgb(0 0 0 / 69%);
+    }
+
+    .iconDownward {
+      height: 60%;
+      fill: white;
+      // width:   30px;
+    }
+  }
+}
 // .form {
 //   display: flex;
 //   align-items: center;

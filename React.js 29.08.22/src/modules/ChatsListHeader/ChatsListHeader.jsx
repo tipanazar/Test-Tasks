@@ -28,6 +28,7 @@ const ChatsListHeader = () => {
         isStatusNeeds={true}
         isOnline={true}
       />
+
       <Form
         formClass={style.searchForm}
         inputClass={style.searchInput}
@@ -38,7 +39,13 @@ const ChatsListHeader = () => {
         inputIsRequired={true}
         onInput={onInput}
       >
-        <Icon className={style.searchIcon} iconId="searchIcon" fill="#969696" />
+        <button className={style.submitBtn} type="submit">
+          <Icon
+            className={style.searchIcon}
+            iconId="searchIcon"
+            fill="#969696"
+          />
+        </button>
       </Form>
     </div>
   );

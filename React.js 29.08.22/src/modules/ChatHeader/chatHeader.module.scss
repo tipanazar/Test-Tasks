@@ -1,4 +1,4 @@
-@import '../../sass/main.scss';
+@import "../../sass/main.scss";
 
 .mainBlock {
   display: flex;
@@ -7,6 +7,10 @@
   height: 12vh;
   border-bottom: 2px solid var(--mainBorderColor);
   background-color: var(--mainGreyColor);
+
+  @include mq(desktop) {
+    height: 10vh;
+  }
 
   .backButton {
     display: flex;

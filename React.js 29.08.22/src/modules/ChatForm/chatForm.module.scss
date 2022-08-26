@@ -1,3 +1,5 @@
+@import "../../sass/main.scss";
+
 .form {
   display: flex;
   align-items: center;
@@ -6,16 +8,32 @@
   background-color: var(--mainGreyColor);
   border-top: 2px solid var(--mainBorderColor);
 
+  @include mq(desktop) {
+    height: 12vh;
+  }
+
   .input {
     height: 50%;
-    width: 85vw;
+    width: 85%;
     border-radius: 15px 0 0 15px;
     border: 0;
     padding-left: 2vw;
     border: 1px solid var(--mainBorderColor);
     border-right: 0;
+    transition: border 100ms linear;
+
+    @include mq(desktop) {
+      height: 60%;
+      width: 90%;
+    }
     &:focus-visible {
-      outline: 0;
+      outline: 0px;
+      border: 2px solid #d78b00;
+      border-right: 0;
+      + .sendButton {
+        border: 2px solid #d78b00;
+        border-left: 0;
+      }
     }
   }
 
@@ -30,6 +48,12 @@
     border: 1px solid var(--mainBorderColor);
     border-left: 0;
     border-radius: 0 15px 15px 0;
+    transition: border 100ms linear;
+
+
+    @include mq(desktop) {
+      height: 60%;
+    }
     .icon {
       height: 55%;
     }

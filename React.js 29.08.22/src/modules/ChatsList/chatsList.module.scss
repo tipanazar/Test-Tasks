@@ -33,6 +33,11 @@
     padding: 0 3vw;
     cursor: pointer;
     border-bottom: 2px solid var(--mainBorderColor);
+    transition: background-color 150ms;
+
+    &:hover {
+      background-color: #d8d8d8;
+    }
 
     @include mq(desktop) {
       height: 13vh;

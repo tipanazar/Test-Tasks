@@ -29,7 +29,13 @@
 .lastMessageDate {
   white-space: nowrap;
   margin-left: 3vw;
+  font-size: 15px;
+  @include mq(tablet) {
+    font-size: 17px;
+  }
+
   @include mq(desktop) {
+    font-size: 15px;
     margin-left: 1vw;
   }
 }

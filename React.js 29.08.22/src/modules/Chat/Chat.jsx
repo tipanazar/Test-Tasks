@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { useSelector, shallowEqual } from "react-redux";
 
 import { getChatsArr, getOpenChatIdx } from "../../redux/selectors";
@@ -52,12 +51,12 @@ const Chat = () => {
     });
   }
 
-  // console.log(chat.length);
-  // console.log(chatsArr[openChatIdx].messages);
   return (
     <div className={style.mainBlock}>
       {chat.length ? (
-        <ul className={style.chatList}>{chat}</ul>
+        <ul className={style.chatList} id="chatList">
+          {chat}
+        </ul>
       ) : (
         <div className={style.noMessagesBlock}>
           <p>No messages...</p>
