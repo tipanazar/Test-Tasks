@@ -14,29 +14,25 @@ const ChatHeader = () => {
   const openChatIdx = useSelector(getOpenChatIdx, shallowEqual);
   const chatsArr = useSelector(getChatsArr, shallowEqual);
 
-  console.log(chatsArr[openChatIdx]);
   return (
     <div className={style.mainBlock}>
       <button
         className={style.backButton}
         onClick={() => dispatch(setOpenChatIdx(null))}
       >
-        <Icon
-          className={style.backIcon}
-          iconId={"arrowBack"}
-          width={"30px"}
-          height={"30px"}
-          fill='#544646'
-        />
+        <Icon className={style.backIcon} iconId={"arrowBack"} fill="#544646" />
       </button>
-      <UserAvatar
-        className={style.userAvatar}
-        src={chatsArr[openChatIdx].avatar}
-        width={"50px"}
-        isStatusNeeds={true}
-        isOnline={chatsArr[openChatIdx].isOnline}
-      />
-      <p className={style.userName}>{chatsArr[openChatIdx].name}</p>
+      {chatsArr.length && (
+        <>
+          <UserAvatar
+            className={style.userAvatar}
+            src={chatsArr[openChatIdx || 0].avatar}
+            isStatusNeeds={true}
+            isOnline={chatsArr[openChatIdx || 0].isOnline}
+          />
+          <p className={style.userName}>{chatsArr[openChatIdx || 0].name}</p>
+        </>
+      )}
     </div>
   );
 };

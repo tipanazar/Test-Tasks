@@ -10,14 +10,13 @@ const ChatsListItem = ({ avatar, name, lastMessage, date, isOnline }) => {
       <UserAvatar
         className={style.userAvatar}
         src={avatar}
-        width="50px"
         isStatusNeeds={true}
         isOnline={isOnline}
       />
-      <p className={style.textBlock}>
-        <span className={style.userName}>{name}</span>
-        <span className={style.userLastMessage}>{lastMessage}</span>
-      </p>
+      <div className={style.textBlock}>
+        <p className={style.userName}>{name}</p>
+        <p className={style.userLastMessage}>{lastMessage}</p>
+      </div>
       <p className={style.lastMessageDate}>{date ? date.split(" ")[0] : "—"}</p>
     </>
   );

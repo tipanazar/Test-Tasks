@@ -8,6 +8,7 @@ import ChatsListHeader from "./ChatsListHeader/ChatsListHeader";
 import ChatsList from "./ChatsList/ChatsList";
 import ChatHeader from "./ChatHeader/ChatHeader";
 import Chat from "./Chat/Chat";
+import ChatForm from "./ChatForm/ChatForm";
 
 import { chatsList } from "../chatsList";
 
@@ -26,7 +27,7 @@ const App = () => {
     setWindowWidth(window.innerWidth);
   });
 
-  // console.log("render");
+  // console.log(windowWidth);
 
   return windowWidth >= 1100 ? (
     <>
@@ -37,12 +38,14 @@ const App = () => {
       <section className={style.chatSection}>
         <ChatHeader />
         <Chat />
+        <ChatForm />
       </section>
     </>
   ) : openChatIdx !== null ? (
     <section className={style.chatSection}>
       <ChatHeader />
       <Chat />
+      <ChatForm />
     </section>
   ) : (
     <section className={style.chatsListSection}>

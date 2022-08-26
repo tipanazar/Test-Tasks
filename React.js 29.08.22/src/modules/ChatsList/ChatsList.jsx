@@ -38,7 +38,7 @@ const ChatsList = () => {
   return (
     <div className={style.mainBlock}>
       <h3 className={style.chatsListTitle}>Chats</h3>
-      <ul>{chatsList}</ul>
+      <ul className={style.chatsList}>{chatsList}</ul>
     </div>
   );
 };

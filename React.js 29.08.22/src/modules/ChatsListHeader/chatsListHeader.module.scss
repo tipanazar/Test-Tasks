@@ -1,25 +1,45 @@
+@import "../../sass/main.scss";
+
 .mainBlock {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   background-color: var(--mainGreyColor);
-  // padding: 20px 10px;
-  padding: 20px 3vw;
+  height: 23vh;
+  padding: 2vh 3vw;
   border-bottom: 3px solid var(--mainBorderColor);
 
+  @include mq(desktop) {
+    height: 20vh;
+    padding: 2vh 1vw;
+  }
+
+  .backButton {
+    @include mq(desktop) {
+      display: none;
+    }
+  }
+
   .personAvatar {
-    margin-bottom: 20px;
+    height: 50%;
   }
 
   .searchForm {
     width: 100%;
+    height: 33%;
     position: relative;
 
     .searchIcon {
       position: absolute;
-      top: 13px;
-      left: 13px;
+      max-height: 45%;
+      max-width: 15px;
+      top: 29%;
+      left: 15px;
     }
 
     .searchInput {
-      height: 40px;
+      // height: 40px;
+      height: 100%;
       width: 100%;
       border: 2px solid #d7d7d7;
       border-radius: 20px;

@@ -1,28 +1,145 @@
-.mainBlock {
-    padding: 10px 3vw;
+@import "../../sass/main.scss";
+
+%messageTextRules {
+  display: flex;
+  flex-direction: column;
+  max-width: 50vw;
+  padding: 10px 15px 4px 15px;
+  border-radius: 10px;
+  font-size: 13px;
+  word-wrap: break-word;
+  @include mq(mobile-big) {
+    font-size: 14px;
+    max-width: 58vw;
+  }
+  @include mq(tablet) {
+    font-size: 16px;
+    max-width: 60vw;
+  }
 }
 
-.messageBlock {
-    // display: flex;
-    // max-width: 80%;
-    .messageMainBlock {
-        display: flex;
-        align-items: flex-start;
-        margin-bottom: 20px;
+%messageDateRules {
+  width: fit-content;
+  font-size: 14px;
+  margin-left: 3px;
+  margin: 0 3px 2px 3px;
+  color: #787171;
+}
 
-        .userAvatar {
-            margin-right: 2vw;
-        }
-        .messageText {
-            max-width: 70vw;
-            padding: 10px 15px;
-            border-radius: 10px;
-            color: white;
-            font-size: 14px;
-            // letter-spacing: 0.01em;
-            // line-height: ;
-            word-wrap: break-word;
-            background-color: #3c4154;
-        }
+%messageTimeRules {
+  width: fit-content;
+  margin: 5px 0 0 auto;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+}
+
+.noMessagesBlock {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  font-size: 50px;
+  color: #7e7f82;
+}
+
+.chatList {
+  padding: 10px 3vw;
+  max-height: 73vh;
+  overflow: auto;
+
+  .chatListItem {
+    margin-bottom: 15px;
+    // height: 10vh;
+
+    .messageDate {
+      @extend %messageDateRules;
     }
+
+    .messageBlock {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 3px;
+
+      .userAvatar {
+        margin-right: 2vw;
+        height: 40px;
+      }
+
+      .messageText {
+        @extend %messageTextRules;
+        color: white;
+        background-color: #3c4154;
+      }
+    }
+  }
+
+  .messageTime {
+    @extend %messageTimeRules;
+    color: #858585;
+    border-top: 1px solid #858585;
+  }
+
+  .myChatListItem {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-bottom: 15px;
+
+    .messageDate {
+      @extend %messageDateRules;
+    }
+
+    .myMessageText {
+      @extend %messageTextRules;
+      margin-bottom: 3px;
+      background-color: #e0e0e0;
+
+      .myMessageTime {
+        @extend %messageTimeRules;
+        color: #4b4848d4;
+        border-top: 1px solid rgb(157 157 157 / 75%);
+      }
+    }
+  }
 }
+
+// .form {
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   height: 15vh;
+//   background-color: var(--mainGreyColor);
+//   border-top: 2px solid var(--mainBorderColor);
+
+//   .input {
+//     height: 50%;
+//     width: 85vw;
+//     border-radius: 15px 0 0 15px;
+//     border: 0;
+//     padding-left: 2vw;
+//     border: 1px solid var(--mainBorderColor);
+//     border-right: 0;
+//     &:focus-visible {
+//       outline: 0;
+//     }
+//   }
+
+//   .sendButton {
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     height: 50%;
+//     width: 7vh;
+//     padding: 0;
+//     background-color: white;
+//     border: 1px solid var(--mainBorderColor);
+//     border-left: 0;
+//     border-radius: 0 15px 15px 0;
+//     .icon {
+//       height: 55%;
+//     }
+//     &:hover .icon {
+//       fill: #bb821d;
+//     }
+//   }
+// }

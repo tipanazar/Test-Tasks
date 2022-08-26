@@ -24,7 +24,7 @@ const ChatsListHeader = () => {
     <div className={style.mainBlock}>
       <UserAvatar
         className={style.personAvatar}
-        width="50px"
+        // width="50px"
         isStatusNeeds={true}
         isOnline={true}
       />
@@ -38,13 +38,7 @@ const ChatsListHeader = () => {
         inputIsRequired={true}
         onInput={onInput}
       >
-        <Icon
-          className={style.searchIcon}
-          iconId="searchIcon"
-          width="15px"
-          height="15px"
-          fill="#969696"
-        />
+        <Icon className={style.searchIcon} iconId="searchIcon" fill="#969696" />
       </Form>
     </div>
   );

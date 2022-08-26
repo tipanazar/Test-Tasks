@@ -1,23 +1,46 @@
+@import "../../sass/main.scss";
+
 .mainBlock {
-  padding: 15px 0 5px 0;
+  padding-top: 10px;
+  // max-height: 77vh;
 }
 
 .chatsListTitle {
-  margin-left: 3vw;
+  margin: 0 0 0.5vh 3vw;
   font-size: 24px;
   font-weight: lighter;
   color: #36a0da;
+
+  @include mq(desktop) {
+    margin-left: 1vw;
+  }
 }
 
-.chatsListItem {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  height: 100px;
-  padding: 0 3vw;
-  border-bottom: 2px solid var(--mainBorderColor);
+.chatsList {
+  overflow: auto;
+  max-height: calc(76.5vh - 39.4px);
 
-  &:last-child {
-    border-bottom: 0;
+  @include mq(desktop) {
+    max-height: calc(79.5vh - 39.4px);
+  }
+
+  .chatsListItem {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    overflow: auto;
+    height: 15vh;
+    padding: 0 3vw;
+    cursor: pointer;
+    border-bottom: 2px solid var(--mainBorderColor);
+
+    @include mq(desktop) {
+      height: 13vh;
+      padding: 0 1vw;
+    }
+
+    &:last-child {
+      border-bottom: 0;
+    }
   }
 }

@@ -6,20 +6,18 @@ import person from "../../images/person.png";
 
 import style from "./userAvatar.module.scss";
 
-const UserAvatar = ({ className, src, width, isStatusNeeds, isOnline }) => {
+const UserAvatar = ({ className, src, isStatusNeeds, isOnline }) => {
   return (
     <div
       className={className}
       style={{
         position: "relative",
         width: "fit-content",
-        height: "fit-content",
       }}
     >
       <img
         className={style.image}
         src={src || person}
-        width={width}
         loading="lazy"
         alt="Person avatar"
       />
@@ -41,7 +39,6 @@ export default UserAvatar;
 UserAvatar.propTypes = {
   className: PropTypes.string,
   src: PropTypes.string,
-  width: PropTypes.string,
   isStatusNeeds: PropTypes.bool,
   isOnline: PropTypes.bool,
 };

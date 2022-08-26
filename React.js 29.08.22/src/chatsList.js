@@ -1,38 +1,4 @@
 export const chatsList = [
-  // {
-  //   avatar:
-  //     "https://cdn1.iconfinder.com/data/icons/user-pictures/100/female1-512.png",
-  //   name: "Alice Freeman",
-  //   id: 0,
-  //   messages: [
-  //     {
-  //       senderId: 1,
-  //       date: "2022-08-01 15:35:39",
-  //       text: "I am going to ATB",
-  //     },
-  //     {
-  //       senderId: 0,
-  //       date: "2022-08-01 15:35:18",
-  //       text: "Which shop do you go to?",
-  //     },
-  //     {
-  //       senderId: 0,
-  //       date: "2022-08-01 15:38:43",
-  //       text: "Oh, wait for me pls",
-  //     },
-  //     {
-  //       senderId: 0,
-  //       date: "2022-08-24 14:58:16",
-  //       text: "You are the worst!",
-  //     },
-  //     {
-  //       senderId: 1,
-  //       date: "2022-08-01 15:38:46",
-  //       text: "Ok",
-  //     },
-  //   ],
-  //   isOnline: true,
-  // },
   {
     avatar:
       "https://cdn1.iconfinder.com/data/icons/user-pictures/100/female1-512.png",
@@ -42,12 +8,12 @@ export const chatsList = [
       {
         senderId: 1,
         date: "2022-08-01 15:35:39",
-        text: "",
+        text: "I am going to ATB",
       },
       {
         senderId: 0,
         date: "2022-08-01 15:35:18",
-        text: "Which shop do you go to?I am going to ATI am going to ATBsknsdngklsnljgjwodlknlkgnlkwnlkgnklsdndklnggkanskndkbnlaksdnbnkasdjfksadokasdodvI am going to ATBsknsdngklsnljgjwodlknlkgnlkwnlkgnklsdndklnggkanskndkbnlaksdnbnkasdjfksadokasdodvBsknsdngklsnljgjwodlknlkgnlkwnlkgnklsdndklnggkanskndkbnlaksdnbnkasdjfksadokasdodv",
+        text: "Which shop do you go to?",
       },
       {
         senderId: 0,
@@ -57,16 +23,67 @@ export const chatsList = [
       {
         senderId: 0,
         date: "2022-08-24 14:58:16",
-        text: ".",
+        text: "You are the worst!",
       },
       {
         senderId: 1,
         date: "2022-08-01 15:38:46",
-        text: ".",
+        text: "Ok",
+      },
+      {
+        senderId: 1,
+        date: "2022-08-01 15:35:39",
+        text: "I am going to ATB",
+      },
+      {
+        senderId: 0,
+        date: "2022-08-01 15:35:18",
+        text: "Which shop do you go to?",
+      },
+      {
+        senderId: 0,
+        date: "2022-08-01 15:38:43",
+        text: "Oh, wait for me pls",
+      },
+      {
+        senderId: 0,
+        date: "2022-08-24 14:58:16",
+        text: "You are the worst!",
+      },
+      {
+        senderId: 1,
+        date: "2022-08-01 15:38:46",
+        text: "Ok",
+      },
+      {
+        senderId: 1,
+        date: "2022-08-01 15:35:39",
+        text: "I am going to ATB",
+      },
+      {
+        senderId: 0,
+        date: "2022-08-01 15:35:18",
+        text: "Which shop do you go to?",
+      },
+      {
+        senderId: 0,
+        date: "2022-08-01 15:38:43",
+        text: "Oh, wait for me pls",
+      },
+      {
+        senderId: 0,
+        date: "2022-08-24 14:58:16",
+        text: "You are the worst!",
+      },
+      {
+        senderId: 1,
+        date: "2022-08-01 15:38:46",
+        text: "Ok",
       },
     ],
     isOnline: true,
-  },{
+  },
+  {
     avatar:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSm6khwcQVea71OSRDqWljeBz8gyhQDba55DQ&usqp=CAU",
     name: "Josefina",
@@ -222,5 +239,4 @@ export const chatsList = [
     ],
     isOnline: false,
   },
-  
 ];
