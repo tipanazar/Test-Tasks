@@ -13,7 +13,6 @@ const ChatsListHeader = () => {
   const onInput = (ev) => {
     dispatch(setFilterString(ev.target.value));
   };
-  // console.log('render')
 
   return (
     <div className={style.mainBlock}>

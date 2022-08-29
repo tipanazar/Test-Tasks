@@ -1,3 +1,4 @@
+import { memo } from "react";
 import PropTypes from "prop-types";
 
 import Icon from "../Icon/Icon";
@@ -34,7 +35,7 @@ const UserAvatar = ({ className, src, isStatusNeeds, isOnline }) => {
   );
 };
 
-export default UserAvatar;
+export default memo(UserAvatar);
 
 UserAvatar.propTypes = {
   className: PropTypes.string,

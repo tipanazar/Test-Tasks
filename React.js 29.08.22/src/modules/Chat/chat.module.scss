@@ -55,7 +55,6 @@
 
     .chatListItem {
       margin-bottom: 15px;
-      // height: 10vh;
 
       .messageDate {
         @extend %messageDateRules;
@@ -131,47 +130,6 @@
     .iconDownward {
       height: 60%;
       fill: white;
-      // width:   30px;
     }
   }
 }
-// .form {
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   height: 15vh;
-//   background-color: var(--mainGreyColor);
-//   border-top: 2px solid var(--mainBorderColor);
-
-//   .input {
-//     height: 50%;
-//     width: 85vw;
-//     border-radius: 15px 0 0 15px;
-//     border: 0;
-//     padding-left: 2vw;
-//     border: 1px solid var(--mainBorderColor);
-//     border-right: 0;
-//     &:focus-visible {
-//       outline: 0;
-//     }
-//   }
-
-//   .sendButton {
-//     display: flex;
-//     align-items: center;
-//     justify-content: center;
-//     height: 50%;
-//     width: 7vh;
-//     padding: 0;
-//     background-color: white;
-//     border: 1px solid var(--mainBorderColor);
-//     border-left: 0;
-//     border-radius: 0 15px 15px 0;
-//     .icon {
-//       height: 55%;
-//     }
-//     &:hover .icon {
-//       fill: #bb821d;
-//     }
-//   }
-// }

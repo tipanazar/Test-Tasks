@@ -21,7 +21,7 @@ const App = () => {
 
   const savedChatsList = JSON.parse(localStorage.getItem("chatsArr"));
   useEffect(() => {
-    savedChatsList?.length > chatsList.length
+    savedChatsList?.length >= chatsList.length
       ? dispatch(setChatsArr(savedChatsList))
       : dispatch(setChatsArr(chatsList));
   }, [dispatch, savedChatsList]);
@@ -29,9 +29,6 @@ const App = () => {
   window.addEventListener("resize", () => {
     setWindowWidth(window.innerWidth);
   });
-
-  // console.log(windowWidth);
-  // console.log("render");
 
   return windowWidth >= 1100 ? (
     <>

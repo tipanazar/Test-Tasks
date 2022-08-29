@@ -6,16 +6,6 @@ export const chatsList = [
     id: 0,
     messages: [
       {
-        senderId: 1,
-        date: "1611811232803",
-        text: "I am going to ATB",
-      },
-      {
-        senderId: 0,
-        date: "1611811232803",
-        text: "Which shop do you go to?",
-      },
-      {
         senderId: 0,
         date: "1161811232803",
         text: "Oh, wait for me pls",
@@ -27,58 +17,18 @@ export const chatsList = [
       },
       {
         senderId: 1,
-        date: "1661821232803",
+        date: "166182123280",
         text: "Ok",
       },
       {
         senderId: 1,
-        date: "1661816232803",
+        date: "166181622803",
         text: "I am going to ATB",
       },
       {
         senderId: 0,
-        date: "1661831232803",
+        date: "166181232803",
         text: "Which shop do you go to?",
-      },
-      {
-        senderId: 0,
-        date: "1661816232803",
-        text: "Oh, wait for me pls",
-      },
-      {
-        senderId: 0,
-        date: "1661811232803",
-        text: "You are the worst!",
-      },
-      {
-        senderId: 1,
-        date: "1661811202803",
-        text: "Ok",
-      },
-      {
-        senderId: 1,
-        date: "1661811292803",
-        text: "I am going to ATB",
-      },
-      {
-        senderId: 0,
-        date: "1661811282803",
-        text: "Which shop do you go to?",
-      },
-      {
-        senderId: 0,
-        date: "1661811262803",
-        text: "Oh, wait for me pls",
-      },
-      {
-        senderId: 0,
-        date: "1661811237803",
-        text: "You are the worst!",
-      },
-      {
-        senderId: 1,
-        date: "16811232303",
-        text: "Ok",
       },
     ],
     isOnline: true,
@@ -111,7 +61,7 @@ export const chatsList = [
       },
       {
         senderId: 0,
-        date: "166811232803",
+        date: "1615011232803",
         text: "We are losing money, asshole!🤬",
       },
     ],
@@ -125,22 +75,22 @@ export const chatsList = [
     messages: [
       {
         senderId: 1,
-        date: "1661871232803",
+        date: "166187232803",
         text: "Hello, Josephine told me to ask you how to center the <div>.",
       },
       {
         senderId: 0,
-        date: "1661811232803",
+        date: "1661011232803",
         text: "Try 'margin: 0 auto'",
       },
       {
         senderId: 1,
-        date: "1661812232803",
+        date: "1661011232903",
         text: "Ah, right!",
       },
       {
         senderId: 0,
-        date: "1661815232803",
+        date: "1661115132803",
         text: "Here's my advice to you. Buy programming courses. Your code is no good",
       },
       {
@@ -159,22 +109,22 @@ export const chatsList = [
     messages: [
       {
         senderId: 0,
-        date: "16618112803",
+        date: "166111803",
         text: "Hi, tomorrow is day off",
       },
       {
         senderId: 1,
-        date: "1661801232803",
+        date: "16180123203",
         text: "Okay, thx.",
       },
       {
         senderId: 0,
-        date: "1661871232803",
+        date: "16618132803",
         text: "We are waiting for you at the meeting room 1B!!!!",
       },
       {
         senderId: 0,
-        date: "1661861232803",
+        date: "166184612803",
         text: "What the hell have you done?",
       },
     ],

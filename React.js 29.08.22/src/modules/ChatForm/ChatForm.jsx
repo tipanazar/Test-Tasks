@@ -15,7 +15,9 @@ const ChatForm = () => {
     ev.preventDefault();
     dispatch(sendNewMessage(ev.target.messageInput.value));
     ev.target.reset();
-    dispatch(getJoke());
+    setTimeout(() => {
+      dispatch(getJoke());
+    }, 10000);
   };
 
   return (

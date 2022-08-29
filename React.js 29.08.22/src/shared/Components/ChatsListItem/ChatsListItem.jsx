@@ -1,3 +1,4 @@
+import { memo } from "react";
 import PropTypes from "prop-types";
 
 import UserAvatar from "../UserAvatar/UserAvatar";
@@ -18,13 +19,15 @@ const ChatsListItem = ({ avatar, name, lastMessage, date, isOnline }) => {
         <p className={style.userLastMessage}>{lastMessage}</p>
       </div>
       <p className={style.lastMessageDate}>
-        {date ? new Date(Number.parseInt(date)).toLocaleString().split(',')[0] : "—"}
+        {date
+          ? new Date(Number.parseInt(date)).toLocaleString().split(",")[0]
+          : "—"}
       </p>
     </>
   );
 };
 
-export default ChatsListItem;
+export default memo(ChatsListItem);
 
 ChatsListItem.propTypes = {
   avatar: PropTypes.string,
