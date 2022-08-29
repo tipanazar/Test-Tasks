@@ -27,3 +27,15 @@ const Form = ({
 };
 
 export default Form;
+
+Form.propTypes = {
+  formClass: PropTypes.string.isRequired,
+  inputClass: PropTypes.string.isRequired,
+  inputName: PropTypes.string.isRequired,
+  inputType: PropTypes.string.isRequired,
+  inputPlaceholder: PropTypes.string.isRequired,
+  inputIsRequired: PropTypes.bool.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+  onInput: PropTypes.func,
+  children: PropTypes.node,
+};

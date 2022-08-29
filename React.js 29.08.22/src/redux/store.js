@@ -1,12 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
 
-// import { openChatIdx, chatsArr, isChatOpen } from "./reducers";
-import { openChatIdx, chatsArr } from "./reducers";
+import { chatsReducer, filterStringReducer } from "./reducers";
 
 export const store = configureStore({
   reducer: {
-    chatsArr,
-    openChatIdx,
-    // isChatOpen,
+    chatsState: chatsReducer,
+    filterString: filterStringReducer,
   },
 });

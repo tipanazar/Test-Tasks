@@ -4,13 +4,13 @@
   "private": false,
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.5",
-    "lodash.throttle": "^4.1.1",
+    "axios": "^0.27.2",
+    "nanoid": "^4.0.0",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.2",
-    "react-scripts": "5.0.1",
-    "redux-persist": "^6.0.0",
+    "react-scripts": "^5.0.1",
     "sass": "^1.54.5"
   },
   "scripts": {

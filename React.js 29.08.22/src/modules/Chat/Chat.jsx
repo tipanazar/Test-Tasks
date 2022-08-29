@@ -2,7 +2,7 @@ import { useSelector, shallowEqual } from "react-redux";
 
 import { getChatsArr, getOpenChatIdx } from "../../redux/selectors";
 
-import UserAvatar from "../../shared/UserAvatar/UserAvatar";
+import UserAvatar from "../../shared/Components/UserAvatar/UserAvatar";
 
 import style from "./chat.module.scss";
 
@@ -13,18 +13,25 @@ const Chat = () => {
   let chat = [];
 
   if (chatsArr.length) {
-    // console.log(chatsArr)
     chat = chatsArr[openChatIdx ?? 0].messages.map((item, idx) => {
-      // console.log(item);
       if (item.senderId === 1) {
-        // console.log(item  )
         return (
           <li className={style.myChatListItem} key={idx}>
-            <p className={style.messageDate}>{item.date.split(" ")[0]}</p>
+            <p className={style.messageDate}>
+              {
+                new Date(Number.parseInt(item.date))
+                  .toLocaleString()
+                  .split(",")[0]
+              }
+            </p>
             <p className={style.myMessageText}>
               {item.text}
               <span className={style.myMessageTime}>
-                {item.date.split(" ")[1].split(":").slice(0, 2).join(":")}
+                {new Date(Number.parseInt(item.date))
+                  .toTimeString()
+                  .split(":")
+                  .slice(0, 2)
+                  .join(":")}
               </span>
             </p>
           </li>
@@ -32,7 +39,13 @@ const Chat = () => {
       }
       return (
         <li className={style.chatListItem} key={idx}>
-          <p className={style.messageDate}>{item.date.split(" ")[0]}</p>
+          <p className={style.messageDate}>
+            {
+              new Date(Number.parseInt(item.date))
+                .toLocaleString()
+                .split(",")[0]
+            }
+          </p>
           <div className={style.messageBlock}>
             <UserAvatar
               className={style.userAvatar}
@@ -42,7 +55,11 @@ const Chat = () => {
             <p className={style.messageText}>
               {item.text}
               <span className={style.messageTime}>
-                {item.date.split(" ")[1].split(":").slice(0, 2).join(":")}
+                {new Date(Number.parseInt(item.date))
+                  .toTimeString()
+                  .split(":")
+                  .slice(0, 2)
+                  .join(":")}
               </span>
             </p>
           </div>

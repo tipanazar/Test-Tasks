@@ -1,30 +1,24 @@
-import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { setFilterString } from "../../redux/actions";
 
-import Form from "../../shared/Form/Form";
-import Icon from "../../shared/Icon/Icon";
-import UserAvatar from "../../shared/UserAvatar/UserAvatar";
+import Form from "../../shared/Components/Form/Form";
+import Icon from "../../shared/Components/Icon/Icon";
+import UserAvatar from "../../shared/Components/UserAvatar/UserAvatar";
 
 import style from "./chatsListHeader.module.scss";
 
-const handlerSubmit = (ev) => {
-  ev.preventDefault();
-  console.log(ev.target.searchChat.value);
-};
-
 const ChatsListHeader = () => {
-  const [inputValue, onInputValue] = useState("");
+  const dispatch = useDispatch();
 
   const onInput = (ev) => {
-    onInputValue(ev.target.value);
-    // console.log(ev.target.value)
+    dispatch(setFilterString(ev.target.value));
   };
+  // console.log('render')
 
-  // console.log(inputValue);
   return (
     <div className={style.mainBlock}>
       <UserAvatar
         className={style.personAvatar}
-        // width="50px"
         isStatusNeeds={true}
         isOnline={true}
       />
@@ -32,8 +26,8 @@ const ChatsListHeader = () => {
       <Form
         formClass={style.searchForm}
         inputClass={style.searchInput}
-        handleSubmit={handlerSubmit}
-        inputName={"searchChat"}
+        handleSubmit={(ev) => ev.preventDefault()}
+        inputName="searchChat"
         inputType="text"
         inputPlaceholder="Search or start a new chat"
         inputIsRequired={true}

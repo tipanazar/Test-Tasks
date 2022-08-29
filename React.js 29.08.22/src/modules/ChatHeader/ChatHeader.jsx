@@ -3,9 +3,9 @@ import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import { getOpenChatIdx, getChatsArr } from "../../redux/selectors";
 import { setOpenChatIdx } from "../../redux/actions";
 
-import Icon from "../../shared/Icon/Icon";
+import Icon from "../../shared/Components/Icon/Icon";
 
-import UserAvatar from "../../shared/UserAvatar/UserAvatar";
+import UserAvatar from "../../shared/Components/UserAvatar/UserAvatar";
 
 import style from "./chatHeader.module.scss";
 

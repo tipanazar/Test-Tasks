@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 
 import Icon from "../Icon/Icon";
 
-import person from "../../images/person.png";
+import person from "../../../images/person.png";
 
 import style from "./userAvatar.module.scss";
 

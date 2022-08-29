@@ -17,7 +17,9 @@ const ChatsListItem = ({ avatar, name, lastMessage, date, isOnline }) => {
         <p className={style.userName}>{name}</p>
         <p className={style.userLastMessage}>{lastMessage}</p>
       </div>
-      <p className={style.lastMessageDate}>{date ? date.split(" ")[0] : "—"}</p>
+      <p className={style.lastMessageDate}>
+        {date ? new Date(Number.parseInt(date)).toLocaleString().split(',')[0] : "—"}
+      </p>
     </>
   );
 };

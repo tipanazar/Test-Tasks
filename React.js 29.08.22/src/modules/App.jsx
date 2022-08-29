@@ -16,18 +16,22 @@ import style from "./app.module.scss";
 
 const App = () => {
   const dispatch = useDispatch();
+  const openChatIdx = useSelector(getOpenChatIdx, shallowEqual);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
-  const openChatIdx = useSelector(getOpenChatIdx, shallowEqual);
+  const savedChatsList = JSON.parse(localStorage.getItem("chatsArr"));
   useEffect(() => {
-    dispatch(setChatsArr([...chatsList]));
-  }, [dispatch]);
+    savedChatsList?.length > chatsList.length
+      ? dispatch(setChatsArr(savedChatsList))
+      : dispatch(setChatsArr(chatsList));
+  }, [dispatch, savedChatsList]);
 
   window.addEventListener("resize", () => {
     setWindowWidth(window.innerWidth);
   });
 
   // console.log(windowWidth);
+  // console.log("render");
 
   return windowWidth >= 1100 ? (
     <>
