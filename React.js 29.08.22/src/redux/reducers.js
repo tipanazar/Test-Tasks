@@ -59,17 +59,17 @@ export const chatsReducer = createReducer(
     //
 
     [sendNewMessage]: (state, { payload }) => {
-      state.chatsArr[state.openChatIdx].messages.push({
+      state.chatsArr[state.openChatIdx || 0].messages.push({
         senderId: 1,
-        date: new Date().getTime(),
+        date: new Date().getTime().toString(),
         text: payload,
       });
     },
 
     [getJoke.fulfilled]: (state, { payload }) => {
-      state.chatsArr[state.openChatIdx].messages.push({
+      state.chatsArr[state.openChatIdx || 0].messages.push({
         senderId: 0,
-        date: new Date().getTime(),
+        date: new Date().getTime().toString(),
         text: payload,
       });
       localStorage.setItem("chatsArr", JSON.stringify(state.chatsArr));

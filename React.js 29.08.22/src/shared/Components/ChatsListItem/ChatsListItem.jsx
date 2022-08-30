@@ -31,4 +31,8 @@ export default memo(ChatsListItem);
 
 ChatsListItem.propTypes = {
   avatar: PropTypes.string,
+  name: PropTypes.string.isRequired,
+  lastMessage: PropTypes.string,
+  date: PropTypes.string,
+  isOnline: PropTypes.bool,
 };
