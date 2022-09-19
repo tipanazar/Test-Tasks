@@ -1,0 +1,30 @@
+body {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+table {
+  border-spacing: 0 10px;
+  font-family: "Roboto";
+}
+table tbody th {
+  background-color: #999999;
+  color: white;
+  padding: 7px;
+}
+table tbody th:first-child {
+  border-radius: 7px 0 0 7px;
+}
+table tbody th:last-child {
+  border-radius: 0 7px 7px 0;
+}
+table tbody td {
+  padding: 7px;
+  color: #828388;
+  background-color: #e8eaf5;
+}
+table tbody td:first-child {
+  color: #2d2a2c;
+}/*# sourceMappingURL=index.css.map */
