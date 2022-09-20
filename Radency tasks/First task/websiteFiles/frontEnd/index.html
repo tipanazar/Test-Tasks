@@ -9,42 +9,34 @@
   </head>
   <body>
     <table class="table">
-      <thead>
+      <thead class="tableHeader">
         <tr>
-          <th>Name</th>
-          <th>Created</th>
-          <th>Category</th>
-          <th>Content</th>
-          <th>Dates</th>
-          <th>
-            <button class="tableButton" type="button">
-              <svg class="tableIcon">
-                <use href="./sprite.svg#add-to-archive" />
-              </svg>
-            </button>
-            <button class="tableButton" type="button">
-              <svg class="tableIcon">
-                <use href="./sprite.svg#trash-bin" />
-              </svg>
-            </button>
+          <th class="headerTitleName">Name</th>
+          <th class="headerTitleCreated">Created</th>
+          <th class="headerTitleCategory">Category</th>
+          <th class="headerTitleContent">Content</th>
+          <th class="headerTitleDates">Dates</th>
+          <th class="headerButtonsBlock">
+            <div class="buttonsWrapper">
+              <button class="tableButton" type="button">
+                <svg class="tableIcon">
+                  <use href="./sprite.svg#add-to-archive" />
+                </svg>
+              </button>
+              <button class="tableButton" type="button">
+                <svg class="tableIcon">
+                  <use href="./sprite.svg#trash-bin" />
+                </svg>
+              </button>
+            </div>
           </th>
         </tr>
       </thead>
-      <tbody>
-      </tbody>
+      <tbody class="tableBody"></tbody>
     </table>
 
-    <svg>
-      <use href="./sprite.svg#trash-bin"></use>
-    </svg>
-    <svg>
-      <use href="./sprite.svg#add-to-archive"></use>
-    </svg>
     <svg aria-placeholder="remove">
       <use href="./sprite.svg#remove-from-archive"></use>
-    </svg>
-    <svg>
-      <use href="./sprite.svg#pen"></use>
     </svg>
   </body>
   <script src="../backend/app.js" type="application/node"></script>

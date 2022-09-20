@@ -1,6 +1,6 @@
 import { getNotes } from "./api.js";
 
-const table = document.querySelector("tbody");
+const tableBody = document.querySelector(".tableBody");
 
 const fillTheTable = async () => {
   const data = await getNotes();
@@ -16,23 +16,46 @@ const fillTheTable = async () => {
         (note.category === "Random thought" && "gears") ||
         (note.category === "Idea" && "bulb");
 
-      const dates = [];
+      const datesArr = [];
       if (note.dates.length) {
         for (let date of note.dates) {
-          dates.push(parceDate(Number.parseInt(date)));
+          datesArr.push(parceDate(Number.parseInt(date)));
         }
       }
 
-      console.log(dates);
-      return `<tr><td><div class="iconBlock"><svg class='tableIcon'>
-      <use href="./sprite.svg#${iconId}"/>
-    </svg></div><span class="noteName">${note.name}</span></td><td>${parceDate(
-        note.created
-      )}</td><td>${note.category}</td><td>${note.content}</td><td>${dates.join(
-        ", "
-      )}</td><td>*icons*</td></tr>`;
+      return `<tr class="tableNoteBlock">
+      <td class="tableNoteNameBlock">
+      <div class="iconWrapper">
+      <svg class="noteCategoryIcon">
+        <use href="./sprite.svg#${iconId}" />
+      </svg>
+      </div>
+      <p class="tableText tableTextName">${note.name}</p>
+      </td>
+      <td>${parceDate(note.created)}</td>
+      <td>${note.category}</td>
+      <td><p class="tableText">${note.content}</p></td>
+      <td><p class="tableText dates">${datesArr.join(", ")}</p></td>
+      <td class="tableButtonsBlock">
+        <button class="noteButton">
+          <svg class="noteButtonIcon firstIcon">
+            <use href="./sprite.svg#pen" />
+          </svg></button
+        ><button class="noteButton">
+          <svg class="noteButtonIcon">
+            <use href="./sprite.svg#add-to-archive" />
+          </svg>
+        </button>
+        <button class="noteButton">
+          <svg class="noteButtonIcon">
+            <use href="./sprite.svg#trash-bin" />
+          </svg>
+        </button>
+      </td>
+    </tr>`;
     });
-  table.insertAdjacentHTML("beforeend", notes.join(" "));
+
+  tableBody.insertAdjacentHTML("beforeend", notes.join(""));
 };
 
 fillTheTable();

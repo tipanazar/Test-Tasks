@@ -3,50 +3,50 @@
     {
       "id": 0,
       "name": "Shopping list",
-      "created": 1645650000,
+      "created": 1645700000000,
       "category": "Task",
       "content": "Weapons, armory, bullets, grenades, first aid",
-      "dates": ""
+      "dates": []
     },
     {
       "id": 1,
       "name": "Shopping list",
-      "created": 1645477200,
+      "created": 1645477200000,
       "category": "Task",
       "content": "To buy E39 530D!",
-      "dates": ""
+      "dates": []
     },
     {
       "id": 2,
       "name": "The theory of evolution",
-      "created": 1645304400,
+      "created": 1645304400000,
       "category": "Random thought",
       "content": "The evolution...",
-      "dates": ""
+      "dates": []
     },
     {
       "id": 3,
       "name": "New fishka",
-      "created": 1650747600,
+      "created": 1650747600000,
       "category": "Idea",
       "content": "to implement tomatofeature",
-      "dates": ""
+      "dates": []
     },
     {
       "id": 4,
       "name": "New feature",
-      "created": 1650661200,
+      "created": 1650661200000,
       "category": "Idea",
       "content": "Implement new feature...",
-      "dates": ["1619989200", "1620162000"]
+      "dates": ["1619989200000", "1620162000000"]
     },
     {
       "id": 5,
       "name": "Lorem",
-      "created": 1656104400,
+      "created": 1656104400000,
       "category": "Random thought",
-      "content": "Lorem ipsum sit dolor amet leibe son warben inter ellas ous...",
-      "dates": ""
+      "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto deleniti minima atque eius natus magni ducimus laborum laudantium ex vitae autem aliquam at ratione delectus, similique beatae a rerum nihil. Aliquid perferendis, voluptatibus odio repellat distinctio nam. Dicta laboriosam modi id fuga eos expedita animi nulla tenetur esse, a sapiente maiores eum ad, quo earum exercitationem mollitia nihil, vitae dignissimos! Magni necessitatibus numquam, accusantium delectus hic maxime impedit culpa! Alias perspiciatis at incidunt tempore esse, eum obcaecati consectetur culpa beatae nihil. Eos minus reprehenderit quisquam fugiat delectus, iusto eius soluta?",
+      "dates": ["1619989200000", "1620162000000", "1619989200000", "1620162000000"]
     }
   ]
 }
