@@ -9,3 +9,16 @@ export const getNotes = () => {
     return response.json();
   });
 };
+
+export const addNote = (formData) => {
+  return fetch(baseUrl, { method: "post", body: formData.toString() }).then(
+    (response) => {
+      console.log(response);
+      if (!response.ok) {
+        throw new Error(response.status);
+      }
+
+      // return response.json();
+    }
+  );
+};

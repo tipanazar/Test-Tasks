@@ -34,10 +34,45 @@
       </thead>
       <tbody class="tableBody"></tbody>
     </table>
+    <form class="createNoteForm" id="createNoteForm">
+      <div class="iconWrapper"></div>
+      <textarea
+        class="formNameInput"
+        name="name"
+        type="text"
+        placeholder="Name"
+        required
+      ></textarea>
+      <select class="formDropList" name="category">
+        <option>Random thought</option>
+        <option>Task</option>
+        <option>Idea</option>
+      </select>
+      <textarea
+        class="formContentInput"
+        name="content"
+        placeholder="Content"
+        required
+      ></textarea>
+      <input class="formDateInput" name="date" type="date" />
+      <button class="resetNoteButton" type="reset">
+        <svg class="resetNoteIcon">
+          <use href="./sprite.svg#trash-bin" />
+        </svg>
+      </button>
+    </form>
+    <button
+      class="createNoteBtn"
+      id="createNoteBtn"
+      type="button"
+      form="createNoteForm"
+    >
+      Create Note
+    </button>
 
-    <svg aria-placeholder="remove">
+    <!-- <svg aria-placeholder="remove">
       <use href="./sprite.svg#remove-from-archive"></use>
-    </svg>
+    </svg> -->
   </body>
   <script src="../backend/app.js" type="application/node"></script>
   <script src="./index.js" type="module"></script>
