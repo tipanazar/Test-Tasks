@@ -1,0 +1,73 @@
+body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  cursor: pointer;
+}
+
+table {
+  width: 90vw;
+  border-spacing: 0 10px;
+  font-family: "Roboto";
+  text-align: center;
+}
+table th {
+  background-color: #999999;
+  color: white;
+  padding: 7px;
+}
+table th:first-child {
+  border-radius: 7px 0 0 7px;
+}
+table th:last-child {
+  display: flex;
+  padding: 0;
+  border-radius: 0 7px 7px 0;
+  justify-content: flex-end;
+}
+table th:last-child .tableButton {
+  padding: 10px;
+  background-color: red;
+}
+table th:last-child .tableButton:last-child {
+  border-radius: 0 7px 7px 0;
+}
+table th:last-child .tableButton .tableIcon {
+  height: 15px;
+  width: 15px;
+}
+table td {
+  padding: 7px;
+  color: #828388;
+  background-color: #e8eaf5;
+}
+table td:first-child {
+  display: flex;
+  align-items: center;
+  color: #2d2a2c;
+}
+table td:first-child .iconBlock {
+  background-color: #616161;
+}
+table td:first-child .iconBlock .tableIcon {
+  height: 30px;
+  width: 30px;
+  fill: white;
+}
+table td:first-child .noteName {
+  margin: 0 auto;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+}/*# sourceMappingURL=index.css.map */

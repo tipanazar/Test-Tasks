@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles/index.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Created</th>
+          <th>Category</th>
+          <th>Content</th>
+          <th>Dates</th>
+          <th>
+            <button class="tableButton" type="button">
+              <svg class="tableIcon">
+                <use href="./sprite.svg#add-to-archive" />
+              </svg>
+            </button>
+            <button class="tableButton" type="button">
+              <svg class="tableIcon">
+                <use href="./sprite.svg#trash-bin" />
+              </svg>
+            </button>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+
+    <svg>
+      <use href="./sprite.svg#trash-bin"></use>
+    </svg>
+    <svg>
+      <use href="./sprite.svg#add-to-archive"></use>
+    </svg>
+    <svg aria-placeholder="remove">
+      <use href="./sprite.svg#remove-from-archive"></use>
+    </svg>
+    <svg>
+      <use href="./sprite.svg#pen"></use>
+    </svg>
+  </body>
+  <script src="../backend/app.js" type="application/node"></script>
+  <script src="./index.js" type="module"></script>
+</html>

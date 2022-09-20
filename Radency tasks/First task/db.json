@@ -1,0 +1,52 @@
+{
+  "notes": [
+    {
+      "id": 0,
+      "name": "Shopping list",
+      "created": 1645650000,
+      "category": "Task",
+      "content": "Weapons, armory, bullets, grenades, first aid",
+      "dates": ""
+    },
+    {
+      "id": 1,
+      "name": "Shopping list",
+      "created": 1645477200,
+      "category": "Task",
+      "content": "To buy E39 530D!",
+      "dates": ""
+    },
+    {
+      "id": 2,
+      "name": "The theory of evolution",
+      "created": 1645304400,
+      "category": "Random thought",
+      "content": "The evolution...",
+      "dates": ""
+    },
+    {
+      "id": 3,
+      "name": "New fishka",
+      "created": 1650747600,
+      "category": "Idea",
+      "content": "to implement tomatofeature",
+      "dates": ""
+    },
+    {
+      "id": 4,
+      "name": "New feature",
+      "created": 1650661200,
+      "category": "Idea",
+      "content": "Implement new feature...",
+      "dates": ["1619989200", "1620162000"]
+    },
+    {
+      "id": 5,
+      "name": "Lorem",
+      "created": 1656104400,
+      "category": "Random thought",
+      "content": "Lorem ipsum sit dolor amet leibe son warben inter ellas ous...",
+      "dates": ""
+    }
+  ]
+}
