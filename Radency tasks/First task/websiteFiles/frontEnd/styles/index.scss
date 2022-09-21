@@ -5,6 +5,7 @@ body {
   justify-content: center;
   min-height: 100vh;
   margin: 0;
+  padding: 30px 0;
 }
 
 button {
@@ -153,7 +154,7 @@ th {
   }
 }
 
-.createNoteForm {
+.noteForm {
   display: flex;
   visibility: hidden;
   align-items: center;
@@ -205,10 +206,12 @@ th {
   .formDateInput {
     padding: 5px;
     border-radius: 5px;
-    border: 1px solid;
+    width: 100px;
+    height: 60%;
+    resize: none;
     margin-left: 10px;
-    margin-right: 55px;
-    cursor: text;
+    margin-right: 60px;
+    border: 1px solid;
   }
 
   .resetNoteButton {

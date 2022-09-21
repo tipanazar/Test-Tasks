@@ -536,17 +536,18 @@ var _getNotesJs = require("./js/getNotes.js");
 // import '../backend/app.js';
 var _mainJs = require("./js/main.js");
 var _createNoteJs = require("./js/createNote.js");
+var _actionsWithNote = require("./js/actionsWithNote");
 
-},{"./js/getNotes.js":"h8Jxl","./js/main.js":"3PHaZ","./js/createNote.js":"1AmQc"}],"h8Jxl":[function(require,module,exports) {
+},{"./js/getNotes.js":"h8Jxl","./js/main.js":"3PHaZ","./js/createNote.js":"1AmQc","./js/actionsWithNote":"PcKuD"}],"h8Jxl":[function(require,module,exports) {
 var _apiJs = require("./api.js");
 var _noteMarkupJs = require("./helpers/noteMarkup.js");
-const tableBody = document.querySelector(".tableBody");
+const tableBody = document.querySelector("tbody.tableBody");
 const fillTheTable = async ()=>{
     try {
         const data = await (0, _apiJs.getNotes)();
         const notes = data.sort((firstNote, secondNote)=>firstNote.created - secondNote.created).map((note)=>{
-            const { name , category , content , dates , created  } = note;
-            return (0, _noteMarkupJs.noteMarkup)(name, category, content, dates, created);
+            const { name , category , content , dates , created , id  } = note;
+            return (0, _noteMarkupJs.noteMarkup)(name, category, content, dates, created, id);
         });
         tableBody.insertAdjacentHTML("afterbegin", notes.join(""));
     } catch (err) {
@@ -3931,7 +3932,7 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "noteMarkup", ()=>noteMarkup);
 var _iconsImportJs = require("./iconsImport.js");
-const noteMarkup = (name, category, content, dates, created)=>{
+const noteMarkup = (name, category, content, dates, created, id)=>{
     const parceDate = (date)=>{
         return new Date(date).toLocaleString().split(", ")[0];
     };
@@ -3952,18 +3953,18 @@ const noteMarkup = (name, category, content, dates, created)=>{
     <td><p class="tableText">${content}</p></td>
     <td><p class="tableText dates">${datesArr.join(", ")}</p></td>
     <td class="tableButtonsBlock">
-    <button class="noteButton" type="button">
-    <svg class="noteButtonIcon">
-    <use href="${0, _iconsImportJs.penIcon}" />
+    <button class="noteButton" id="edit, ${id}" type="button">
+    <svg class="noteButtonIcon" id="edit, ${id}">
+    <use href="${0, _iconsImportJs.penIcon}" id="edit, ${id}"/>
     </svg></button
-    ><button class="noteButton" type="button">
-    <svg class="noteButtonIcon">
-    <use href="${0, _iconsImportJs.addToArchiveIcon}" />
+    ><button class="noteButton" id="archive, ${id}" type="button">
+    <svg class="noteButtonIcon" id="archive, ${id}">
+    <use href="${0, _iconsImportJs.addToArchiveIcon}"  id="archive, ${id}"/>
     </svg>
     </button>
-    <button class="noteButton" type="button">
-    <svg class="noteButtonIcon">
-    <use href="${0, _iconsImportJs.trashBinIcon}" />
+    <button class="noteButton" id="delete, ${id}" type="button">
+    <svg class="noteButtonIcon" id="delete, ${id}">
+    <use href="${0, _iconsImportJs.trashBinIcon}"  id="delete, ${id}"/>
     </svg>
     </button>
     </td>
@@ -4025,10 +4026,10 @@ exports.default = "#33cb6a3a0a3f107b";
 },{}],"1AmQc":[function(require,module,exports) {
 var _apiJs = require("./api.js");
 var _noteMarkupJs = require("./helpers/noteMarkup.js");
-const tableBody = document.querySelector(".tableBody");
-const createNoteBtn = document.querySelector("button#createNoteBtn");
+const tableBody = document.querySelector("tbody.tableBody");
 const resetNoteButton = document.querySelector("button.resetNoteButton");
 const createNoteForm = document.querySelector("form#createNoteForm");
+const createNoteBtn = document.querySelector("button#noteFormSubmitBtn");
 let firstOpen = true;
 createNoteBtn.addEventListener("click", ()=>{
     createNoteForm.style = "visibility: visible; height: 70px; opacity: 1;";
@@ -4057,8 +4058,8 @@ createNoteForm.addEventListener("submit", async (ev)=>{
     try {
         const result = await (0, _apiJs.addNote)(formData);
         if (result.status === 201) {
-            const { name: name1 , category: category1 , content: content1 , dates , created  } = result.data;
-            const newNoteMarkup = (0, _noteMarkupJs.noteMarkup)(name1, category1, content1, dates, created);
+            const { name: name1 , category: category1 , content: content1 , dates , created , id  } = result.data;
+            const newNoteMarkup = (0, _noteMarkupJs.noteMarkup)(name1, category1, content1, dates, created, id);
             tableBody.insertAdjacentHTML("beforeend", newNoteMarkup);
         }
     } catch (err) {
@@ -4066,6 +4067,35 @@ createNoteForm.addEventListener("submit", async (ev)=>{
     }
 });
 
-},{"./api.js":"iEsMl","./helpers/noteMarkup.js":"gMoi0"}]},["7kr3F","kdKKB"], "kdKKB", "parcelRequireaf11")
+},{"./api.js":"iEsMl","./helpers/noteMarkup.js":"gMoi0"}],"PcKuD":[function(require,module,exports) {
+const tableBody = document.querySelector("tbody.tableBody");
+const editNoteForm = document.querySelector("form#editNoteForm");
+const noteFormSubmitBtn = document.querySelector("button#noteFormSubmitBtn");
+const resetNoteButton = document.querySelectorAll("button.resetNoteButton");
+tableBody.addEventListener("click", (ev)=>{
+    const evIdArr = ev.target.id.split(", ");
+    evIdArr[0] === "edit" && editNote(evIdArr[1]);
+    evIdArr[0] === "archive" && archiveNote(evIdArr[1]);
+    evIdArr[0] === "delete" && deleteNote(evIdArr[1]);
+//   console.log(evIdArr);
+});
+resetNoteButton[1].addEventListener("click", ()=>{
+    editNoteForm.style = "visibility: hidden; height: 0; opacity: 0;";
+});
+const editNote = (noteId)=>{
+    console.log("Edit, ", noteId);
+    editNoteForm.style = "visibility: visible; height: 70px; opacity: 1;";
+    //   noteFormSubmitBtn.type = firstOpen ? "button" : "submit";
+    noteFormSubmitBtn.form = "editNoteForm";
+    noteFormSubmitBtn.textContent = " Edit Note";
+};
+const archiveNote = (noteId)=>{
+    console.log("Archive, ", noteId);
+};
+const deleteNote = (noteId)=>{
+    console.log("Delete, ", noteId);
+};
+
+},{}]},["7kr3F","kdKKB"], "kdKKB", "parcelRequireaf11")
 
 //# sourceMappingURL=index.c782e7df.js.map

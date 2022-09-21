@@ -4,6 +4,7 @@ body {
   justify-content: center;
   align-items: center;
   margin: 0;
+  padding: 30px 0;
   display: flex;
 }
 
@@ -154,7 +155,7 @@ td, th {
   width: 25px;
 }
 
-.createNoteForm {
+.noteForm {
   visibility: hidden;
   height: 0;
   opacity: 0;
@@ -168,7 +169,7 @@ td, th {
   display: flex;
 }
 
-.createNoteForm .iconWrapper {
+.noteForm .iconWrapper {
   height: 45px;
   width: 45px;
   background-color: #616161;
@@ -176,7 +177,7 @@ td, th {
   margin: 0 10px;
 }
 
-.createNoteForm .formNameInput {
+.noteForm .formNameInput {
   width: 100px;
   text-align: center;
   resize: none;
@@ -187,7 +188,7 @@ td, th {
   padding: 5px;
 }
 
-.createNoteForm .formDropList {
+.noteForm .formDropList {
   cursor: pointer;
   border: 1px solid;
   border-radius: 5px;
@@ -195,7 +196,7 @@ td, th {
   padding: 5px;
 }
 
-.createNoteForm .formContentInput {
+.noteForm .formContentInput {
   width: 30%;
   height: 60%;
   resize: none;
@@ -205,16 +206,18 @@ td, th {
   padding: 5px;
 }
 
-.createNoteForm .formDateInput {
-  cursor: text;
+.noteForm .formDateInput {
+  width: 100px;
+  height: 60%;
+  resize: none;
   border: 1px solid;
   border-radius: 5px;
   margin-left: 10px;
-  margin-right: 55px;
+  margin-right: 60px;
   padding: 5px;
 }
 
-.createNoteForm .resetNoteButton {
+.noteForm .resetNoteButton {
   height: 100%;
   width: 30px;
   background-color: #e8eaf5;
@@ -222,7 +225,7 @@ td, th {
   padding: 0;
 }
 
-.createNoteForm .resetNoteButton .resetNoteIcon {
+.noteForm .resetNoteButton .resetNoteIcon {
   height: 20px;
   width: 20px;
   fill: #7a7a7a;

@@ -1,10 +1,10 @@
 import { addNote } from "./api.js";
 import { noteMarkup } from "./helpers/noteMarkup.js";
 
-const tableBody = document.querySelector(".tableBody");
-const createNoteBtn = document.querySelector("button#createNoteBtn");
+const tableBody = document.querySelector("tbody.tableBody");
 const resetNoteButton = document.querySelector("button.resetNoteButton");
 const createNoteForm = document.querySelector("form#createNoteForm");
+const createNoteBtn = document.querySelector("button#noteFormSubmitBtn");
 
 let firstOpen = true;
 
@@ -38,8 +38,15 @@ createNoteForm.addEventListener("submit", async (ev) => {
   try {
     const result = await addNote(formData);
     if (result.status === 201) {
-      const { name, category, content, dates, created } = result.data;
-      const newNoteMarkup = noteMarkup(name, category, content, dates, created);
+      const { name, category, content, dates, created, id } = result.data;
+      const newNoteMarkup = noteMarkup(
+        name,
+        category,
+        content,
+        dates,
+        created,
+        id
+      );
 
       tableBody.insertAdjacentHTML("beforeend", newNoteMarkup);
     }

@@ -7,7 +7,7 @@ import {
   penIcon,
 } from "./iconsImport.js";
 
-export const noteMarkup = (name, category, content, dates, created) => {
+export const noteMarkup = (name, category, content, dates, created, id) => {
   const parceDate = (date) => {
     return new Date(date).toLocaleString().split(", ")[0];
   };
@@ -38,18 +38,18 @@ export const noteMarkup = (name, category, content, dates, created) => {
     <td><p class="tableText">${content}</p></td>
     <td><p class="tableText dates">${datesArr.join(", ")}</p></td>
     <td class="tableButtonsBlock">
-    <button class="noteButton" type="button">
-    <svg class="noteButtonIcon">
-    <use href="${penIcon}" />
+    <button class="noteButton" id="edit, ${id}" type="button">
+    <svg class="noteButtonIcon" id="edit, ${id}">
+    <use href="${penIcon}" id="edit, ${id}"/>
     </svg></button
-    ><button class="noteButton" type="button">
-    <svg class="noteButtonIcon">
-    <use href="${addToArchiveIcon}" />
+    ><button class="noteButton" id="archive, ${id}" type="button">
+    <svg class="noteButtonIcon" id="archive, ${id}">
+    <use href="${addToArchiveIcon}"  id="archive, ${id}"/>
     </svg>
     </button>
-    <button class="noteButton" type="button">
-    <svg class="noteButtonIcon">
-    <use href="${trashBinIcon}" />
+    <button class="noteButton" id="delete, ${id}" type="button">
+    <svg class="noteButtonIcon" id="delete, ${id}">
+    <use href="${trashBinIcon}"  id="delete, ${id}"/>
     </svg>
     </button>
     </td>
