@@ -539,48 +539,14 @@ var _createNoteJs = require("./js/createNote.js");
 
 },{"./js/getNotes.js":"h8Jxl","./js/main.js":"3PHaZ","./js/createNote.js":"1AmQc"}],"h8Jxl":[function(require,module,exports) {
 var _apiJs = require("./api.js");
-var _iconsImportJs = require("./helpers/iconsImport.js");
+var _noteMarkupJs = require("./helpers/noteMarkup.js");
 const tableBody = document.querySelector(".tableBody");
 const fillTheTable = async ()=>{
     try {
         const data = await (0, _apiJs.getNotes)();
-        const parceDate = (date)=>{
-            return new Date(date).toLocaleString().split(", ")[0];
-        };
         const notes = data.sort((firstNote, secondNote)=>firstNote.created - secondNote.created).map((note)=>{
-            const icon = note.category === "Task" && (0, _iconsImportJs.shoppingCartIcon) || note.category === "Random thought" && (0, _iconsImportJs.gearsIcon) || note.category === "Idea" && (0, _iconsImportJs.bulbIcon);
-            const datesArr = [];
-            if (note.dates.length) for (let date of note.dates)datesArr.push(parceDate(Number.parseInt(date)));
-            return `<tr class="tableNoteBlock">
-    <td class="tableNoteNameBlock">
-    <div class="iconWrapper">
-    <svg class="noteCategoryIcon">
-    <use href="${icon}" />
-    </svg>
-    </div>
-    <p class="tableText tableTextName">${note.name}</p>
-    </td>
-    <td>${parceDate(note.created)}</td>
-    <td>${note.category}</td>
-    <td><p class="tableText">${note.content}</p></td>
-    <td><p class="tableText dates">${datesArr.join(", ")}</p></td>
-    <td class="tableButtonsBlock">
-    <button class="noteButton" type="button">
-    <svg class="noteButtonIcon">
-    <use href="${0, _iconsImportJs.penIcon}" />
-    </svg></button
-    ><button class="noteButton" type="button">
-    <svg class="noteButtonIcon">
-    <use href="${0, _iconsImportJs.addToArchiveIcon}" />
-    </svg>
-    </button>
-    <button class="noteButton" type="button">
-    <svg class="noteButtonIcon">
-    <use href="${0, _iconsImportJs.trashBinIcon}" />
-    </svg>
-    </button>
-    </td>
-    </tr>`;
+            const { name , category , content , dates , created  } = note;
+            return (0, _noteMarkupJs.noteMarkup)(name, category, content, dates, created);
         });
         tableBody.insertAdjacentHTML("afterbegin", notes.join(""));
     } catch (err) {
@@ -589,7 +555,7 @@ const fillTheTable = async ()=>{
 };
 fillTheTable();
 
-},{"./api.js":"iEsMl","./helpers/iconsImport.js":"eyocd"}],"iEsMl":[function(require,module,exports) {
+},{"./api.js":"iEsMl","./helpers/noteMarkup.js":"gMoi0"}],"iEsMl":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "getNotes", ()=>getNotes);
@@ -3960,7 +3926,51 @@ var utils = require("./../utils");
     return utils.isObject(payload) && payload.isAxiosError === true;
 };
 
-},{"./../utils":"5By4s"}],"eyocd":[function(require,module,exports) {
+},{"./../utils":"5By4s"}],"gMoi0":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "noteMarkup", ()=>noteMarkup);
+var _iconsImportJs = require("./iconsImport.js");
+const noteMarkup = (name, category, content, dates, created)=>{
+    const parceDate = (date)=>{
+        return new Date(date).toLocaleString().split(", ")[0];
+    };
+    const icon = category === "Task" && (0, _iconsImportJs.shoppingCartIcon) || category === "Random thought" && (0, _iconsImportJs.gearsIcon) || category === "Idea" && (0, _iconsImportJs.bulbIcon);
+    let datesArr = [];
+    if (dates.length) for (let date of dates)datesArr.push(parceDate(Number.parseInt(date)));
+    return `<tr class="tableNoteBlock">
+    <td class="tableNoteNameBlock">
+    <div class="iconWrapper">
+    <svg class="noteCategoryIcon">
+    <use href="${icon}" />
+    </svg>
+    </div>
+    <p class="tableText tableTextName">${name}</p>
+    </td>
+    <td>${parceDate(created)}</td>
+    <td>${category}</td>
+    <td><p class="tableText">${content}</p></td>
+    <td><p class="tableText dates">${datesArr.join(", ")}</p></td>
+    <td class="tableButtonsBlock">
+    <button class="noteButton" type="button">
+    <svg class="noteButtonIcon">
+    <use href="${0, _iconsImportJs.penIcon}" />
+    </svg></button
+    ><button class="noteButton" type="button">
+    <svg class="noteButtonIcon">
+    <use href="${0, _iconsImportJs.addToArchiveIcon}" />
+    </svg>
+    </button>
+    <button class="noteButton" type="button">
+    <svg class="noteButtonIcon">
+    <use href="${0, _iconsImportJs.trashBinIcon}" />
+    </svg>
+    </button>
+    </td>
+    </tr>`;
+};
+
+},{"./iconsImport.js":"eyocd","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"eyocd":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "trashBinIcon", ()=>(0, _trashBinSvgDefault.default));
@@ -4014,7 +4024,7 @@ exports.default = "#33cb6a3a0a3f107b";
 
 },{}],"1AmQc":[function(require,module,exports) {
 var _apiJs = require("./api.js");
-var _iconsImportJs = require("./helpers/iconsImport.js");
+var _noteMarkupJs = require("./helpers/noteMarkup.js");
 const tableBody = document.querySelector(".tableBody");
 const createNoteBtn = document.querySelector("button#createNoteBtn");
 const resetNoteButton = document.querySelector("button.resetNoteButton");
@@ -4032,68 +4042,30 @@ resetNoteButton.addEventListener("click", ()=>{
 createNoteForm.addEventListener("submit", async (ev)=>{
     ev.preventDefault();
     const { name , category , content , date  } = ev.target;
-    if (name.value !== "" || category.value !== "Choose category" || content.value !== "" || date.value !== "") {
-        const formData = {
-            name: name.value,
-            created: new Date().getTime(),
-            category: category.value,
-            content: content.value,
-            dates: date.value.length ? [
-                new Date(date.value).getTime().toString()
-            ] : []
-        };
-        firstOpen = true;
-        createNoteForm.reset();
-        createNoteForm.style = "visibility: hidden; height: 0; opacity: 0;";
-        try {
-            const result = await (0, _apiJs.addNote)(formData);
-            console.log(result);
-            const parceDate = (date)=>{
-                return new Date(date).toLocaleString().split(", ")[0];
-            };
-            if (result.status === 201) {
-                const { name: name1 , category: category1 , content: content1 , dates , created  } = result.data;
-                const icon = category1 === "Task" && (0, _iconsImportJs.shoppingCartIcon) || category1 === "Random thought" && (0, _iconsImportJs.gearsIcon) || category1 === "Idea" && (0, _iconsImportJs.bulbIcon);
-                const datesArr = [];
-                if (dates) for (let date1 of dates)datesArr.push(parceDate(Number.parseInt(date1)));
-                const newNoteMarkup = `<tr class="tableNoteBlock">
-        <td class="tableNoteNameBlock">
-        <div class="iconWrapper">
-        <svg class="noteCategoryIcon">
-        <use href="${icon}" />
-        </svg>
-        </div>
-        <p class="tableText tableTextName">${name1}</p>
-        </td>
-        <td>${parceDate(created)}</td>
-        <td>${category1}</td>
-        <td><p class="tableText">${content1}</p></td>
-        <td><p class="tableText dates">${datesArr.join(", ")}</p></td>
-        <td class="tableButtonsBlock">
-        <button class="noteButton" type="button">
-        <svg class="noteButtonIcon">
-        <use href="${(0, _iconsImportJs.penIcon)}" />
-        </svg></button
-        ><button class="noteButton" type="button">
-        <svg class="noteButtonIcon">
-        <use href="${(0, _iconsImportJs.addToArchiveIcon)}" />
-        </svg>
-        </button>
-        <button class="noteButton" type="button">
-        <svg class="noteButtonIcon">
-        <use href="${(0, _iconsImportJs.trashBinIcon)}" />
-        </svg>
-        </button>
-        </td>
-        </tr>`;
-                tableBody.insertAdjacentHTML("beforeend", newNoteMarkup);
-            }
-        } catch (err) {
-            console.log(err);
+    const formData = {
+        name: name.value,
+        created: new Date().getTime(),
+        category: category.value,
+        content: content.value,
+        dates: date.value.length ? [
+            new Date(date.value).getTime().toString()
+        ] : []
+    };
+    firstOpen = true;
+    createNoteForm.reset();
+    createNoteForm.style = "visibility: hidden; height: 0; opacity: 0;";
+    try {
+        const result = await (0, _apiJs.addNote)(formData);
+        if (result.status === 201) {
+            const { name: name1 , category: category1 , content: content1 , dates , created  } = result.data;
+            const newNoteMarkup = (0, _noteMarkupJs.noteMarkup)(name1, category1, content1, dates, created);
+            tableBody.insertAdjacentHTML("beforeend", newNoteMarkup);
         }
+    } catch (err) {
+        console.log(err);
     }
 });
 
-},{"./api.js":"iEsMl","./helpers/iconsImport.js":"eyocd"}]},["7kr3F","kdKKB"], "kdKKB", "parcelRequireaf11")
+},{"./api.js":"iEsMl","./helpers/noteMarkup.js":"gMoi0"}]},["7kr3F","kdKKB"], "kdKKB", "parcelRequireaf11")
 
 //# sourceMappingURL=index.c782e7df.js.map
