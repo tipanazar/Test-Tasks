@@ -207,14 +207,16 @@ td, th {
 }
 
 .noteForm .formDateInput {
-  width: 100px;
+  width: 115px;
   height: 60%;
   resize: none;
+  text-align: center;
   border: 1px solid;
   border-radius: 5px;
   margin-left: 10px;
   margin-right: 60px;
   padding: 5px;
+  font-size: 12px;
 }
 
 .noteForm .resetNoteButton {

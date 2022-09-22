@@ -54,7 +54,11 @@
         placeholder="Content"
         required
       ></textarea>
-      <textarea class="formDateInput" name="date" placeholder="Date"></textarea>
+      <textarea
+        class="formDateInput"
+        name="dates"
+        placeholder="The date format must strictly match one of the examples: MM.DD.YY(YY); MM-DD-YY(YY); MM,DD,YY(YY) Write each date on a new line. Put ';' after the last date NO NEED. Otherwise, the date will not be recorded!"
+      ></textarea>
       <button class="resetNoteButton" type="reset">
         <svg class="resetNoteIcon">
           <use href="./icons/trashBin.svg" />
@@ -81,7 +85,12 @@
         placeholder="Content"
         required
       ></textarea>
-      <textarea class="formDateInput" name="date" placeholder="Date"></textarea>
+      <textarea
+        class="formDateInput"
+        name="dates"
+        placeholder="The date format must strictly match one of the examples: MM.DD.YY(YY); MM-DD-YY(YY); MM,DD,YY(YY) Write each date on a new line. Put ';' after the last date NO NEED. Otherwise, the date will not be recorded!"
+        readonly
+      ></textarea>
       <button class="resetNoteButton" type="reset">
         <svg class="resetNoteIcon">
           <use href="./icons/trashBin.svg" />
@@ -101,7 +110,7 @@
       id="editNoteBtn"
       type="submit"
       form="editNoteForm"
-      style="visibility: hidden; height: 0;"
+      style="visibility: hidden; height: 0"
     >
       Edit Note
     </button>

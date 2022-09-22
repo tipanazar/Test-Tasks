@@ -185,12 +185,14 @@ th {
 .noteForm .formDateInput {
   padding: 5px;
   border-radius: 5px;
-  width: 100px;
+  width: 115px;
   height: 60%;
   resize: none;
   margin-left: 10px;
   margin-right: 60px;
   border: 1px solid;
+  font-size: 12px;
+  text-align: center;
 }
 .noteForm .resetNoteButton {
   height: 100%;

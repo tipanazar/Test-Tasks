@@ -1,6 +1,5 @@
 import { onCreateNoteFormSubmit } from "../createNote.js";
-import {onEditNoteFormSubmit} from '../editNote.js'
-
+import { onEditNoteFormSubmit } from "../editNote.js";
 
 const tableBody = document.querySelector("tbody.tableBody");
 const createNoteForm = document.querySelector("form#createNoteForm");
@@ -26,7 +25,8 @@ resetNoteButton[0].addEventListener("click", onResetForm);
 
 // - - - Edit note form actions below
 editNoteForm.addEventListener("submit", (ev) => {
-  onEditNoteFormSubmit()
+  ev.preventDefault();
+  onEditNoteFormSubmit(ev.target);
 });
 function onEditNote(noteId) {
   // console.log("Edit, ", noteId);
@@ -34,6 +34,8 @@ function onEditNote(noteId) {
   createNoteForm.style = "visibility: hidden; height: 0; opacity: 0;";
   createNoteBtn.style = "visibility: hidden; height: 0;";
   editNoteBtn.style = "visibility: visible; height: 50px;";
+
+  // editNoteForm.name.value = "tetetet"
 }
 resetNoteButton[1].addEventListener("click", onResetForm);
 

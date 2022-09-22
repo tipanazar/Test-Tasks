@@ -3,20 +3,28 @@ import { noteMarkup } from "./helpers/noteMarkup.js";
 
 const tableBody = document.querySelector("tbody.tableBody");
 
+const REGEX = /^[0-9]{2}[,./-]{1}[0-9]{2}[,./-]{1}[0-9]{2,4}$/;
+
 export const onCreateNoteFormSubmit = async (form) => {
-  const { name, category, content, date } = form;
+  let parcedDatesArr = [];
+  const { name, category, content, dates } = form;
+
+  if (dates.value.length) {
+    const datesArr = dates.value.split(";\n");
+    for (let date of datesArr) {
+      if (REGEX.test(date)) {
+        parcedDatesArr.push(new Date(date).getTime());
+      }
+    }
+  }
 
   const formData = {
     name: name.value,
     created: new Date().getTime(),
     category: category.value,
     content: content.value,
-    dates: date.value.length ? [new Date(date.value).getTime().toString()] : [],
+    dates: parcedDatesArr.length ? parcedDatesArr.join(", ") : "",
   };
-
-  firstOpen = true;
-  createNoteForm.reset();
-  createNoteForm.style = "visibility: hidden; height: 0; opacity: 0;";
 
   try {
     const result = await addNote(formData);
@@ -30,7 +38,6 @@ export const onCreateNoteFormSubmit = async (form) => {
         created,
         id
       );
-
       tableBody.insertAdjacentHTML("beforeend", newNoteMarkup);
     }
   } catch (err) {

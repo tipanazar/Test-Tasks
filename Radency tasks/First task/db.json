@@ -6,7 +6,7 @@
       "created": 1645700000000,
       "category": "Task",
       "content": "Weapons, armory, bullets, grenades, first aid",
-      "dates": []
+      "dates": ""
     },
     {
       "id": 1,
@@ -14,7 +14,7 @@
       "created": 1645477200000,
       "category": "Task",
       "content": "To buy E39 530D!",
-      "dates": []
+      "dates": ""
     },
     {
       "id": 2,
@@ -22,7 +22,7 @@
       "created": 1645304400000,
       "category": "Random thought",
       "content": "The evolution...",
-      "dates": []
+      "dates": ""
     },
     {
       "id": 3,
@@ -30,7 +30,7 @@
       "created": 1650747600000,
       "category": "Idea",
       "content": "to implement tomatofeature",
-      "dates": []
+      "dates": ""
     },
     {
       "id": 4,
@@ -38,10 +38,7 @@
       "created": 1650661200000,
       "category": "Idea",
       "content": "Implement new feature...",
-      "dates": [
-        "1619989200000",
-        "1620162000000"
-      ]
+      "dates": "1619989200000,        1620162000000"
     },
     {
       "id": 5,
@@ -49,100 +46,39 @@
       "created": 1656104400000,
       "category": "Random thought",
       "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto deleniti minima atque eius natus magni ducimus laborum laudantium ex vitae autem aliquam at ratione delectus, similique beatae a rerum nihil. Aliquid perferendis, voluptatibus odio repellat distinctio nam. Dicta laboriosam modi id fuga eos expedita animi nulla tenetur esse, a sapiente maiores eum ad, quo earum exercitationem mollitia nihil, vitae dignissimos! Magni necessitatibus numquam, accusantium delectus hic maxime impedit culpa! Alias perspiciatis at incidunt tempore esse, eum obcaecati consectetur culpa beatae nihil. Eos minus reprehenderit quisquam fugiat delectus, iusto eius soluta?",
-      "dates": [
-        "1619989200000",
-        "1620162000000",
-        "1619989200000",
-        "1620162000000"
-      ]
+      "dates": "1619989200000, 1620162000000, 1619989200000, 1620162000000"
     },
     {
-      "name": "asd",
-      "created": 1663797076245,
+      "name": "Test",
+      "created": 1663868675276,
       "category": "Random thought",
-      "content": "asd",
-      "dates": [],
+      "content": "123",
+      "dates": "",
       "id": 6
     },
     {
-      "name": "asd",
-      "created": 1663797083778,
+      "name": "Test",
+      "created": 1663868689271,
       "category": "Random thought",
-      "content": "asd",
-      "dates": [],
+      "content": "123",
+      "dates": "NaN",
       "id": 7
     },
     {
-      "name": "test",
-      "created": 1663859100993,
+      "name": "Test",
+      "created": 1663868745892,
       "category": "Random thought",
-      "content": "test",
-      "dates": [],
+      "content": "123",
+      "dates": "1663801200000",
       "id": 8
     },
     {
-      "name": "test",
-      "created": 1663859119901,
+      "name": "Test",
+      "created": 1663868770571,
       "category": "Random thought",
-      "content": "test",
-      "dates": [],
+      "content": "123",
+      "dates": "NaN, 1663801200000",
       "id": 9
-    },
-    {
-      "name": "s",
-      "created": 1663860981862,
-      "category": "Random thought",
-      "content": "s",
-      "dates": [],
-      "id": 10
-    },
-    {
-      "name": "sf",
-      "created": 1663861071910,
-      "category": "Random thought",
-      "content": "sf",
-      "dates": [],
-      "id": 11
-    },
-    {
-      "name": "asd",
-      "created": 1663861256356,
-      "category": "Random thought",
-      "content": "asd",
-      "dates": [],
-      "id": 12
-    },
-    {
-      "name": "asd",
-      "created": 1663861269316,
-      "category": "Random thought",
-      "content": "asd",
-      "dates": [],
-      "id": 13
-    },
-    {
-      "name": "zxc",
-      "created": 1663861299436,
-      "category": "Random thought",
-      "content": "zxc",
-      "dates": [],
-      "id": 14
-    },
-    {
-      "name": "zxc",
-      "created": 1663861309385,
-      "category": "Random thought",
-      "content": "zxc",
-      "dates": [],
-      "id": 15
-    },
-    {
-      "name": "test",
-      "created": 1663862194645,
-      "category": "Random thought",
-      "content": "test",
-      "dates": [],
-      "id": 16
     }
   ]
 }

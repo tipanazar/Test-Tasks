@@ -1,1 +1,1 @@
-export const onEditNoteFormSubmit = () => {console.log("submit")};
+export const onEditNoteFormSubmit = (form) => {console.log("submit")};

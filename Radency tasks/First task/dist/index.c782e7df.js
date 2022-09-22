@@ -3931,12 +3931,12 @@ parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "noteMarkup", ()=>noteMarkup);
 var _iconsImportJs = require("./iconsImport.js");
 const noteMarkup = (name, category, content, dates, created, id)=>{
+    let datesArr = [];
     const parceDate = (date)=>{
         return new Date(date).toLocaleString().split(", ")[0];
     };
+    if (dates.length) for (let date of dates.split(", "))datesArr.push(parceDate(Number.parseInt(date)));
     const icon = category === "Task" && (0, _iconsImportJs.shoppingCartIcon) || category === "Random thought" && (0, _iconsImportJs.gearsIcon) || category === "Idea" && (0, _iconsImportJs.bulbIcon);
-    let datesArr = [];
-    if (dates.length) for (let date of dates)datesArr.push(parceDate(Number.parseInt(date)));
     return `<tr class="tableNoteBlock">
     <td class="tableNoteNameBlock">
     <div class="iconWrapper">
@@ -3944,12 +3944,12 @@ const noteMarkup = (name, category, content, dates, created, id)=>{
     <use href="${icon}" />
     </svg>
     </div>
-    <p class="tableText tableTextName">${name}</p>
+    <p class="tableText tableTextName" id="${id}">${name}</p>
     </td>
     <td>${parceDate(created)}</td>
     <td>${category}</td>
-    <td><p class="tableText">${content}</p></td>
-    <td><p class="tableText dates">${datesArr.join(", ")}</p></td>
+    <td><p class="tableText" id="${id}">${content}</p></td>
+    <td><p class="tableText dates" id="${id}">${datesArr.join(", ")}</p></td>
     <td class="tableButtonsBlock">
     <button class="noteButton" id="edit, ${id}" type="button">
     <svg class="noteButtonIcon" id="edit, ${id}">
@@ -4045,7 +4045,8 @@ createNoteBtn.addEventListener("click", ()=>{
 resetNoteButton[0].addEventListener("click", onResetForm);
 // - - - Edit note form actions below
 editNoteForm.addEventListener("submit", (ev)=>{
-    (0, _editNoteJs.onEditNoteFormSubmit)();
+    ev.preventDefault();
+    (0, _editNoteJs.onEditNoteFormSubmit)(ev.target);
 });
 function onEditNote(noteId) {
     // console.log("Edit, ", noteId);
@@ -4053,6 +4054,7 @@ function onEditNote(noteId) {
     createNoteForm.style = "visibility: hidden; height: 0; opacity: 0;";
     createNoteBtn.style = "visibility: hidden; height: 0;";
     editNoteBtn.style = "visibility: visible; height: 50px;";
+// editNoteForm.name.value = "tetetet"
 }
 resetNoteButton[1].addEventListener("click", onResetForm);
 // - - - Other stuff
@@ -4083,25 +4085,26 @@ parcelHelpers.export(exports, "onCreateNoteFormSubmit", ()=>onCreateNoteFormSubm
 var _apiJs = require("./api.js");
 var _noteMarkupJs = require("./helpers/noteMarkup.js");
 const tableBody = document.querySelector("tbody.tableBody");
+const REGEX = /^[0-9]{2}[,./-]{1}[0-9]{2}[,./-]{1}[0-9]{2,4}$/;
 const onCreateNoteFormSubmit = async (form)=>{
-    const { name , category , content , date  } = form;
+    let parcedDatesArr = [];
+    const { name , category , content , dates  } = form;
+    if (dates.value.length) {
+        const datesArr = dates.value.split(";\n");
+        for (let date of datesArr)if (REGEX.test(date)) parcedDatesArr.push(new Date(date).getTime());
+    }
     const formData = {
         name: name.value,
         created: new Date().getTime(),
         category: category.value,
         content: content.value,
-        dates: date.value.length ? [
-            new Date(date.value).getTime().toString()
-        ] : []
+        dates: parcedDatesArr.length ? parcedDatesArr.join(", ") : ""
     };
-    firstOpen = true;
-    createNoteForm.reset();
-    createNoteForm.style = "visibility: hidden; height: 0; opacity: 0;";
     try {
         const result = await (0, _apiJs.addNote)(formData);
         if (result.status === 201) {
-            const { name: name1 , category: category1 , content: content1 , dates , created , id  } = result.data;
-            const newNoteMarkup = (0, _noteMarkupJs.noteMarkup)(name1, category1, content1, dates, created, id);
+            const { name: name1 , category: category1 , content: content1 , dates: dates1 , created , id  } = result.data;
+            const newNoteMarkup = (0, _noteMarkupJs.noteMarkup)(name1, category1, content1, dates1, created, id);
             tableBody.insertAdjacentHTML("beforeend", newNoteMarkup);
         }
     } catch (err) {
@@ -4113,7 +4116,7 @@ const onCreateNoteFormSubmit = async (form)=>{
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "onEditNoteFormSubmit", ()=>onEditNoteFormSubmit);
-const onEditNoteFormSubmit = ()=>{
+const onEditNoteFormSubmit = (form)=>{
     console.log("submit");
 };
 
