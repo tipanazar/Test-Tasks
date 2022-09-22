@@ -533,12 +533,10 @@ function hmrAcceptRun(bundle, id) {
 
 },{}],"kdKKB":[function(require,module,exports) {
 var _getNotesJs = require("./js/getNotes.js");
-// import '../backend/app.js';
 var _mainJs = require("./js/main.js");
-var _createNoteJs = require("./js/createNote.js");
-var _actionsWithNote = require("./js/actionsWithNote");
+var _actionsWithNoteJs = require("./js/helpers/actionsWithNote.js");
 
-},{"./js/getNotes.js":"h8Jxl","./js/main.js":"3PHaZ","./js/createNote.js":"1AmQc","./js/actionsWithNote":"PcKuD"}],"h8Jxl":[function(require,module,exports) {
+},{"./js/getNotes.js":"h8Jxl","./js/main.js":"3PHaZ","./js/helpers/actionsWithNote.js":"fhqoc"}],"h8Jxl":[function(require,module,exports) {
 var _apiJs = require("./api.js");
 var _noteMarkupJs = require("./helpers/noteMarkup.js");
 const tableBody = document.querySelector("tbody.tableBody");
@@ -4023,26 +4021,70 @@ exports.default = "#33cb6a3a0a3f107b";
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"3PHaZ":[function(require,module,exports) {
 
-},{}],"1AmQc":[function(require,module,exports) {
-var _apiJs = require("./api.js");
-var _noteMarkupJs = require("./helpers/noteMarkup.js");
+},{}],"fhqoc":[function(require,module,exports) {
+var _createNoteJs = require("../createNote.js");
+var _editNoteJs = require("../editNote.js");
 const tableBody = document.querySelector("tbody.tableBody");
-const resetNoteButton = document.querySelector("button.resetNoteButton");
 const createNoteForm = document.querySelector("form#createNoteForm");
-const createNoteBtn = document.querySelector("button#noteFormSubmitBtn");
+const editNoteForm = document.querySelector("form#editNoteForm");
+const createNoteBtn = document.querySelector("button#createNoteBtn");
+const editNoteBtn = document.querySelector("button#editNoteBtn");
+const resetNoteButton = document.querySelectorAll("button.resetNoteButton");
 let firstOpen = true;
+// - - - Create note form actions below
+createNoteForm.addEventListener("submit", (ev)=>{
+    ev.preventDefault();
+    (0, _createNoteJs.onCreateNoteFormSubmit)(ev.target);
+    firstOpen = true;
+});
 createNoteBtn.addEventListener("click", ()=>{
     createNoteForm.style = "visibility: visible; height: 70px; opacity: 1;";
     createNoteBtn.type = firstOpen ? "button" : "submit";
     firstOpen = false;
 });
-resetNoteButton.addEventListener("click", ()=>{
+resetNoteButton[0].addEventListener("click", onResetForm);
+// - - - Edit note form actions below
+editNoteForm.addEventListener("submit", (ev)=>{
+    (0, _editNoteJs.onEditNoteFormSubmit)();
+});
+function onEditNote(noteId) {
+    // console.log("Edit, ", noteId);
+    editNoteForm.style = "visibility: visible; height: 70px; opacity: 1;";
+    createNoteForm.style = "visibility: hidden; height: 0; opacity: 0;";
+    createNoteBtn.style = "visibility: hidden; height: 0;";
+    editNoteBtn.style = "visibility: visible; height: 50px;";
+}
+resetNoteButton[1].addEventListener("click", onResetForm);
+// - - - Other stuff
+function onResetForm() {
     createNoteForm.style = "visibility: hidden; height: 0; opacity: 0;";
     firstOpen = true;
+    editNoteForm.style = "visibility: hidden; height: 0; opacity: 0;";
+    editNoteBtn.style = "visibility: hidden; height: 0;";
+    createNoteBtn.style = "visibility: visible; height: 50px;";
+}
+tableBody.addEventListener("click", (ev)=>{
+    const evIdArr = ev.target.id.split(", ");
+    evIdArr[0] === "edit" && onEditNote(evIdArr[1]);
+    evIdArr[0] === "archive" && onArchiveNote(evIdArr[1]);
+    evIdArr[0] === "delete" && onDeleteNote(evIdArr[1]);
 });
-createNoteForm.addEventListener("submit", async (ev)=>{
-    ev.preventDefault();
-    const { name , category , content , date  } = ev.target;
+const onArchiveNote = (noteId)=>{
+    console.log("Archive, ", noteId);
+};
+const onDeleteNote = (noteId)=>{
+    console.log("Delete, ", noteId);
+};
+
+},{"../createNote.js":"1AmQc","../editNote.js":"aS1jj"}],"1AmQc":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "onCreateNoteFormSubmit", ()=>onCreateNoteFormSubmit);
+var _apiJs = require("./api.js");
+var _noteMarkupJs = require("./helpers/noteMarkup.js");
+const tableBody = document.querySelector("tbody.tableBody");
+const onCreateNoteFormSubmit = async (form)=>{
+    const { name , category , content , date  } = form;
     const formData = {
         name: name.value,
         created: new Date().getTime(),
@@ -4065,37 +4107,16 @@ createNoteForm.addEventListener("submit", async (ev)=>{
     } catch (err) {
         console.log(err);
     }
-});
-
-},{"./api.js":"iEsMl","./helpers/noteMarkup.js":"gMoi0"}],"PcKuD":[function(require,module,exports) {
-const tableBody = document.querySelector("tbody.tableBody");
-const editNoteForm = document.querySelector("form#editNoteForm");
-const noteFormSubmitBtn = document.querySelector("button#noteFormSubmitBtn");
-const resetNoteButton = document.querySelectorAll("button.resetNoteButton");
-tableBody.addEventListener("click", (ev)=>{
-    const evIdArr = ev.target.id.split(", ");
-    evIdArr[0] === "edit" && editNote(evIdArr[1]);
-    evIdArr[0] === "archive" && archiveNote(evIdArr[1]);
-    evIdArr[0] === "delete" && deleteNote(evIdArr[1]);
-//   console.log(evIdArr);
-});
-resetNoteButton[1].addEventListener("click", ()=>{
-    editNoteForm.style = "visibility: hidden; height: 0; opacity: 0;";
-});
-const editNote = (noteId)=>{
-    console.log("Edit, ", noteId);
-    editNoteForm.style = "visibility: visible; height: 70px; opacity: 1;";
-    //   noteFormSubmitBtn.type = firstOpen ? "button" : "submit";
-    noteFormSubmitBtn.form = "editNoteForm";
-    noteFormSubmitBtn.textContent = " Edit Note";
-};
-const archiveNote = (noteId)=>{
-    console.log("Archive, ", noteId);
-};
-const deleteNote = (noteId)=>{
-    console.log("Delete, ", noteId);
 };
 
-},{}]},["7kr3F","kdKKB"], "kdKKB", "parcelRequireaf11")
+},{"./api.js":"iEsMl","./helpers/noteMarkup.js":"gMoi0","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"aS1jj":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "onEditNoteFormSubmit", ()=>onEditNoteFormSubmit);
+const onEditNoteFormSubmit = ()=>{
+    console.log("submit");
+};
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["7kr3F","kdKKB"], "kdKKB", "parcelRequireaf11")
 
 //# sourceMappingURL=index.c782e7df.js.map
