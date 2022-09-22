@@ -6,7 +6,8 @@
       "created": 1645700000000,
       "category": "Task",
       "content": "Weapons, armory, bullets, grenades, first aid",
-      "dates": ""
+      "dates": "",
+      "archived": true
     },
     {
       "id": 1,
@@ -14,15 +15,17 @@
       "created": 1645477200000,
       "category": "Idea",
       "content": "!!!!!!!!!!!!",
-      "dates": "1664582400000"
+      "dates": "1664582400000",
+      "archived": false
     },
     {
       "id": 2,
       "name": "TEST",
       "created": 1645304400000,
-      "category": "Random thought",
+      "category": "Random Thought",
       "content": "TESHT",
-      "dates": ""
+      "dates": "",
+      "archived": false
     },
     {
       "id": 3,
@@ -30,7 +33,8 @@
       "created": 1650747600000,
       "category": "Idea",
       "content": "to implement tomatofeature",
-      "dates": ""
+      "dates": "",
+      "archived": true
     },
     {
       "id": 4,
@@ -38,39 +42,44 @@
       "created": 1650661200000,
       "category": "Idea",
       "content": "Implement new feature...",
-      "dates": "1619989200000, 1620162000000"
+      "dates": "1619989200000, 1620162000000",
+      "archived": true
     },
     {
       "id": 5,
       "name": "Lorem",
       "created": 1656104400000,
-      "category": "Random thought",
+      "category": "Random Thought",
       "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto deleniti minima atque eius natus magni ducimus laborum laudantium ex vitae autem aliquam at ratione delectus, similique beatae a rerum nihil. Aliquid perferendis, voluptatibus odio repellat distinctio nam. Dicta laboriosam modi id fuga eos expedita animi nulla tenetur esse, a sapiente maiores eum ad, quo earum exercitationem mollitia nihil, vitae dignissimos! Magni necessitatibus numquam, accusantium delectus hic maxime impedit culpa! Alias perspiciatis at incidunt tempore esse, eum obcaecati consectetur culpa beatae nihil. Eos minus reprehenderit quisquam fugiat delectus, iusto eius soluta?",
-      "dates": "1619989200000, 1620162000000, 1619989200000, 1620162000000"
+      "dates": "1619989200000, 1620162000000, 1619989200000, 1620162000000",
+      "archived": false
     },
     {
       "name": "Test",
       "created": 1663868675276,
-      "category": "Random thought",
-      "content": "123",
+      "category": "Random Thought",
+      "content": "This Note is false",
       "dates": "",
-      "id": 6
+      "id": 6,
+      "archived": true
     },
     {
       "name": "Test",
       "created": 1663868689271,
-      "category": "Random thought",
-      "content": "123",
-      "dates": "NaN",
-      "id": 7
+      "category": "Random Thought",
+      "content": "Archived",
+      "dates": "",
+      "id": 7,
+      "archived": true
     },
     {
       "name": "Test",
       "created": 1663868745892,
-      "category": "Random thought",
+      "category": "Random Thought",
       "content": "123",
       "dates": "1663801200000",
-      "id": 8
+      "id": 8,
+      "archived": true
     },
     {
       "name": "1",
@@ -78,7 +87,332 @@
       "category": "Task",
       "content": "Done!!11",
       "dates": "1286665200000",
-      "id": 9
+      "id": 9,
+      "archived": true
+    },
+    {
+      "name": "asd",
+      "created": 1663886622158,
+      "category": "Random Thought",
+      "content": "asd",
+      "dates": "",
+      "id": 10,
+      "archived": true
+    },
+    {
+      "name": "das",
+      "created": 1663886763863,
+      "category": "Random Thought",
+      "content": "asd",
+      "dates": "",
+      "id": 11,
+      "archived": true
+    },
+    {
+      "name": "asd",
+      "created": 1663886793276,
+      "category": "Random Thought",
+      "content": "asd",
+      "dates": "",
+      "id": 12,
+      "archived": true
+    },
+    {
+      "name": "da",
+      "created": 1663886864629,
+      "category": "Random Thought",
+      "content": "asd",
+      "dates": "",
+      "id": 13
+    },
+    {
+      "name": "da",
+      "created": 1663886868440,
+      "category": "Random Thought",
+      "content": "asd",
+      "dates": "",
+      "id": 14
+    },
+    {
+      "name": "da",
+      "created": 1663886869545,
+      "category": "Random Thought",
+      "content": "asd",
+      "dates": "",
+      "id": 15
+    },
+    {
+      "name": "da",
+      "created": 1663886870356,
+      "category": "Random Thought",
+      "content": "asd",
+      "dates": "",
+      "id": 16
+    },
+    {
+      "name": "da",
+      "created": 1663886872090,
+      "category": "Random Thought",
+      "content": "asd",
+      "dates": "",
+      "id": 17
+    },
+    {
+      "name": "da",
+      "created": 1663886873494,
+      "category": "Random Thought",
+      "content": "asd",
+      "dates": "",
+      "id": 18
+    },
+    {
+      "name": "da",
+      "created": 1663886874535,
+      "category": "Random Thought",
+      "content": "asd",
+      "dates": "",
+      "id": 19,
+      "archived": true
+    },
+    {
+      "name": "da",
+      "created": 1663886875486,
+      "category": "Random Thought",
+      "content": "asd",
+      "dates": "",
+      "id": 20,
+      "archived": true
+    },
+    {
+      "name": "da",
+      "created": 1663886876278,
+      "category": "Random Thought",
+      "content": "asd",
+      "dates": "",
+      "id": 21,
+      "archived": true
+    },
+    {
+      "name": "da",
+      "created": 1663886877166,
+      "category": "Random Thought",
+      "content": "asd",
+      "dates": "",
+      "id": 22,
+      "archived": true
+    },
+    {
+      "name": "da",
+      "created": 1663886877956,
+      "category": "Random Thought",
+      "content": "asd",
+      "dates": "",
+      "id": 23,
+      "archived": true
+    },
+    {
+      "name": "asd",
+      "created": 1663887166452,
+      "category": "Task",
+      "content": "asd",
+      "dates": "",
+      "id": 24
+    },
+    {
+      "name": "asd",
+      "created": 1663887169122,
+      "category": "Task",
+      "content": "asd",
+      "dates": "",
+      "id": 25
+    },
+    {
+      "name": "asd",
+      "created": 1663887170259,
+      "category": "Task",
+      "content": "asd",
+      "dates": "",
+      "id": 26
+    },
+    {
+      "name": "asd",
+      "created": 1663887171080,
+      "category": "Task",
+      "content": "asd",
+      "dates": "",
+      "id": 27
+    },
+    {
+      "name": "asd",
+      "created": 1663887171741,
+      "category": "Task",
+      "content": "asd",
+      "dates": "",
+      "id": 28
+    },
+    {
+      "name": "asd",
+      "created": 1663887172455,
+      "category": "Task",
+      "content": "asd",
+      "dates": "",
+      "id": 29
+    },
+    {
+      "name": "asd",
+      "created": 1663887173803,
+      "category": "Task",
+      "content": "asd",
+      "dates": "",
+      "id": 30
+    },
+    {
+      "name": "asd",
+      "created": 1663887193318,
+      "category": "Task",
+      "content": "asd",
+      "dates": "",
+      "id": 31
+    },
+    {
+      "name": "asd",
+      "created": 1663887193426,
+      "category": "Task",
+      "content": "asd",
+      "dates": "",
+      "id": 32
+    },
+    {
+      "name": "asd",
+      "created": 1663887194231,
+      "category": "Task",
+      "content": "asd",
+      "dates": "",
+      "id": 33
+    },
+    {
+      "name": "asd",
+      "created": 1663887194326,
+      "category": "Task",
+      "content": "asd",
+      "dates": "",
+      "id": 34
+    },
+    {
+      "name": "asd",
+      "created": 1663887194432,
+      "category": "Task",
+      "content": "asd",
+      "dates": "",
+      "id": 35
+    },
+    {
+      "name": "asd",
+      "created": 1663887194544,
+      "category": "Task",
+      "content": "asd",
+      "dates": "",
+      "id": 36,
+      "archived": true
+    },
+    {
+      "name": "asd",
+      "created": 1663887194637,
+      "category": "Task",
+      "content": "asd",
+      "dates": "",
+      "id": 37,
+      "archived": true
+    },
+    {
+      "name": "asd",
+      "created": 1663887194747,
+      "category": "Task",
+      "content": "asd",
+      "dates": "",
+      "id": 38,
+      "archived": true
+    },
+    {
+      "name": "asd",
+      "created": 1663887194841,
+      "category": "Task",
+      "content": "asd",
+      "dates": "",
+      "id": 39,
+      "archived": true
+    },
+    {
+      "name": "asd",
+      "created": 1663887194951,
+      "category": "Task",
+      "content": "asd",
+      "dates": "",
+      "id": 40,
+      "archived": true
+    },
+    {
+      "name": "asd",
+      "created": 1663887195057,
+      "category": "Task",
+      "content": "asd",
+      "dates": "",
+      "id": 41,
+      "archived": true
+    },
+    {
+      "name": "asd",
+      "created": 1663887195152,
+      "category": "Task",
+      "content": "asd",
+      "dates": "",
+      "id": 42,
+      "archived": true
+    },
+    {
+      "name": "asd",
+      "created": 1663887195262,
+      "category": "Task",
+      "content": "asd",
+      "dates": "",
+      "id": 43,
+      "archived": true
+    },
+    {
+      "name": "asd",
+      "created": 1663887195371,
+      "category": "Task",
+      "content": "asd",
+      "dates": "",
+      "id": 44,
+      "archived": true
+    },
+    {
+      "name": "asd",
+      "created": 1663887195464,
+      "category": "Task",
+      "content": "asd",
+      "dates": "",
+      "id": 45,
+      "archived": true
+    },
+    {
+      "name": "asd",
+      "created": 1663887195576,
+      "category": "Task",
+      "content": "asd",
+      "dates": "",
+      "id": 46,
+      "archived": true
+    },
+    {
+      "name": "asd",
+      "created": 1663887241879,
+      "category": "Idea",
+      "content": "asd",
+      "dates": "",
+      "id": 47,
+      "archived": true
     }
   ]
 }

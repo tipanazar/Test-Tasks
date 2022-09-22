@@ -126,7 +126,9 @@ td, th {
 }
 
 .table .tableNoteBlock .tableTextName {
-  width: 110px;
+  width: 125px;
+  color: #59595b;
+  font-weight: bold;
 }
 
 .table .tableNoteBlock .dates {
@@ -246,6 +248,20 @@ td, th {
 
 .noteFormSubmitBtn:hover {
   background-color: #7c7b7b;
+}
+
+.statisticsTable {
+  margin-top: 70px;
+}
+
+.statisticsTable .statisticsTableHeader .statisticsTitleCategory {
+  text-align: left;
+  padding-left: 75px;
+}
+
+.statisticsTable .statisticsTableHeader .statisticsHeaderLastElem {
+  width: 350px;
+  border-radius: 0 10px 10px 0;
 }
 
 /*# sourceMappingURL=index.947947fe.css.map */

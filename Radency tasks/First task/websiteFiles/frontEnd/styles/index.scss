@@ -118,12 +118,14 @@ th {
       overflow-x: hidden;
       overflow-y: auto;
       &::-webkit-scrollbar {
-        display: none; // скрывает скроллбар со страницы
+        display: none;
       }
     }
 
     .tableTextName {
-      width: 110px;
+      width: 125px;
+      color: #59595b;
+      font-weight: bold;
     }
 
     .dates {
@@ -195,8 +197,6 @@ th {
   .formContentInput {
     padding: 5px;
     border-radius: 5px;
-    // max-width: 30vw;
-    // max-height: 65px;
     width: 30%;
     height: 60%;
     resize: none;
@@ -243,5 +243,19 @@ th {
 
   &:hover {
     background-color: #7c7b7b;
+  }
+}
+
+.statisticsTable {
+  margin-top: 70px;
+  .statisticsTableHeader {
+    .statisticsTitleCategory {
+      padding-left: 75px;
+      text-align: left;
+    }
+    .statisticsHeaderLastElem {
+      width: 350px;
+      border-radius: 0 10px 10px 0;
+    }
   }
 }

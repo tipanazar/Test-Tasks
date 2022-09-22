@@ -13,3 +13,7 @@ export const addNote = async (formData) => {
 export const editNote = async (noteId, formData) => {
   return await axios.patch(`${baseUrl}/${noteId}`, formData);
 };
+
+export const archiveNote = async (noteId) => {
+  return await axios.patch(`${baseUrl}/${noteId}`, { archived: true });
+};

@@ -7,8 +7,42 @@ import {
   penIcon,
 } from "./iconsImport.js";
 
-export const noteMarkup = (name, category, content, dates, created, id) => {
+export const noteMarkup = ({
+  statTableItem,
+  name,
+  category = statTableItem?.category,
+  content,
+  dates,
+  created,
+  id,
+}) => {
   let datesArr = [];
+
+  const icon =
+    (category === "Task" && shoppingCartIcon) ||
+    (category === "Random Thought" && gearsIcon) ||
+    (category === "Idea" && bulbIcon);
+
+  if (statTableItem) {
+    // console.log(`${statTableItem.category}`)
+    return `<tr class="tableNoteBlock">
+       <td class="tableNoteNameBlock">
+         <div class="iconWrapper">
+           <svg class="noteCategoryIcon">
+             <use href="${icon}" />
+           </svg>
+         </div>
+         <p class="tableText tableTextName">${statTableItem.category}</p>
+       </td>
+       <td><p id="${statTableItem.category.split(" ").join("")}Active">${
+      statTableItem.active
+    }</p></td>
+       <td><p id="${statTableItem.category.split(" ").join("")}Archived">${
+      statTableItem.archived
+    }</p></td>
+       <td></td>
+     </tr>`;
+  }
 
   const parceDate = (date) => {
     return new Date(date).toLocaleString().split(", ")[0];
@@ -19,11 +53,6 @@ export const noteMarkup = (name, category, content, dates, created, id) => {
       datesArr.push(parceDate(Number.parseInt(date)));
     }
   }
-
-  const icon =
-    (category === "Task" && shoppingCartIcon) ||
-    (category === "Random thought" && gearsIcon) ||
-    (category === "Idea" && bulbIcon);
 
   return `<tr class="tableNoteBlock" id="a${id}">
     <td class="tableNoteNameBlock">

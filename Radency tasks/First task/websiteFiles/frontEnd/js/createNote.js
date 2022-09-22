@@ -29,14 +29,14 @@ export const onCreateNoteFormSubmit = async (form) => {
   try {
     const result = await addNote(formData);
     const { name, category, content, dates, created, id } = result.data;
-    const newNoteMarkup = noteMarkup(
+    const newNoteMarkup = noteMarkup({
       name,
       category,
       content,
       dates,
       created,
-      id
-    );
+      id,
+    });
     tableBody.insertAdjacentHTML("beforeend", newNoteMarkup);
   } catch ({ message }) {
     console.log(message);

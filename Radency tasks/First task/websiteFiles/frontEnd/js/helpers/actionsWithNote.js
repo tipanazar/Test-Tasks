@@ -1,3 +1,4 @@
+import { archiveNote } from "../api.js";
 import { onCreateNoteFormSubmit } from "../createNote.js";
 import { onEditNoteFormSubmit } from "../editNote.js";
 
@@ -69,8 +70,22 @@ tableBody.addEventListener("click", (ev) => {
   evIdArr[0] === "delete" && onDeleteNote(evIdArr[1]);
 });
 
-const onArchiveNote = (noteId) => {
-  console.log("Archive, ", noteId);
+const onArchiveNote = async (noteId) => {
+  try {
+    const { data } = await archiveNote(noteId);
+    console.log(`p#${data.category}Active`);
+    document.querySelector(`tr#a${noteId}`).remove();
+    const active = document.querySelector(
+      `p#${data.category.split(" ").join("")}Active`
+    );
+    const archived = document.querySelector(
+      `p#${data.category.split(" ").join("")}Archived`
+    );
+    active.textContent = Number.parseInt(active.textContent) - 1;
+    archived.textContent = Number.parseInt(archived.textContent) + 1;
+  } catch ({ message }) {
+    console.log(message);
+  }
 };
 
 const onDeleteNote = (noteId) => {

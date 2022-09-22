@@ -540,14 +540,53 @@ var _actionsWithNoteJs = require("./js/helpers/actionsWithNote.js");
 var _apiJs = require("./api.js");
 var _noteMarkupJs = require("./helpers/noteMarkup.js");
 const tableBody = document.querySelector("tbody.tableBody");
+const statTableBody = document.querySelector("tbody.statisticsTableBody");
 const fillTheTable = async ()=>{
+    let statTableArr = [];
+    let statTableCategories = {
+        Task: {
+            active: 0,
+            archived: 0
+        },
+        Idea: {
+            active: 0,
+            archived: 0
+        },
+        "Random Thought": {
+            active: 0,
+            archived: 0
+        }
+    };
     try {
         const { data  } = await (0, _apiJs.getNotes)();
         const notes = data.sort((firstNote, secondNote)=>firstNote.created - secondNote.created).map((note)=>{
-            const { name , category , content , dates , created , id  } = note;
-            return (0, _noteMarkupJs.noteMarkup)(name, category, content, dates, created, id);
+            const { name , category , content , dates , created , id , archived  } = note;
+            if (archived) {
+                statTableCategories[category].archived++;
+                return;
+            }
+            statTableCategories[category].active++;
+            return (0, _noteMarkupJs.noteMarkup)({
+                name,
+                category,
+                content,
+                dates,
+                created,
+                id
+            });
         });
         tableBody.insertAdjacentHTML("afterbegin", notes.join(""));
+        for(let statTableCategory in statTableCategories){
+            const statTableItem = {
+                category: statTableCategory,
+                active: statTableCategories[statTableCategory].active,
+                archived: statTableCategories[statTableCategory].archived
+            };
+            statTableArr.push((0, _noteMarkupJs.noteMarkup)({
+                statTableItem
+            }));
+        }
+        statTableBody.insertAdjacentHTML("beforeend", statTableArr.join(""));
     } catch ({ message  }) {
         console.log(message);
     }
@@ -560,6 +599,7 @@ parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "getNotes", ()=>getNotes);
 parcelHelpers.export(exports, "addNote", ()=>addNote);
 parcelHelpers.export(exports, "editNote", ()=>editNote);
+parcelHelpers.export(exports, "archiveNote", ()=>archiveNote);
 var _axios = require("axios");
 var _axiosDefault = parcelHelpers.interopDefault(_axios);
 const baseUrl = "http://localhost:3000/notes";
@@ -571,6 +611,11 @@ const addNote = async (formData)=>{
 };
 const editNote = async (noteId, formData)=>{
     return await (0, _axiosDefault.default).patch(`${baseUrl}/${noteId}`, formData);
+};
+const archiveNote = async (noteId)=>{
+    return await (0, _axiosDefault.default).patch(`${baseUrl}/${noteId}`, {
+        archived: true
+    });
 };
 
 },{"axios":"jo6P5","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"jo6P5":[function(require,module,exports) {
@@ -3933,13 +3978,27 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "noteMarkup", ()=>noteMarkup);
 var _iconsImportJs = require("./iconsImport.js");
-const noteMarkup = (name, category, content, dates, created, id)=>{
+const noteMarkup = ({ statTableItem , name , category =statTableItem?.category , content , dates , created , id ,  })=>{
     let datesArr = [];
+    const icon = category === "Task" && (0, _iconsImportJs.shoppingCartIcon) || category === "Random Thought" && (0, _iconsImportJs.gearsIcon) || category === "Idea" && (0, _iconsImportJs.bulbIcon);
+    if (statTableItem) // console.log(`${statTableItem.category}`)
+    return `<tr class="tableNoteBlock">
+       <td class="tableNoteNameBlock">
+         <div class="iconWrapper">
+           <svg class="noteCategoryIcon">
+             <use href="${icon}" />
+           </svg>
+         </div>
+         <p class="tableText tableTextName">${statTableItem.category}</p>
+       </td>
+       <td><p id="${statTableItem.category.split(" ").join("")}Active">${statTableItem.active}</p></td>
+       <td><p id="${statTableItem.category.split(" ").join("")}Archived">${statTableItem.archived}</p></td>
+       <td></td>
+     </tr>`;
     const parceDate = (date)=>{
         return new Date(date).toLocaleString().split(", ")[0];
     };
     if (dates.length) for (let date of dates.split(", "))datesArr.push(parceDate(Number.parseInt(date)));
-    const icon = category === "Task" && (0, _iconsImportJs.shoppingCartIcon) || category === "Random thought" && (0, _iconsImportJs.gearsIcon) || category === "Idea" && (0, _iconsImportJs.bulbIcon);
     return `<tr class="tableNoteBlock" id="a${id}">
     <td class="tableNoteNameBlock">
     <div class="iconWrapper">
@@ -4025,6 +4084,7 @@ exports.default = "#33cb6a3a0a3f107b";
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"3PHaZ":[function(require,module,exports) {
 
 },{}],"fhqoc":[function(require,module,exports) {
+var _apiJs = require("../api.js");
 var _createNoteJs = require("../createNote.js");
 var _editNoteJs = require("../editNote.js");
 const tableBody = document.querySelector("tbody.tableBody");
@@ -4080,14 +4140,24 @@ tableBody.addEventListener("click", (ev)=>{
     evIdArr[0] === "archive" && onArchiveNote(evIdArr[1]);
     evIdArr[0] === "delete" && onDeleteNote(evIdArr[1]);
 });
-const onArchiveNote = (noteId)=>{
-    console.log("Archive, ", noteId);
+const onArchiveNote = async (noteId)=>{
+    try {
+        const { data  } = await (0, _apiJs.archiveNote)(noteId);
+        console.log(`p#${data.category}Active`);
+        document.querySelector(`tr#a${noteId}`).remove();
+        const active = document.querySelector(`p#${data.category.split(" ").join("")}Active`);
+        const archived = document.querySelector(`p#${data.category.split(" ").join("")}Archived`);
+        active.textContent = Number.parseInt(active.textContent) - 1;
+        archived.textContent = Number.parseInt(archived.textContent) + 1;
+    } catch ({ message  }) {
+        console.log(message);
+    }
 };
 const onDeleteNote = (noteId)=>{
     console.log("Delete, ", noteId);
 };
 
-},{"../createNote.js":"1AmQc","../editNote.js":"aS1jj"}],"1AmQc":[function(require,module,exports) {
+},{"../api.js":"iEsMl","../createNote.js":"1AmQc","../editNote.js":"aS1jj"}],"1AmQc":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "onCreateNoteFormSubmit", ()=>onCreateNoteFormSubmit);
@@ -4112,7 +4182,14 @@ const onCreateNoteFormSubmit = async (form)=>{
     try {
         const result = await (0, _apiJs.addNote)(formData);
         const { name: name1 , category: category1 , content: content1 , dates: dates1 , created , id  } = result.data;
-        const newNoteMarkup = (0, _noteMarkupJs.noteMarkup)(name1, category1, content1, dates1, created, id);
+        const newNoteMarkup = (0, _noteMarkupJs.noteMarkup)({
+            name: name1,
+            category: category1,
+            content: content1,
+            dates: dates1,
+            created,
+            id
+        });
         tableBody.insertAdjacentHTML("beforeend", newNoteMarkup);
     } catch ({ message  }) {
         console.log(message);
@@ -4141,15 +4218,21 @@ const onEditNoteFormSubmit = async (form, editNoteId)=>{
     };
     try {
         const { data  } = await (0, _api.editNote)(editNoteId, formData);
-        console.log(data);
         const { name: name1 , category: category1 , content: content1 , dates: dates1 , created , id  } = data;
-        document.querySelector(`tr#a${editNoteId}`).innerHTML = (0, _noteMarkup.noteMarkup)(name1, category1, content1, dates1, created, id);
+        document.querySelector(`tr#a${editNoteId}`).innerHTML = (0, _noteMarkup.noteMarkup)({
+            name: name1,
+            category: category1,
+            content: content1,
+            dates: dates1,
+            created,
+            id
+        });
         return "done";
     } catch ({ message  }) {
         console.log(message);
     }
 };
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./api":"iEsMl","./helpers/noteMarkup":"gMoi0"}]},["7kr3F","kdKKB"], "kdKKB", "parcelRequireaf11")
+},{"./api":"iEsMl","./helpers/noteMarkup":"gMoi0","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["7kr3F","kdKKB"], "kdKKB", "parcelRequireaf11")
 
 //# sourceMappingURL=index.c782e7df.js.map

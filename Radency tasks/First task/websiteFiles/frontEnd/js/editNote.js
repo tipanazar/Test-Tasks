@@ -25,16 +25,15 @@ export const onEditNoteFormSubmit = async (form, editNoteId) => {
 
   try {
     const { data } = await editNote(editNoteId, formData);
-    console.log(data);
     const { name, category, content, dates, created, id } = data;
-    document.querySelector(`tr#a${editNoteId}`).innerHTML = noteMarkup(
+    document.querySelector(`tr#a${editNoteId}`).innerHTML = noteMarkup({
       name,
       category,
       content,
       dates,
       created,
-      id
-    );
+      id,
+    });
 
     return "done";
   } catch ({ message }) {
