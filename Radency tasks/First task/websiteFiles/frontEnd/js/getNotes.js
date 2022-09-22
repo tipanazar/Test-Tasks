@@ -5,7 +5,7 @@ const tableBody = document.querySelector("tbody.tableBody");
 
 const fillTheTable = async () => {
   try {
-    const data = await getNotes();
+    const { data } = await getNotes();
     const notes = data
       .sort((firstNote, secondNote) => firstNote.created - secondNote.created)
       .map((note) => {
@@ -14,8 +14,8 @@ const fillTheTable = async () => {
       });
 
     tableBody.insertAdjacentHTML("afterbegin", notes.join(""));
-  } catch (err) {
-    console.log(err);
+  } catch ({ message }) {
+    console.log(message);
   }
 };
 

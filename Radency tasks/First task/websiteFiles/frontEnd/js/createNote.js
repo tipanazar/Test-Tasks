@@ -28,19 +28,17 @@ export const onCreateNoteFormSubmit = async (form) => {
 
   try {
     const result = await addNote(formData);
-    if (result.status === 201) {
-      const { name, category, content, dates, created, id } = result.data;
-      const newNoteMarkup = noteMarkup(
-        name,
-        category,
-        content,
-        dates,
-        created,
-        id
-      );
-      tableBody.insertAdjacentHTML("beforeend", newNoteMarkup);
-    }
-  } catch (err) {
-    console.log(err);
+    const { name, category, content, dates, created, id } = result.data;
+    const newNoteMarkup = noteMarkup(
+      name,
+      category,
+      content,
+      dates,
+      created,
+      id
+    );
+    tableBody.insertAdjacentHTML("beforeend", newNoteMarkup);
+  } catch ({ message }) {
+    console.log(message);
   }
 };

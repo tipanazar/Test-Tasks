@@ -25,19 +25,19 @@ export const noteMarkup = (name, category, content, dates, created, id) => {
     (category === "Random thought" && gearsIcon) ||
     (category === "Idea" && bulbIcon);
 
-  return `<tr class="tableNoteBlock">
+  return `<tr class="tableNoteBlock" id="a${id}">
     <td class="tableNoteNameBlock">
     <div class="iconWrapper">
     <svg class="noteCategoryIcon">
     <use href="${icon}" />
     </svg>
     </div>
-    <p class="tableText tableTextName" id="${id}">${name}</p>
+    <p class="tableText tableTextName" id="a${id}">${name}</p>
     </td>
     <td>${parceDate(created)}</td>
-    <td>${category}</td>
-    <td><p class="tableText" id="${id}">${content}</p></td>
-    <td><p class="tableText dates" id="${id}">${datesArr.join(", ")}</p></td>
+    <td><p id="a${id}">${category}</p></td>
+    <td><p class="tableText" id="a${id}">${content}</p></td>
+    <td><p class="tableText dates" id="a${id}">${datesArr.join(", ")}</p></td>
     <td class="tableButtonsBlock">
     <button class="noteButton" id="edit, ${id}" type="button">
     <svg class="noteButtonIcon" id="edit, ${id}">

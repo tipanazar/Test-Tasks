@@ -9,6 +9,7 @@ const editNoteBtn = document.querySelector("button#editNoteBtn");
 const resetNoteButton = document.querySelectorAll("button.resetNoteButton");
 
 let firstOpen = true;
+let editNoteId = 0;
 
 // - - - Create note form actions below
 createNoteForm.addEventListener("submit", (ev) => {
@@ -16,31 +17,43 @@ createNoteForm.addEventListener("submit", (ev) => {
   onCreateNoteFormSubmit(ev.target);
   firstOpen = true;
 });
+
 createNoteBtn.addEventListener("click", () => {
   createNoteForm.style = "visibility: visible; height: 70px; opacity: 1;";
   createNoteBtn.type = firstOpen ? "button" : "submit";
   firstOpen = false;
 });
+
 resetNoteButton[0].addEventListener("click", onResetForm);
 
 // - - - Edit note form actions below
-editNoteForm.addEventListener("submit", (ev) => {
+editNoteForm.addEventListener("submit", async (ev) => {
   ev.preventDefault();
-  onEditNoteFormSubmit(ev.target);
+  const result = await onEditNoteFormSubmit(ev.target, editNoteId);
+  if (result === "done") {
+    onResetForm();
+  }
 });
+
 function onEditNote(noteId) {
-  // console.log("Edit, ", noteId);
+  const formElements = document.querySelectorAll(`p#a${noteId}`);
   editNoteForm.style = "visibility: visible; height: 70px; opacity: 1;";
   createNoteForm.style = "visibility: hidden; height: 0; opacity: 0;";
   createNoteBtn.style = "visibility: hidden; height: 0;";
   editNoteBtn.style = "visibility: visible; height: 50px;";
 
-  // editNoteForm.name.value = "tetetet"
+  editNoteForm.name.value = formElements[0].textContent;
+  editNoteForm.category.value = formElements[1].textContent;
+  editNoteForm.content.value = formElements[2].textContent;
+  editNoteForm.dates.value = formElements[3].textContent
+    .split(", ")
+    .join(";\n");
+  editNoteId = noteId;
 }
+
 resetNoteButton[1].addEventListener("click", onResetForm);
 
 // - - - Other stuff
-
 function onResetForm() {
   createNoteForm.style = "visibility: hidden; height: 0; opacity: 0;";
   firstOpen = true;
