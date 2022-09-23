@@ -1,7 +1,8 @@
-import { archiveNote } from "../api.js";
+import { archiveNote, deleteNote, getNotes } from "../api.js";
 import { onCreateNoteFormSubmit } from "../createNote.js";
 import { onEditNoteFormSubmit } from "../editNote.js";
 
+const noteTable = document.querySelector("table.noteTable");
 const tableBody = document.querySelector("tbody.tableBody");
 const createNoteForm = document.querySelector("form#createNoteForm");
 const editNoteForm = document.querySelector("form#editNoteForm");
@@ -16,6 +17,8 @@ let editNoteId = 0;
 createNoteForm.addEventListener("submit", (ev) => {
   ev.preventDefault();
   onCreateNoteFormSubmit(ev.target);
+  createNoteForm.style = "visibility: hidden; height: 0; opacity: 0;";
+  ev.target.reset();
   firstOpen = true;
 });
 
@@ -63,17 +66,18 @@ function onResetForm() {
   createNoteBtn.style = "visibility: visible; height: 50px;";
 }
 
-tableBody.addEventListener("click", (ev) => {
+noteTable.addEventListener("click", (ev) => {
   const evIdArr = ev.target.id.split(", ");
   evIdArr[0] === "edit" && onEditNote(evIdArr[1]);
   evIdArr[0] === "archive" && onArchiveNote(evIdArr[1]);
   evIdArr[0] === "delete" && onDeleteNote(evIdArr[1]);
+  evIdArr[0] === "archiveAll" && onArchiveAllNotes();
+  evIdArr[0] === "deleteAll" && onDeleteAllNotes();
 });
 
 const onArchiveNote = async (noteId) => {
   try {
     const { data } = await archiveNote(noteId);
-    console.log(`p#${data.category}Active`);
     document.querySelector(`tr#a${noteId}`).remove();
     const active = document.querySelector(
       `p#${data.category.split(" ").join("")}Active`
@@ -88,6 +92,57 @@ const onArchiveNote = async (noteId) => {
   }
 };
 
-const onDeleteNote = (noteId) => {
-  console.log("Delete, ", noteId);
+const onDeleteNote = async (noteId) => {
+  try {
+    await deleteNote(noteId);
+    const deleteNoteCategory = document
+      .querySelectorAll(`p#a${noteId}`)[1]
+      .textContent.split(" ")
+      .join("");
+    const active = document.querySelector(`p#${deleteNoteCategory}Active`);
+    active.textContent = Number.parseInt(active.textContent) - 1;
+    document.querySelector(`tr#a${noteId}`).remove();
+  } catch ({ message }) {
+    console.log(message);
+  }
+};
+
+const onArchiveAllNotes = async () => {
+  try {
+    const { data } = await getNotes();
+    for (let item of data) {
+      if (!item.archived) {
+        await archiveNote(item.id);
+        const active = document.querySelector(
+          `p#${item.category.split(" ").join("")}Active`
+        );
+        const archived = document.querySelector(
+          `p#${item.category.split(" ").join("")}Archived`
+        );
+        active.textContent = Number.parseInt(active.textContent) - 1;
+        archived.textContent = Number.parseInt(archived.textContent) + 1;
+      }
+    }
+    tableBody.innerHTML = "";
+  } catch ({ message }) {
+    console.log(message);
+  }
+};
+
+const onDeleteAllNotes = async () => {
+  try {
+    const { data } = await getNotes();
+    for (let item of data) {
+      if (!item.archived) {
+        await deleteNote(item.id);
+        const active = document.querySelector(
+          `p#${item.category.split(" ").join("")}Active`
+        );
+        active.textContent = Number.parseInt(active.textContent) - 1;
+      }
+    }
+    tableBody.innerHTML = "";
+  } catch ({ message }) {
+    console.log(message);
+  }
 };

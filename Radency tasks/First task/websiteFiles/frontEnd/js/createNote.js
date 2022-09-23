@@ -38,6 +38,10 @@ export const onCreateNoteFormSubmit = async (form) => {
       id,
     });
     tableBody.insertAdjacentHTML("beforeend", newNoteMarkup);
+    const active = document.querySelector(
+      `p#${category.split(" ").join("")}Active`
+    );
+    active.textContent = Number.parseInt(active.textContent) + 1;
   } catch ({ message }) {
     console.log(message);
   }

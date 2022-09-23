@@ -17,3 +17,7 @@ export const editNote = async (noteId, formData) => {
 export const archiveNote = async (noteId) => {
   return await axios.patch(`${baseUrl}/${noteId}`, { archived: true });
 };
+
+export const deleteNote = async (noteId) => {
+  return await axios.delete(`${baseUrl}/${noteId}`);
+};

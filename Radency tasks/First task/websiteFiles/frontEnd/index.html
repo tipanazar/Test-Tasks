@@ -8,7 +8,7 @@
     <title>Document</title>
   </head>
   <body>
-    <table class="table">
+    <table class="noteTable">
       <thead class="tableHeader">
         <tr>
           <th class="headerTitleName">Name</th>
@@ -18,14 +18,14 @@
           <th class="headerTitleDates">Dates</th>
           <th class="headerButtonsBlock">
             <div class="buttonsWrapper">
-              <button class="tableButton" type="button">
-                <svg class="tableIcon">
-                  <use href="./icons/addToArcive.svg" />
+              <button class="tableButton" type="button" id="archiveAll">
+                <svg class="tableIcon" id="archiveAll">
+                  <use href="./icons/addToArcive.svg" id="archiveAll" />
                 </svg>
               </button>
-              <button class="tableButton" type="button">
-                <svg class="tableIcon">
-                  <use href="./icons/trashBin.svg" />
+              <button class="tableButton" type="button" id="deleteAll">
+                <svg class="tableIcon" id="deleteAll">
+                  <use href="./icons/trashBin.svg" id="deleteAll" />
                 </svg>
               </button>
             </div>
@@ -39,7 +39,6 @@
       <textarea
         class="formNameInput"
         name="name"
-        type="text"
         placeholder="Name"
         required
       ></textarea>
@@ -70,7 +69,6 @@
       <textarea
         class="formNameInput"
         name="name"
-        type="text"
         placeholder="Name"
         required
       ></textarea>
@@ -114,7 +112,7 @@
       Edit Note
     </button>
 
-    <table class="table statisticsTable">
+    <table class="noteTable statisticsTable">
       <thead class="tableHeader statisticsTableHeader">
         <tr>
           <th class="headerTitleName statisticsTitleCategory">Note Category</th>

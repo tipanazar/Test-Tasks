@@ -600,6 +600,7 @@ parcelHelpers.export(exports, "getNotes", ()=>getNotes);
 parcelHelpers.export(exports, "addNote", ()=>addNote);
 parcelHelpers.export(exports, "editNote", ()=>editNote);
 parcelHelpers.export(exports, "archiveNote", ()=>archiveNote);
+parcelHelpers.export(exports, "deleteNote", ()=>deleteNote);
 var _axios = require("axios");
 var _axiosDefault = parcelHelpers.interopDefault(_axios);
 const baseUrl = "http://localhost:3000/notes";
@@ -616,6 +617,9 @@ const archiveNote = async (noteId)=>{
     return await (0, _axiosDefault.default).patch(`${baseUrl}/${noteId}`, {
         archived: true
     });
+};
+const deleteNote = async (noteId)=>{
+    return await (0, _axiosDefault.default).delete(`${baseUrl}/${noteId}`);
 };
 
 },{"axios":"jo6P5","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"jo6P5":[function(require,module,exports) {
@@ -4087,6 +4091,7 @@ exports.default = "#33cb6a3a0a3f107b";
 var _apiJs = require("../api.js");
 var _createNoteJs = require("../createNote.js");
 var _editNoteJs = require("../editNote.js");
+const noteTable = document.querySelector("table.noteTable");
 const tableBody = document.querySelector("tbody.tableBody");
 const createNoteForm = document.querySelector("form#createNoteForm");
 const editNoteForm = document.querySelector("form#editNoteForm");
@@ -4099,6 +4104,8 @@ let editNoteId = 0;
 createNoteForm.addEventListener("submit", (ev)=>{
     ev.preventDefault();
     (0, _createNoteJs.onCreateNoteFormSubmit)(ev.target);
+    createNoteForm.style = "visibility: hidden; height: 0; opacity: 0;";
+    ev.target.reset();
     firstOpen = true;
 });
 createNoteBtn.addEventListener("click", ()=>{
@@ -4134,16 +4141,17 @@ function onResetForm() {
     editNoteBtn.style = "visibility: hidden; height: 0;";
     createNoteBtn.style = "visibility: visible; height: 50px;";
 }
-tableBody.addEventListener("click", (ev)=>{
+noteTable.addEventListener("click", (ev)=>{
     const evIdArr = ev.target.id.split(", ");
     evIdArr[0] === "edit" && onEditNote(evIdArr[1]);
     evIdArr[0] === "archive" && onArchiveNote(evIdArr[1]);
     evIdArr[0] === "delete" && onDeleteNote(evIdArr[1]);
+    evIdArr[0] === "archiveAll" && onArchiveAllNotes();
+    evIdArr[0] === "deleteAll" && onDeleteAllNotes();
 });
 const onArchiveNote = async (noteId)=>{
     try {
         const { data  } = await (0, _apiJs.archiveNote)(noteId);
-        console.log(`p#${data.category}Active`);
         document.querySelector(`tr#a${noteId}`).remove();
         const active = document.querySelector(`p#${data.category.split(" ").join("")}Active`);
         const archived = document.querySelector(`p#${data.category.split(" ").join("")}Archived`);
@@ -4153,8 +4161,44 @@ const onArchiveNote = async (noteId)=>{
         console.log(message);
     }
 };
-const onDeleteNote = (noteId)=>{
-    console.log("Delete, ", noteId);
+const onDeleteNote = async (noteId)=>{
+    try {
+        await (0, _apiJs.deleteNote)(noteId);
+        const deleteNoteCategory = document.querySelectorAll(`p#a${noteId}`)[1].textContent.split(" ").join("");
+        const active = document.querySelector(`p#${deleteNoteCategory}Active`);
+        active.textContent = Number.parseInt(active.textContent) - 1;
+        document.querySelector(`tr#a${noteId}`).remove();
+    } catch ({ message  }) {
+        console.log(message);
+    }
+};
+const onArchiveAllNotes = async ()=>{
+    try {
+        const { data  } = await (0, _apiJs.getNotes)();
+        for (let item of data)if (!item.archived) {
+            await (0, _apiJs.archiveNote)(item.id);
+            const active = document.querySelector(`p#${item.category.split(" ").join("")}Active`);
+            const archived = document.querySelector(`p#${item.category.split(" ").join("")}Archived`);
+            active.textContent = Number.parseInt(active.textContent) - 1;
+            archived.textContent = Number.parseInt(archived.textContent) + 1;
+        }
+        tableBody.innerHTML = "";
+    } catch ({ message  }) {
+        console.log(message);
+    }
+};
+const onDeleteAllNotes = async ()=>{
+    try {
+        const { data  } = await (0, _apiJs.getNotes)();
+        for (let item of data)if (!item.archived) {
+            await (0, _apiJs.deleteNote)(item.id);
+            const active = document.querySelector(`p#${item.category.split(" ").join("")}Active`);
+            active.textContent = Number.parseInt(active.textContent) - 1;
+        }
+        tableBody.innerHTML = "";
+    } catch ({ message  }) {
+        console.log(message);
+    }
 };
 
 },{"../api.js":"iEsMl","../createNote.js":"1AmQc","../editNote.js":"aS1jj"}],"1AmQc":[function(require,module,exports) {
@@ -4191,6 +4235,8 @@ const onCreateNoteFormSubmit = async (form)=>{
             id
         });
         tableBody.insertAdjacentHTML("beforeend", newNoteMarkup);
+        const active = document.querySelector(`p#${category1.split(" ").join("")}Active`);
+        active.textContent = Number.parseInt(active.textContent) + 1;
     } catch ({ message  }) {
         console.log(message);
     }
