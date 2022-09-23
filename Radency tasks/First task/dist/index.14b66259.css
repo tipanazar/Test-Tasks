@@ -1,0 +1,267 @@
+body {
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 30px 0;
+  display: flex;
+}
+
+button {
+  cursor: pointer;
+  border: 0;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+h3, p {
+  margin: 0;
+}
+
+td, th {
+  padding: 0;
+}
+
+.noteTable {
+  width: 90vw;
+  min-width: 750px;
+  text-align: center;
+  border-spacing: 0 10px;
+  font-family: Roboto;
+  position: relative;
+}
+
+.noteTable .tableHeader {
+  height: 40px;
+  color: #fff;
+  background-color: #999;
+}
+
+.noteTable .tableHeader .headerTitleName {
+  border-radius: 10px 0 0 10px;
+}
+
+.noteTable .tableHeader .headerTitleCreated, .noteTable .tableHeader .headerTitleDates {
+  width: 120px;
+}
+
+.noteTable .tableHeader .headerTitleCategory {
+  width: 140px;
+}
+
+.noteTable .tableHeader .headerButtonsBlock {
+  border-radius: 0 10px 10px 0;
+  margin-left: auto;
+}
+
+.noteTable .tableHeader .headerButtonsBlock .buttonsWrapper {
+  height: 40px;
+  justify-content: flex-end;
+  display: flex;
+}
+
+.noteTable .tableHeader .headerButtonsBlock .buttonsWrapper .tableButton {
+  width: 30px;
+  background-color: #999;
+}
+
+.noteTable .tableHeader .headerButtonsBlock .buttonsWrapper .tableButton:last-child {
+  border-radius: 0 10px 10px 0;
+}
+
+.noteTable .tableHeader .headerButtonsBlock .buttonsWrapper .tableButton .tableIcon {
+  height: 20px;
+  width: 20px;
+  fill: #fff;
+}
+
+.noteTable .tableNoteBlock {
+  height: 70px;
+  color: #828388;
+  background-color: #e8eaf5;
+}
+
+.noteTable .tableNoteBlock:last-child {
+  margin-bottom: 0;
+}
+
+.noteTable .tableNoteBlock .tableNoteNameBlock {
+  height: 70px;
+  align-items: center;
+  margin-left: 10px;
+  display: flex;
+}
+
+.noteTable .tableNoteBlock .tableNoteNameBlock .iconWrapper {
+  height: 45px;
+  width: 45px;
+  background-color: #616161;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+  display: flex;
+}
+
+.noteTable .tableNoteBlock .tableNoteNameBlock .iconWrapper .noteCategoryIcon {
+  height: 20px;
+  width: 20px;
+  fill: #fff;
+}
+
+.noteTable .tableNoteBlock .tableText {
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.noteTable .tableNoteBlock .tableText::-webkit-scrollbar {
+  display: none;
+}
+
+.noteTable .tableNoteBlock .tableTextName {
+  width: 125px;
+  color: #59595b;
+  font-weight: bold;
+}
+
+.noteTable .tableNoteBlock .dates {
+  width: 100px;
+  margin: auto;
+}
+
+.noteTable .tableNoteBlock .tableButtonsBlock {
+  height: 70px;
+  display: flex;
+}
+
+.noteTable .tableNoteBlock .tableButtonsBlock .noteButton {
+  width: 30px;
+  background-color: #e8eaf5;
+}
+
+.noteTable .tableNoteBlock .tableButtonsBlock .noteButton .noteButtonIcon {
+  height: 20px;
+  width: 20px;
+  fill: #7a7a7a;
+}
+
+.noteTable .tableNoteBlock .tableButtonsBlock .noteButton .firstIcon {
+  height: 25px;
+  width: 25px;
+}
+
+.noteForm {
+  visibility: hidden;
+  height: 0;
+  opacity: 0;
+  color: #828388;
+  width: 90vw;
+  min-width: 750px;
+  background-color: #e8eaf5;
+  justify-content: space-between;
+  align-items: center;
+  transition: height .5s, opacity .5s;
+  display: flex;
+}
+
+.noteForm .iconWrapper {
+  height: 45px;
+  width: 45px;
+  background-color: #616161;
+  border-radius: 50%;
+  margin: 0 10px;
+}
+
+.noteForm .formNameInput {
+  width: 100px;
+  text-align: center;
+  resize: none;
+  height: 60%;
+  border: 1px solid;
+  border-radius: 5px;
+  margin-right: 120px;
+  padding: 5px;
+}
+
+.noteForm .formDropList {
+  cursor: pointer;
+  border: 1px solid;
+  border-radius: 5px;
+  margin-right: 10px;
+  padding: 5px;
+}
+
+.noteForm .formContentInput {
+  width: 30%;
+  height: 60%;
+  resize: none;
+  border: 1px solid;
+  border-radius: 5px;
+  margin: 0 auto;
+  padding: 5px;
+}
+
+.noteForm .formDateInput {
+  width: 115px;
+  height: 60%;
+  resize: none;
+  text-align: center;
+  border: 1px solid;
+  border-radius: 5px;
+  margin-left: 10px;
+  margin-right: 60px;
+  padding: 5px;
+  font-size: 12px;
+}
+
+.noteForm .resetNoteButton {
+  height: 100%;
+  width: 30px;
+  background-color: #e8eaf5;
+  border: 0;
+  padding: 0;
+}
+
+.noteForm .resetNoteButton .resetNoteIcon {
+  height: 20px;
+  width: 20px;
+  fill: #7a7a7a;
+}
+
+.noteFormSubmitBtn {
+  width: 90vw;
+  min-width: 750px;
+  height: 50px;
+  border: 1px solid #979595;
+  border-radius: 10px;
+  margin-top: 10px;
+  font-size: 30px;
+  transition: background-color .3s;
+}
+
+.noteFormSubmitBtn:hover {
+  background-color: #7c7b7b;
+}
+
+.statisticsTable {
+  margin-top: 70px;
+}
+
+.statisticsTable .statisticsTableHeader .statisticsTitleCategory {
+  text-align: left;
+  padding-left: 75px;
+}
+
+.statisticsTable .statisticsTableHeader .statisticsHeaderLastElem {
+  width: 350px;
+  border-radius: 0 10px 10px 0;
+}
+
+/*# sourceMappingURL=index.14b66259.css.map */
