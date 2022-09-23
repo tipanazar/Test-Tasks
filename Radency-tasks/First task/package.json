@@ -4,8 +4,7 @@
   "description": "",
   "scripts": {
     "dev": "parcel ./websiteFiles/index.html",
-    "parcel:build": "parcel build ./websiteFiles/index.html",
-    "json-server:start": "json-server --watch db.json"
+    "build": "parcel build ./websiteFiles/index.html && json-server --watch db.json"
   },
   "keywords": [],
   "author": "",
