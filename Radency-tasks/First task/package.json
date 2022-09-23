@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "parcel ./websiteFiles/index.html",
     "parcel:build": "parcel build ./websiteFiles/index.html",
-    "json-server:build": "json-server --watch db.json"
+    "jss:build": "json-server --watch db.json",
+    "makeAll": "parcel build ./websiteFiles/index.html && json-server --watch db.json"
   },
   "keywords": [],
   "author": "",
