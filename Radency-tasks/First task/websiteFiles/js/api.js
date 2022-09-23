@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseUrl = "http://localhost:3000/notes";
+const baseUrl = "https://radency--json-server.herokuapp.com/notes";
 
 export const getNotes = async () => {
   return await axios.get(baseUrl);
