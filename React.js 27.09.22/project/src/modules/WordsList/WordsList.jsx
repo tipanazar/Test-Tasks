@@ -7,6 +7,7 @@ import {
   getError,
 } from "../../redux/dictionary/selectors";
 import Loader from "../../shared/Components/Loader/Loader";
+import { parceDate } from "../../shared/hooks/parceDate";
 
 import style from "./wordsList.module.scss";
 
@@ -16,11 +17,12 @@ const WordsList = () => {
   const error = useSelector(getError, shallowEqual);
 
   const wordsMarkup = wordsArr.map((item) => {
-    console.log(item);
+    // console.log(item);
     return (
       <li key={item.id}>
         <p>{item.translation.orig}</p>
-        <p></p>
+        <p>{item.translation.translated}</p>
+        <p>{parceDate(item.creationDate)}</p>
       </li>
     );
   });
@@ -28,7 +30,15 @@ const WordsList = () => {
   return (
     <>
       {isLoading && <Loader />}
-      <ul>{error && <li>{error}</li>}</ul>
+      <ul>
+        {error ? (
+          <li>
+            <h2>{error}</h2>
+          </li>
+        ) : (
+          wordsMarkup
+        )}
+      </ul>
     </>
   );
 };
