@@ -1,0 +1,25 @@
+{
+  "words": [
+    {
+      "id": 1,
+      "creationDate": 1664293563,
+      "translaton": {
+        "orig": "Собака",
+        "translated": "Dog"
+      }
+    },
+    {
+      "id": 2,
+      "creationDate": 1664193563,
+      "translaton": {
+        "orig": "Кіт",
+        "translated": "Cat"
+      }
+    }
+  ],
+
+  "history": [
+    { "id": 1, "creationDate": 1664293563, "perc": "66%" },
+    { "id": 2, "creationDate": 1664303563, "perc": "33%" }
+  ]
+}
