@@ -3,7 +3,7 @@
     {
       "id": 1,
       "creationDate": 1664293563,
-      "translaton": {
+      "translation": {
         "orig": "Собака",
         "translated": "Dog"
       }
@@ -11,7 +11,7 @@
     {
       "id": 2,
       "creationDate": 1664193563,
-      "translaton": {
+      "translation": {
         "orig": "Кіт",
         "translated": "Cat"
       }
@@ -19,7 +19,7 @@
   ],
 
   "history": [
-    { "id": 1, "creationDate": 1664293563, "perc": "66%" },
-    { "id": 2, "creationDate": 1664303563, "perc": "33%" }
+    { "id": 1, "creationDate": 1664293563, "percentage": "66%" },
+    { "id": 2, "creationDate": 1664303563, "percentage": "33%" }
   ]
 }
