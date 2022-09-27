@@ -1,8 +1,12 @@
 import { lazy, Suspense } from "react";
+import { useDispatch } from "react-redux";
 import { Route, Routes } from "react-router-dom";
+
+import { getWords } from "../redux/dictionary/operations";
 
 import Loader from "../shared/Components/Loader/Loader";
 import LayoutPage from "../pages/LayoutPage/LayoutPage";
+
 const WordsListPage = lazy(() =>
   import("../pages/WordsListPage/WordsListPage")
 );
@@ -20,6 +24,9 @@ const TestingHistoryPage = lazy(() =>
 );
 
 function App() {
+  const dispatch = useDispatch();
+  dispatch(getWords());
+
   return (
     <Suspense fallback={<Loader />}>
       <Routes>

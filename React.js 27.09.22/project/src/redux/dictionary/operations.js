@@ -10,7 +10,8 @@ export const getWords = createAsyncThunk(
   "words/getWords",
   async (_, { rejectWithValue }) => {
     try {
-      return await getWordsApi();
+      const { data } = await getWordsApi();
+      return data;
     } catch (err) {
       return rejectWithValue(err);
     }
