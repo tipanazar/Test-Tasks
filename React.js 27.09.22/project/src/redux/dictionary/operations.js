@@ -20,9 +20,17 @@ export const getWords = createAsyncThunk(
 
 export const addWord = createAsyncThunk(
   "words/addWord",
-  async (newWord, { rejectWithValue }) => {
+  async ({ orig, translated }, { rejectWithValue }) => {
     try {
-      return await addWordApi(newWord);
+      const newWordData = {
+        creationDate: new Date().getTime(),
+        translation: {
+          orig: orig,
+          translated: translated,
+        },
+      };
+      const { data } = await addWordApi(newWordData);
+      return data;
     } catch (err) {
       return rejectWithValue(err);
     }
@@ -33,7 +41,10 @@ export const deleteWord = createAsyncThunk(
   "words/deleteWord",
   async (wordId, { rejectWithValue }) => {
     try {
-      return await deleteWordApi(wordId);
+      const { status } = await deleteWordApi(wordId);
+      if (status === 200) {
+        return wordId;
+      }
     } catch (err) {
       return rejectWithValue(err);
     }

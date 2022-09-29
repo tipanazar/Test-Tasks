@@ -17,6 +17,10 @@ const wordsSlice = createSlice({
       state.error = null;
     },
     [getWords.fulfilled]: (state, { payload }) => {
+      payload.sort(
+        (firstItem, secondItem) =>
+          secondItem.creationDate - firstItem.creationDate
+      );
       state.wordsArr = payload;
       state.loading = false;
     },
@@ -31,8 +35,11 @@ const wordsSlice = createSlice({
       state.error = null;
     },
     [addWord.fulfilled]: (state, { payload }) => {
-      console.log(payload);
-      //   state.wordsArr = payload;
+      const sortedArr = [...state.wordsArr, payload].sort(
+        (firstItem, secondItem) =>
+          secondItem.creationDate - firstItem.creationDate
+      );
+      state.wordsArr = sortedArr;
       state.loading = false;
     },
     [addWord.rejected]: (state, { payload }) => {
@@ -46,8 +53,10 @@ const wordsSlice = createSlice({
       state.error = null;
     },
     [deleteWord.fulfilled]: (state, { payload }) => {
-      console.log(payload);
-      //   state.wordsArr = payload;
+      const filteredArr = [...state.wordsArr].filter(
+        (item) => item.id !== payload
+      );
+      state.wordsArr = filteredArr;
       state.loading = false;
     },
     [deleteWord.rejected]: (state, { payload }) => {
