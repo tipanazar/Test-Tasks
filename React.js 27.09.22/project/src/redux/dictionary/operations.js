@@ -11,7 +11,10 @@ export const getWords = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const { data } = await getWordsApi();
-      return data;
+      return data.sort(
+        (firstItem, secondItem) =>
+          secondItem.creationDate - firstItem.creationDate
+      );
     } catch (err) {
       return rejectWithValue(err);
     }

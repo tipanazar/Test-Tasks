@@ -14,19 +14,19 @@ import styles from "./wordsList.module.scss";
 
 const arr = [
   {
-    id: 1,
-    creationDate: 1664293563,
-    translation: {
-      orig: "Собака",
-      translated: "Dog",
-    },
-  },
-  {
     id: 2,
     creationDate: 1664193563,
     translation: {
       orig: "Кіт",
       translated: "Cat",
+    },
+  },
+  {
+    id: 1,
+    creationDate: 1664293563,
+    translation: {
+      orig: "Собака",
+      translated: "Dog",
     },
   },
   {
