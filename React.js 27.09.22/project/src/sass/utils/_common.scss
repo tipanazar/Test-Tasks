@@ -9,9 +9,9 @@ body {
   scroll-behavior: smooth;
   text-rendering: optimizeSpeed;
   margin: 0;
-  font-family: var(--main-font);
+  font-family: "Montserrat", sans-serif;
   // &::-webkit-scrollbar {
-  //   display: block; // скрывает скроллбар со страницы
+  //   display: none; // скрывает скроллбар со страницы
   // }
 }
 
@@ -38,7 +38,10 @@ div#root {
 // }
 
 main {
-  flex-grow: 1; //что бы растягивалось на всю высоту экрана
+  // flex-grow: 1; //что бы растягивалось на всю высоту экрана
+  height: calc(100vh - 70px);
+  overflow: auto;
+  background-color: var(--mainBackgrColor);
 }
 
 img {

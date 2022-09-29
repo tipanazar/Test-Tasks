@@ -1,6 +1,6 @@
 import { lazy, Suspense } from "react";
 import { useDispatch } from "react-redux";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 
 import { getWords } from "../redux/dictionary/operations";
 
@@ -37,6 +37,7 @@ function App() {
           <Route path="testing-results" element={<TestingResultsPage />} />
           <Route path="testing-history" element={<TestingHistoryPage />} />
         </Route>
+        <Route path="*" element={<Navigate to="/" replace={true} />} />
       </Routes>
     </Suspense>
   );

@@ -6,23 +6,155 @@ import {
   getIsLoading,
   getError,
 } from "../../redux/dictionary/selectors";
+import Icon from "../../shared/Components/Icon/Icon";
 import Loader from "../../shared/Components/Loader/Loader";
 import { parceDate } from "../../shared/hooks/parceDate";
 
-import style from "./wordsList.module.scss";
+import styles from "./wordsList.module.scss";
+
+const arr = [
+  {
+    id: 1,
+    creationDate: 1664293563,
+    translation: {
+      orig: "Собака",
+      translated: "Dog",
+    },
+  },
+  {
+    id: 2,
+    creationDate: 1664193563,
+    translation: {
+      orig: "Кіт",
+      translated: "Cat",
+    },
+  },
+  {
+    id: 2,
+    creationDate: 1664193563,
+    translation: {
+      orig: "Кіт",
+      translated: "Cat",
+    },
+  },
+  {
+    id: 2,
+    creationDate: 1664193563,
+    translation: {
+      orig: "Кіт",
+      translated: "Cat",
+    },
+  },
+  {
+    id: 2,
+    creationDate: 1664193563,
+    translation: {
+      orig: "Кіт",
+      translated: "Cat",
+    },
+  },
+  {
+    id: 2,
+    creationDate: 1664193563,
+    translation: {
+      orig: "Кіт",
+      translated: "Cat",
+    },
+  },
+  {
+    id: 2,
+    creationDate: 1664193563,
+    translation: {
+      orig: "Кіт",
+      translated: "Cat",
+    },
+  },
+  {
+    id: 2,
+    creationDate: 1664193563,
+    translation: {
+      orig: "Кіт",
+      translated: "Cat",
+    },
+  },
+  {
+    id: 2,
+    creationDate: 1664193563,
+    translation: {
+      orig: "Кіт",
+      translated: "Cat",
+    },
+  },
+  {
+    id: 2,
+    creationDate: 1664193563,
+    translation: {
+      orig: "Кіт",
+      translated: "Cat",
+    },
+  },
+  {
+    id: 2,
+    creationDate: 1664193563,
+    translation: {
+      orig: "Кіт",
+      translated: "Cat",
+    },
+  },
+  {
+    id: 2,
+    creationDate: 1664193563,
+    translation: {
+      orig: "Кіт",
+      translated: "Cat",
+    },
+  },
+  {
+    id: 2,
+    creationDate: 1664193563,
+    translation: {
+      orig: "Кіт",
+      translated: "Cat",
+    },
+  },
+];
 
 const WordsList = () => {
   const wordsArr = useSelector(getWordsArr, shallowEqual);
   const isLoading = useSelector(getIsLoading, shallowEqual);
   const error = useSelector(getError, shallowEqual);
+  // console.log('render')
 
-  const wordsMarkup = wordsArr.map((item) => {
-    // console.log(item);
+  const wordsMarkup = arr.map((item) => {
+    const parcedDate = parceDate(item.creationDate).split(", ");
+
     return (
-      <li key={item.id}>
-        <p>{item.translation.orig}</p>
-        <p>{item.translation.translated}</p>
-        <p>{parceDate(item.creationDate)}</p>
+      <li className={styles.wordsListItem} key={item.id}>
+        <div className={styles.textBlock}>
+          <p className={styles.translatedName}>{item.translation.translated}</p>
+          <p className={styles.origName}>{item.translation.orig}</p>
+        </div>
+        <div className={styles.itemBottomBlock}>
+          <button className={styles.itemBottomBlockBtn}>
+            <Icon
+              className={styles.btnIcon}
+              iconId="trashbin"
+              height="20px"
+              width="20px"
+              fill="#777777"
+            />
+          </button>
+          <p className={styles.creationDate}>{parcedDate[0]}</p>
+          <button className={styles.itemBottomBlockBtn}>
+            <Icon
+              className={styles.btnIcon}
+              iconId="edit"
+              height="20px"
+              width="20px"
+              fill="#777777"
+            />
+          </button>
+        </div>
       </li>
     );
   });
@@ -30,7 +162,7 @@ const WordsList = () => {
   return (
     <>
       {isLoading && <Loader />}
-      <ul>
+      <ul className={styles.wordsList}>
         {error ? (
           <li>
             <h2>{error}</h2>
