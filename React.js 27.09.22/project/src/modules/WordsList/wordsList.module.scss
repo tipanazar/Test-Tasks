@@ -16,6 +16,16 @@
   outline: 1px solid rgb(211 211 211 / 55%);
 }
 
+.arrAlertText {
+  max-width: 800px;
+  font-size: 40px;
+  font-weight: 500;
+  color: white;
+  text-align: center;
+  letter-spacing: 0.1px;
+  line-height: 1.5;
+}
+
 .wordsList {
   display: flex;
   flex-wrap: wrap;

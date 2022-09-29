@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { getWords, addWord, deleteWord } from "./operations";
 
 const initialState = {
-  wordsArr: [],
+  wordsArr: null,
   loading: false,
   error: null,
 };

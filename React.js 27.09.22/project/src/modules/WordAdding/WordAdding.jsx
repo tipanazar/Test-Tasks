@@ -39,11 +39,12 @@ const WordAdding = () => {
         >
           Translated
         </label>
-        <Input className={styles.addWordInput} name="orig" id="orig" />
+        <Input className={styles.addWordInput} name="orig" id="orig" required />
         <Input
           className={styles.addWordInput}
           name="translated"
           id="translated"
+          required
         />
       </form>
       <Button className={styles.submitFormBtn} type="submit" form="addWordForm">
