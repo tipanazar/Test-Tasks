@@ -1,28 +1,26 @@
-import { useState, shallowEqual } from "react";
+import { Link } from "react-router-dom";
+import { shallowEqual } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
+import Loader from "../../shared/Components/Loader/Loader";
+import Button from "../../shared/Components/Button/Button";
+import Icon from "../../shared/Components/Icon/Icon";
+import AlertGradientScreen from "../../shared/Components/AlertGradientScreen/AlertGradientScreen";
+import { parceDate } from "../../shared/hooks/parceDate";
+import { deleteWord } from "../../redux/dictionary/operations";
 import {
   getWordsArr,
   getIsLoading,
   getError,
 } from "../../redux/dictionary/selectors";
-import Loader from "../../shared/Components/Loader/Loader";
-import Button from "../../shared/Components/Button/Button";
-import Icon from "../../shared/Components/Icon/Icon";
-import { parceDate } from "../../shared/hooks/parceDate";
-import { deleteWord } from "../../redux/dictionary/operations";
 
 import styles from "./wordsList.module.scss";
-import { Link } from "react-router-dom";
-import AlertGradientScreen from "../../shared/Components/AlertGradientScreen/AlertGradientScreen";
 
 const WordsList = () => {
   const dispatch = useDispatch();
   const wordsArr = useSelector(getWordsArr, shallowEqual);
   const isLoading = useSelector(getIsLoading, shallowEqual);
   const error = useSelector(getError, shallowEqual);
-
-  console.log(wordsArr);
 
   const wordsMarkup =
     wordsArr?.length &&
@@ -64,12 +62,6 @@ const WordsList = () => {
         </li>
       );
     });
-  // <div className={styles.emptyArrAlertBlock}>
-  //   <h2 className={styles.emptyArrAlert}>
-  //     Seems like your dictionary is empty, it is perfect time to begin study,
-  //     don't waste your time😉
-  //   </h2>
-  // </div>
 
   return (
     <>
