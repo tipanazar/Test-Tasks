@@ -125,39 +125,45 @@ const WordsList = () => {
   const error = useSelector(getError, shallowEqual);
   // console.log('render')
 
-  const wordsMarkup = arr.map((item) => {
-    const parcedDate = parceDate(item.creationDate).split(", ");
-
-    return (
-      <li className={styles.wordsListItem} key={item.id}>
-        <div className={styles.textBlock}>
-          <p className={styles.translatedName}>{item.translation.translated}</p>
-          <p className={styles.origName}>{item.translation.orig}</p>
-        </div>
-        <div className={styles.itemBottomBlock}>
-          <button className={styles.itemBottomBlockBtn}>
-            <Icon
-              className={styles.btnIcon}
-              iconId="trashbin"
-              height="20px"
-              width="20px"
-              fill="#777777"
-            />
-          </button>
-          <p className={styles.creationDate}>{parcedDate[0]}</p>
-          <button className={styles.itemBottomBlockBtn}>
-            <Icon
-              className={styles.btnIcon}
-              iconId="edit"
-              height="20px"
-              width="20px"
-              fill="#777777"
-            />
-          </button>
-        </div>
-      </li>
-    );
-  });
+  const wordsMarkup = arr
+    .sort(
+      (firstItem, secondItem) =>
+        secondItem.creationDate - firstItem.creationDate
+    )
+    .map((item) => {
+      const parcedDate = parceDate(item.creationDate).split(", ");
+      return (
+        <li className={styles.wordsListItem} key={item.id}>
+          <div className={styles.textBlock}>
+            <p className={styles.translatedName}>
+              {item.translation.translated}
+            </p>
+            <p className={styles.origName}>{item.translation.orig}</p>
+          </div>
+          <div className={styles.itemBottomBlock}>
+            <button className={styles.itemBottomBlockBtn}>
+              <Icon
+                className={styles.btnIcon}
+                iconId="trashbin"
+                height="20px"
+                width="20px"
+                fill="#777777"
+              />
+            </button>
+            <p className={styles.creationDate}>{parcedDate[0]}</p>
+            <button className={styles.itemBottomBlockBtn}>
+              <Icon
+                className={styles.btnIcon}
+                iconId="edit"
+                height="20px"
+                width="20px"
+                fill="#777777"
+              />
+            </button>
+          </div>
+        </li>
+      );
+    });
 
   return (
     <>

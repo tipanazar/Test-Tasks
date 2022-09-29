@@ -1,5 +1,7 @@
+import WordAdding from "../../modules/WordAdding/WordAdding";
+
 const WordAddingPage = () => {
-  return <h2>Word Edding</h2>;
+  return <WordAdding />;
 };
 
 export default WordAddingPage;
