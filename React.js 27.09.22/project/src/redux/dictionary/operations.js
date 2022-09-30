@@ -4,6 +4,7 @@ import {
   getWordsApi,
   addWordApi,
   deleteWordApi,
+  editWordApi,
 } from "../../shared/api/dictionaryApi";
 
 export const getWords = createAsyncThunk(
@@ -30,6 +31,18 @@ export const addWord = createAsyncThunk(
         },
       };
       const { data } = await addWordApi(newWordData);
+      return data;
+    } catch (err) {
+      return rejectWithValue(err);
+    }
+  }
+);
+
+export const editWord = createAsyncThunk(
+  "words/editWord",
+  async ({ editedWordData, id }, { rejectWithValue }) => {
+    try {
+      const { data } = await editWordApi(editedWordData, id);
       return data;
     } catch (err) {
       return rejectWithValue(err);

@@ -30,22 +30,19 @@ const WordAdding = () => {
         id="addWordForm"
         onSubmit={handleSubmit}
       >
-        <label style={{ marginLeft: "3px" }} for="orig">
-          Original
-        </label>
-        <label
-          style={{ textAlign: "end", marginRight: "3px" }}
-          for="translated"
-        >
+        <label style={{ marginLeft: "3px" }} for="translated">
           Translated
         </label>
-        <Input className={styles.addWordInput} name="orig" id="orig" required />
+        <label style={{ textAlign: "end", marginRight: "3px" }} for="orig">
+          Original
+        </label>
         <Input
           className={styles.addWordInput}
           name="translated"
           id="translated"
           required
         />
+        <Input className={styles.addWordInput} name="orig" id="orig" required />
       </form>
       <Button className={styles.submitFormBtn} type="submit" form="addWordForm">
         <p className={styles.submitFormBtnText}>Add Word</p>

@@ -5,18 +5,18 @@ import PropTypes from "prop-types";
 const Input = ({
   type,
   name,
-  value,
+  defaultValue,
   placeholder,
   required,
   onType,
   className,
-  id
+  id,
 }) => {
   return (
     <input
       className={className}
       type={type}
-      value={value}
+      defaultValue={defaultValue}
       name={name}
       id={id}
       placeholder={placeholder}
@@ -29,10 +29,12 @@ const Input = ({
 Input.propTypes = {
   type: PropTypes.string,
   name: PropTypes.string,
-  value: PropTypes.string,
+  defaultValue: PropTypes.string,
   placeholder: PropTypes.string,
   required: PropTypes.bool,
   onType: PropTypes.func,
+  className: PropTypes.string,
+  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 
 export default memo(Input);

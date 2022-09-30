@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { getWords, addWord, deleteWord } from "./operations";
+import { getWords, addWord, deleteWord, editWord } from "./operations";
 
 const initialState = {
   wordsArr: null,
@@ -45,6 +45,30 @@ const wordsSlice = createSlice({
     [addWord.rejected]: (state, { payload }) => {
       state.error = payload.message;
       console.log(payload);
+      state.loading = false;
+    },
+
+    [editWord.pending]: (state) => {
+      state.loading = true;
+      state.error = null;
+    },
+    [editWord.fulfilled]: (state, { payload }) => {
+      const sortedArr = state.wordsArr
+        .map((item) => {
+          if (item.id === payload.id) {
+            return { ...item, ...payload };
+          }
+          return item;
+        })
+        .sort(
+          (firstItem, secondItem) =>
+            secondItem.creationDate - firstItem.creationDate
+        );
+      state.wordsArr = sortedArr;
+      state.loading = false;
+    },
+    [editWord.rejected]: (state, { payload }) => {
+      state.error = payload.message;
       state.loading = false;
     },
 
