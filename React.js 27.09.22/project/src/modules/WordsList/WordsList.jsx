@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { shallowEqual, useRef, useState } from "react";
+import { shallowEqual, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import Loader from "../../shared/Components/Loader/Loader";

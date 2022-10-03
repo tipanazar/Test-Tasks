@@ -1,4 +1,4 @@
-import { memo } from "react";
+import { useRef } from "react";
 import { useDispatch } from "react-redux";
 
 import { editWord } from "../../../redux/dictionary/operations";
@@ -18,18 +18,21 @@ const EditWordModal = ({ id, translated = "", orig = "", closeModal }) => {
     const editedWordData = {
       translation: { orig: orig.value, translated: translated.value },
     };
+
+    funcRef.current("closeModal");
     await dispatch(editWord({ editedWordData, id }));
-    ev.target.reset();
-    closeModal();
   };
 
+  const funcRef = useRef();
+
   return (
-    <Modal closeModal={closeModal}>
+    <Modal closeModal={closeModal} funcRef={funcRef}>
       <div className={styles.modalBlock}>
         <Button
           className={styles.closeModalBtn}
           type="button"
           id="closeModalBtn"
+          onClick={() => funcRef.current("closeModal")}
         >
           <Icon className={styles.closeModalIcon} iconId="close" />
         </Button>
@@ -78,4 +81,4 @@ const EditWordModal = ({ id, translated = "", orig = "", closeModal }) => {
   );
 };
 
-export default memo(EditWordModal);
+export default EditWordModal;
