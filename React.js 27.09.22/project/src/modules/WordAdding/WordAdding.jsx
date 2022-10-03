@@ -4,13 +4,15 @@ import Button from "../../shared/Components/Button/Button";
 import Input from "../../shared/Components/Input/Input";
 import Loader from "../../shared/Components/Loader/Loader";
 import { addWord } from "../../redux/dictionary/operations";
-import { getIsLoading } from "../../redux/dictionary/selectors";
+import { getError, getIsLoading } from "../../redux/dictionary/selectors";
 
 import styles from "./wordAdding.module.scss";
+import AlertGradientScreen from "../../shared/Components/AlertGradientScreen/AlertGradientScreen";
 
 const WordAdding = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector(getIsLoading, shallowEqual);
+  const error = useSelector(getError, shallowEqual);
 
   const handleSubmit = (ev) => {
     ev.preventDefault();
@@ -23,7 +25,11 @@ const WordAdding = () => {
     ev.target.reset();
   };
 
-  return (
+  return error ? (
+    <AlertGradientScreen>
+      <h2 className={styles.alertText}>{error}</h2>
+    </AlertGradientScreen>
+  ) : (
     <div className={styles.formBlock}>
       <form
         className={styles.addWordForm}

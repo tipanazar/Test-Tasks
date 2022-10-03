@@ -1,5 +1,7 @@
+import KnowledgeTest from "../../modules/KnowledgeTest/KnowledgeTest";
+
 const KnowledgeTestingPage = () => {
-  return <h2>Knowledge Testing</h2>;
+  return <KnowledgeTest />;
 };
 
 export default KnowledgeTestingPage;

@@ -98,7 +98,7 @@ const WordsList = () => {
       {isLoading && <Loader />}
       {error ? (
         <AlertGradientScreen>
-          <h2 className={styles.arrAlertText}>{error}</h2>
+          <h2 className={styles.alertText}>{error}</h2>
         </AlertGradientScreen>
       ) : wordsArr === null ? (
         <></>
@@ -106,7 +106,7 @@ const WordsList = () => {
         <ul className={styles.wordsList}>{wordsMarkup}</ul>
       ) : (
         <AlertGradientScreen>
-          <Link className={styles.arrAlertText} to="add-word">
+          <Link className={styles.alertText} to="/add-word">
             It seems that your dictionary is empty, it's time to start studying,
             don't waste your time😉
           </Link>

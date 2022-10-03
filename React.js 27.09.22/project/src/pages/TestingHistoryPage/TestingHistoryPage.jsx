@@ -1,5 +1,7 @@
+import TestingHistory from "../../modules/TestingHistory/TestingHistory";
+
 const TestingHistoryPage = () => {
-  return <h2>Testing History</h2>;
+  return <TestingHistory />;
 };
 
 export default TestingHistoryPage;
