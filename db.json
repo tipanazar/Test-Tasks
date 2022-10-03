@@ -1,22 +1,126 @@
 {
   "words": [
     {
-      "id": 1,
-      "creationDate": 1664293563,
-      "translation": {
-        "orig": "Собака",
-        "translated": "Dog"
-      }
+        "creationDate": 1664811364334,
+        "translation": {
+            "orig": "Кіт",
+            "translated": "Cat"
+        },
+        "id": 1
     },
     {
-      "id": 2,
-      "creationDate": 1664193563,
-      "translation": {
-        "orig": "Кіт",
-        "translated": "Cat"
-      }
+        "creationDate": 1664811376731,
+        "translation": {
+            "orig": "Собака",
+            "translated": "Dog"
+        },
+        "id": 2
+    },
+    {
+        "creationDate": 1664811383623,
+        "translation": {
+            "orig": "Вікно",
+            "translated": "Window"
+        },
+        "id": 3
+    },
+    {
+        "creationDate": 1664811397272,
+        "translation": {
+            "orig": "Стіл/Таблиця",
+            "translated": "Table"
+        },
+        "id": 4
+    },
+    {
+        "creationDate": 1664811439548,
+        "translation": {
+            "orig": "Двері",
+            "translated": "Door"
+        },
+        "id": 5
+    },
+    {
+        "creationDate": 1664811450033,
+        "translation": {
+            "orig": "Олень",
+            "translated": "Deer"
+        },
+        "id": 6
+    },
+    {
+        "creationDate": 1664811467217,
+        "translation": {
+            "orig": "Телефон",
+            "translated": "Phone"
+        },
+        "id": 7
+    },
+    {
+        "creationDate": 1664811477398,
+        "translation": {
+            "orig": "М'яч",
+            "translated": "Ball"
+        },
+        "id": 8
+    },
+    {
+        "creationDate": 1664811498869,
+        "translation": {
+            "orig": "Гречка",
+            "translated": "Buckwheat"
+        },
+        "id": 9
+    },
+    {
+        "creationDate": 1664811507347,
+        "translation": {
+            "orig": "E39",
+            "translated": "BMW"
+        },
+        "id": 10
+    },
+    {
+        "creationDate": 1664811529617,
+        "translation": {
+            "orig": "Стул",
+            "translated": "Chair"
+        },
+        "id": 11
+    },
+    {
+        "creationDate": 1664811536405,
+        "translation": {
+            "orig": "Чашка",
+            "translated": "Cup"
+        },
+        "id": 12
+    },
+    {
+        "creationDate": 1664811558493,
+        "translation": {
+            "orig": "Печиво",
+            "translated": "Cookie"
+        },
+        "id": 13
+    },
+    {
+        "creationDate": 1664811576579,
+        "translation": {
+            "orig": "Вогонь",
+            "translated": "Fire"
+        },
+        "id": 14
+    },
+    {
+        "creationDate": 1664811582820,
+        "translation": {
+            "orig": "Куля",
+            "translated": "Bullet"
+        },
+        "id": 15
     }
-  ],
+],
 
   "history": [
     { "id": 1, "creationDate": 1664293563, "percentage": "66%" },
