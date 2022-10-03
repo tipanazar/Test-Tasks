@@ -10,6 +10,7 @@ import {
 import AlertGradientScreen from "../../shared/Components/AlertGradientScreen/AlertGradientScreen";
 import Button from "../../shared/Components/Button/Button";
 import Loader from "../../shared/Components/Loader/Loader";
+import Testing from "./Testing/Testing";
 
 import styles from "./knowledgeTest.module.scss";
 
@@ -52,7 +53,7 @@ const KnowledgeTest = () => {
         <></>
       ) : wordsArr.length >= 10 ? (
         questions.length ? (
-          <h2>Questions!</h2>
+          <Testing questions={questions} />
         ) : (
           <div className={styles.mainBlock}>
             <h2 className={styles.startTestText}>
