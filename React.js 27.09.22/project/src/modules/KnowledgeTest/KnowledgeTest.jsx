@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { shallowEqual, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
@@ -16,25 +17,28 @@ const KnowledgeTest = () => {
   const wordsArr = useSelector(getWordsArr, shallowEqual);
   const error = useSelector(getError, shallowEqual);
   const isLoading = useSelector(getIsLoading, shallowEqual);
-
-  let questionsArr = [];
-  const template = {
-    word: "Window",
-    answers: ["Машина", "Окно", "Собака", "Огород"],
-    rightAnswer: "Окно",
-  };
+  const [questions, setQuestions] = useState([]);
 
   const startTest = () => {
-    const sortedWords = [...wordsArr].sort((item) => Math.random() - 0.5);
+    const sortedWords = [...wordsArr].sort(() => Math.random() - 0.5);
+    let questionsArr = [];
 
-    for (let i = 0; i <= 10; i++) {
+    for (let i = 0; i < 10; i++) {
       let temp = {
         word: sortedWords[i].translation.translated,
         answers: [sortedWords[i].translation.orig],
         rightAnswer: sortedWords[i].translation.orig,
       };
-      console.log(temp);
+      while (temp.answers.length < 4) {
+        const idx = Math.floor(Math.random() * sortedWords.length);
+        if (!temp.answers.includes(sortedWords[idx].translation.orig)) {
+          temp.answers.push(sortedWords[idx].translation.orig);
+        }
+      }
+      temp.answers.sort(() => Math.random() - 0.5);
+      questionsArr.push(temp);
     }
+    setQuestions(questionsArr);
   };
 
   return (
@@ -47,18 +51,22 @@ const KnowledgeTest = () => {
       ) : wordsArr === null ? (
         <></>
       ) : wordsArr.length >= 10 ? (
-        <div className={styles.mainBlock}>
-          <h2 className={styles.startTestText}>
-            The test contains 10 questions with 4 variants of answers.
-          </h2>
-          <Button
-            className={styles.startTestBtn}
-            type="button"
-            onClick={() => startTest()}
-          >
-            START TEST
-          </Button>
-        </div>
+        questions.length ? (
+          <h2>Questions!</h2>
+        ) : (
+          <div className={styles.mainBlock}>
+            <h2 className={styles.startTestText}>
+              The test contains 10 questions with 4 variants of answers.
+            </h2>
+            <Button
+              className={styles.startTestBtn}
+              type="button"
+              onClick={() => startTest()}
+            >
+              START TEST
+            </Button>
+          </div>
+        )
       ) : (
         <AlertGradientScreen>
           <Link className={styles.alertText} to="/add-word">
