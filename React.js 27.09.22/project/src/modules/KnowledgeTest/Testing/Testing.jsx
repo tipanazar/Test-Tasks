@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import Button from "../../../shared/Components/Button/Button";
 import Icon from "../../../shared/Components/Icon/Icon";
@@ -10,6 +11,7 @@ import styles from "./testing.module.scss";
 const Testing = ({ questions, stopTest }) => {
   const [questionIdx, setQuestionIdx] = useState(0);
   const [testAnswers, setTestAnswers] = useState([]);
+  const navigate = useNavigate();
   let temp = [];
 
   while (temp.length < questions.length + 1 && testAnswers.length === 0) {
@@ -87,8 +89,10 @@ const Testing = ({ questions, stopTest }) => {
             : `${styles.mainBlockRightBtn} ${styles.disabledBtn}`
         }
         type="button"
-        disabled={!isTestFilled}
-        onClick={() => console.log("finish")}
+        // disabled={!isTestFilled}
+        // onClick={() => <Navigate to="test-results" />}
+        onClick={() => navigate("/test-results", {state:{ testAnswers }})}
+        // onClick={() => console.log("finish")}
       >
         Finish Test
       </Button>

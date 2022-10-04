@@ -34,10 +34,10 @@ function App() {
           <Route index element={<WordsListPage />} />
           <Route path="add-word" element={<WordAddingPage />} />
           <Route path="testing" element={<KnowledgeTestingPage />} />
-          <Route path="testing-results" element={<TestingResultsPage />} />
-          <Route path="testing-history" element={<TestingHistoryPage />} />
+          <Route path="test-results" element={<TestingResultsPage />} />
+          <Route path="tests-history" element={<TestingHistoryPage />} />
         </Route>
-        <Route path="*" element={<Navigate to="/" replace={true} />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </Suspense>
   );

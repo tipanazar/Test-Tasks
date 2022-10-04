@@ -1,0 +1,14 @@
+.mainBlock {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .statsBlock {
+        .statsText {
+            margin-right: 10px;
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+    }
+}
