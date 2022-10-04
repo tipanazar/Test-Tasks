@@ -1,0 +1,122 @@
+.disabledBtn {
+  background-color: #8080802b !important;
+  cursor: default !important;
+
+  &:hover {
+    box-shadow: none !important;
+  }
+}
+
+.mainBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 100%;
+
+  .mainBlockTitleBlock {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    min-width: 30vw;
+    min-height: 20vh;
+    max-width: 80vw;
+    max-height: 25vh;
+    background-color: white;
+    box-shadow: 0px 0px 11px 8px rgba(34, 60, 80, 0.2);
+
+    .mainBlockTitle {
+      text-align: center;
+      font-size: 40px;
+      font-weight: 500;
+      width: 100%;
+      height: min-content;
+      max-height: 100%;
+      word-wrap: break-word;
+      overflow: auto;
+    }
+  }
+
+  .answersList {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 40px;
+    column-gap: 40px;
+    margin-bottom: 10px;
+
+    .answersListItem {
+      background-color: white;
+      box-shadow: 0px 0px 11px 8px rgba(34, 60, 80, 0.2);
+      height: 100px;
+      width: 30vw;
+
+      .inputLabel {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        height: 100%;
+        width: 100%;
+        padding: 5px 10px;
+        cursor: pointer;
+        background-color: white;
+        font-size: 25px;
+        transition: background-color 100ms, color 100ms;
+
+        .labelText {
+          height: min-content;
+          max-height: 100%;
+          width: 100%;
+          overflow: auto;
+          word-wrap: break-word;
+          text-align: center;
+        }
+
+        .listItemInput {
+          position: absolute;
+          visibility: hidden;
+
+          &:focus-visible {
+            outline: 0;
+          }
+        }
+      }
+    }
+  }
+
+  .buttonsBlock {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+
+    .questionNumber {
+      width: 30px;
+      letter-spacing: 0.4px;
+      font-size: 18px;
+    }
+
+    .btnsBlockBtn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 0;
+      height: 40px;
+      width: 150px;
+      border-radius: 10px;
+      background-color: #ffac1bde;
+      transition: box-shadow 100ms, background-color 100ms;
+
+      &:hover {
+        box-shadow: 0px 0px 11px 8px rgba(34, 60, 80, 0.2);
+      }
+
+      .btnIcon {
+        height: 30px;
+        width: 30px;
+        transition: fill 100ms;
+      }
+    }
+  }
+}

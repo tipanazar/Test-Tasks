@@ -2,7 +2,16 @@ import { memo } from "react";
 
 import PropTypes from "prop-types";
 
-const Button = ({ onClick, type, className, children, form, id }) => {
+const Button = ({
+  onClick,
+  type,
+  className,
+  children,
+  form,
+  id,
+  disabled,
+  style,
+}) => {
   return (
     <button
       className={className}
@@ -10,6 +19,8 @@ const Button = ({ onClick, type, className, children, form, id }) => {
       onClick={onClick}
       form={form}
       id={id}
+      disabled={disabled}
+      style={style}
     >
       {children}
     </button>
@@ -17,7 +28,6 @@ const Button = ({ onClick, type, className, children, form, id }) => {
 };
 
 export default memo(Button);
-// export default Button;
 
 Button.propTypes = {
   className: PropTypes.string.isRequired,
@@ -25,6 +35,8 @@ Button.propTypes = {
   type: PropTypes.oneOf(["button", "submit", "reset"]).isRequired,
   form: PropTypes.string,
   id: PropTypes.string,
+  disabled: PropTypes.bool,
+  style: PropTypes.shape,
   children: PropTypes.oneOfType([PropTypes.element, PropTypes.string])
     .isRequired,
 };

@@ -8,6 +8,7 @@ import { getError, getIsLoading } from "../../redux/dictionary/selectors";
 
 import styles from "./wordAdding.module.scss";
 import AlertGradientScreen from "../../shared/Components/AlertGradientScreen/AlertGradientScreen";
+import InputLabel from "../../shared/Components/InputLabel/InputLabel";
 
 const WordAdding = () => {
   const dispatch = useDispatch();
@@ -36,12 +37,16 @@ const WordAdding = () => {
         id="addWordForm"
         onSubmit={handleSubmit}
       >
-        <label style={{ marginLeft: "3px" }} for="translated">
-          Translated
-        </label>
-        <label style={{ textAlign: "end", marginRight: "3px" }} for="orig">
-          Original
-        </label>
+        <InputLabel
+          style={{ marginLeft: "3px" }}
+          inputId="translated"
+          text="Translated"
+        />
+        <InputLabel
+          style={{ textAlign: "end", marginRight: "3px" }}
+          inputId="orig"
+          text="Original"
+        />
         <Input
           className={styles.addWordInput}
           name="translated"
