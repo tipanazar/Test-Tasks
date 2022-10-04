@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 
 const InputLabel = ({ className, inputId, text, style, children }) => {
   return (
-    <label className={className} style={style} for={inputId}>
+    <label className={className} style={style} htmlFor={inputId}>
       {text}
       {children}
     </label>

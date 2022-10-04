@@ -36,7 +36,11 @@ Button.propTypes = {
   form: PropTypes.string,
   id: PropTypes.string,
   disabled: PropTypes.bool,
-  style: PropTypes.shape,
+  style: PropTypes.objectOf([
+    PropTypes.string,
+    PropTypes.number,
+    PropTypes.bool,
+  ]),
   children: PropTypes.oneOfType([PropTypes.element, PropTypes.string])
     .isRequired,
 };

@@ -9,7 +9,29 @@ import styles from "./testing.module.scss";
 
 const Testing = ({ questions }) => {
   const [questionIdx, setQuestionIdx] = useState(0);
-  const [checkedInputIdx, setCheckedInputIdx] = useState(null);
+  const [testAnswers, setTestAnswers] = useState([]);
+
+  while (testAnswers.length < questions.length) {
+    testAnswers.push({ answer: "", isRight: null });
+  }
+
+  let isTestFilled = !Boolean(
+    testAnswers.find((item) => item.answer === "" && item.isRight === null)
+  );
+
+  console.log(isTestFilled);
+
+  const handleAnswer = (answer) => {
+    setTestAnswers((prevState) => {
+      const newArr = prevState.map((item, idx) => {
+        if (idx === questionIdx) {
+          return answer;
+        }
+        return item;
+      });
+      return newArr;
+    });
+  };
 
   const answersMarkup = questions[questionIdx].answers.map((item, idx) => {
     return (
@@ -17,7 +39,7 @@ const Testing = ({ questions }) => {
         <InputLabel
           className={styles.inputLabel}
           style={
-            checkedInputIdx === idx
+            testAnswers[questionIdx].answer === item
               ? {
                   backgroundColor: "#eb6a00",
                   color: "white",
@@ -33,17 +55,38 @@ const Testing = ({ questions }) => {
             id={item}
             name="answer"
             value={item}
-            onType={() => setCheckedInputIdx(idx)}
+            checked={item === testAnswers[questionIdx].answer}
+            onType={(ev) =>
+              handleAnswer({
+                answer: ev.target.value,
+                isRight: ev.target.value === questions[questionIdx].rightAnswer,
+              })
+            }
           />
         </InputLabel>
       </li>
     );
   });
 
+  console.log(testAnswers)
+
   return (
     <div className={styles.mainBlock}>
-      <Button className={styles.mainBlockLeftBtn}>Cancel Test</Button>
-      <Button className={styles.mainBlockRightBtn}>Finish Test</Button>
+      <Button className={styles.mainBlockLeftBtn} type="button">
+        Cancel Test
+      </Button>
+      <Button
+        className={
+          isTestFilled
+            ? styles.mainBlockRightBtn
+            : `${styles.mainBlockRightBtn} ${styles.disabledBtn}`
+        }
+        type="button"
+        disabled={!isTestFilled}
+        onClick={() => console.log("finish")}
+      >
+        Finish Test
+      </Button>
       <div className={styles.titleBlock}>
         <h2 className={styles.title}>{questions[questionIdx].word}</h2>
       </div>
