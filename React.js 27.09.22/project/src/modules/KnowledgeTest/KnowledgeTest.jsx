@@ -21,9 +21,8 @@ const KnowledgeTest = () => {
   const [questions, setQuestions] = useState([]);
 
   const startTest = () => {
-    const sortedWords = [...wordsArr].sort(() => Math.random() - 0.5);
     let questionsArr = [];
-
+    const sortedWords = [...wordsArr].sort(() => Math.random() - 0.5);
     for (let i = 0; i < 10; i++) {
       let temp = {
         word: sortedWords[i].translation.translated,
@@ -42,6 +41,10 @@ const KnowledgeTest = () => {
     setQuestions(questionsArr);
   };
 
+  const stopTest = () => {
+    setQuestions([]);
+  };
+
   return (
     <>
       {isLoading && <Loader />}
@@ -53,7 +56,7 @@ const KnowledgeTest = () => {
         <></>
       ) : wordsArr.length >= 10 ? (
         questions.length ? (
-          <Testing questions={questions} />
+          <Testing questions={questions} stopTest={stopTest} />
         ) : (
           <div className={styles.mainBlock}>
             <h2 className={styles.startTestText}>

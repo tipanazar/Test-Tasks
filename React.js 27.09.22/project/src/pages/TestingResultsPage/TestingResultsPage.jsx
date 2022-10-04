@@ -1,5 +1,7 @@
+import TestResults from "../../modules/TestResults/TestResults";
+
 const TestingResultsPage = () => {
-  return <h2>Testing Results</h2>;
+  return <TestResults />;
 };
 
 export default TestingResultsPage;

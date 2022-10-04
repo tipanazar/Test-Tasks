@@ -7,19 +7,22 @@ import InputLabel from "../../../shared/Components/InputLabel/InputLabel";
 
 import styles from "./testing.module.scss";
 
-const Testing = ({ questions }) => {
+const Testing = ({ questions, stopTest }) => {
   const [questionIdx, setQuestionIdx] = useState(0);
   const [testAnswers, setTestAnswers] = useState([]);
+  let temp = [];
 
-  while (testAnswers.length < questions.length) {
-    testAnswers.push({ answer: "", isRight: null });
+  while (temp.length < questions.length + 1 && testAnswers.length === 0) {
+    if (temp.length === questions.length) {
+      setTestAnswers([...temp]);
+      return;
+    }
+    temp.push({ answer: "", isRight: null });
   }
 
   let isTestFilled = !Boolean(
     testAnswers.find((item) => item.answer === "" && item.isRight === null)
   );
-
-  console.log(isTestFilled);
 
   const handleAnswer = (answer) => {
     setTestAnswers((prevState) => {
@@ -68,11 +71,13 @@ const Testing = ({ questions }) => {
     );
   });
 
-  console.log(testAnswers)
-
   return (
     <div className={styles.mainBlock}>
-      <Button className={styles.mainBlockLeftBtn} type="button">
+      <Button
+        className={styles.mainBlockLeftBtn}
+        type="button"
+        onClick={stopTest}
+      >
         Cancel Test
       </Button>
       <Button
