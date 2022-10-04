@@ -42,8 +42,10 @@ const Testing = ({ questions }) => {
 
   return (
     <div className={styles.mainBlock}>
-      <div className={styles.mainBlockTitleBlock}>
-        <h2 className={styles.mainBlockTitle}>{questions[questionIdx].word}</h2>
+      <Button className={styles.mainBlockLeftBtn}>Cancel Test</Button>
+      <Button className={styles.mainBlockRightBtn}>Finish Test</Button>
+      <div className={styles.titleBlock}>
+        <h2 className={styles.title}>{questions[questionIdx].word}</h2>
       </div>
       <ul className={styles.answersList}>{answersMarkup}</ul>
       <div className={styles.buttonsBlock}>
