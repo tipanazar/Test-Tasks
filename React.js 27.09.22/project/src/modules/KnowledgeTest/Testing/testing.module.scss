@@ -7,7 +7,12 @@
   background-color: #eb6a00;
   color: white;
   font-size: 18px;
-  transition: background-color 300ms;
+  border-radius: 3px;
+  transition: background-color 300ms, box-shadow 150ms;
+
+  &:hover {
+    box-shadow: 0px 0px 11px 8px rgba(34, 60, 80, 0.2);
+  }
 }
 
 .disabledBtn {
@@ -46,6 +51,7 @@
     max-width: 80vw;
     max-height: 25vh;
     background-color: white;
+    border-radius: 3px;
     box-shadow: 0px 0px 11px 8px rgba(34, 60, 80, 0.2);
 
     .title {
@@ -72,6 +78,7 @@
       box-shadow: 0px 0px 11px 8px rgba(34, 60, 80, 0.2);
       height: 70px;
       width: 30vw;
+      border-radius: 5px;
 
       .inputLabel {
         display: flex;
@@ -81,6 +88,7 @@
         height: 100%;
         width: 100%;
         padding: 5px 10px;
+        border-radius: 5px;
         cursor: pointer;
         background-color: white;
         font-size: 25px;
