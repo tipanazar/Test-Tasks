@@ -1,4 +1,4 @@
-import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import Button from "../../shared/Components/Button/Button";
 import Input from "../../shared/Components/Input/Input";
@@ -12,8 +12,8 @@ import styles from "./wordAdding.module.scss";
 
 const WordAdding = () => {
   const dispatch = useDispatch();
-  const isLoading = useSelector(getIsLoading, shallowEqual);
-  const error = useSelector(getError, shallowEqual);
+  const isLoading = useSelector(getIsLoading);
+  const error = useSelector(getError);
 
   const handleSubmit = (ev) => {
     ev.preventDefault();

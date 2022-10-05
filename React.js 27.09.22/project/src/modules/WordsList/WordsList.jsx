@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { shallowEqual, useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import Loader from "../../shared/Components/Loader/Loader";
@@ -27,9 +27,9 @@ const initialModalProps = {
 
 const WordsList = () => {
   const dispatch = useDispatch();
-  const wordsArr = useSelector(getWordsArr, shallowEqual);
-  const isLoading = useSelector(getIsLoading, shallowEqual);
-  const error = useSelector(getError, shallowEqual);
+  const wordsArr = useSelector(getWordsArr);
+  const isLoading = useSelector(getIsLoading);
+  const error = useSelector(getError);
   const [modalProps, setModalProps] = useState(initialModalProps);
 
   const openModal = ({ orig, translated, id }) => {
