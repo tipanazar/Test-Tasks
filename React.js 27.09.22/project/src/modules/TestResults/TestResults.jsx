@@ -8,9 +8,9 @@ import styles from "./testResults.module.scss";
 const testAnswers = [
   { isRight: false },
   { isRight: true },
-  { isRight: true },
-  { isRight: true },
-  { isRight: true },
+  { isRight: false },
+  { isRight: false },
+  { isRight: false },
   { isRight: true },
   { isRight: true },
   { isRight: false },
@@ -41,34 +41,38 @@ const TestResults = () => {
   // console.log(testAnswers);
   return (
     <div className={styles.mainBlock}>
-      <PieChart width={220} height={220}>
-        <Pie
-          data={answers}
-          cx="50%"
-          cy="50%"
-          isAnimationActive={true}
-          outerRadius={80}
-          fill="#8884d8"
-          dataKey="value"
-          label
-          labelLine
-        >
-          {answers.map((entry, index) => (
-            <Cell
-              key={`cell-${index}`}
-              fill={["#058f00b3", "#d70000b5"][index]}
-            />
-          ))}
-        </Pie>
-      </PieChart>
-      <div className={styles.statsBlock}>
-        <span className={styles.statsText}>
-          Correct:&nbsp;{answers[0].value}
-        </span>
-        <span className={styles.statsText}>Wrong:&nbsp;{answers[1].value}</span>
-        <span className={styles.statsText}>
-          Total:&nbsp;{testAnswers.length}
-        </span>
+      <div className={styles.statsWrapper}>
+        <PieChart width={235} height={235}>
+          <Pie
+            data={answers}
+            cx="50%"
+            cy="50%"
+            isAnimationActive={true}
+            outerRadius={80}
+            fill="#8884d8"
+            dataKey="value"
+            label
+            labelLine
+          >
+            {answers.map((entry, index) => (
+              <Cell
+                key={`cell-${index}`}
+                fill={["#058f00b3", "#d70000b5"][index]}
+              />
+            ))}
+          </Pie>
+        </PieChart>
+        <div className={styles.statsBlock}>
+          <span className={styles.statsText} style={{ color: "green" }}>
+            Correct:&nbsp;{answers[0].value}
+          </span>
+          <span className={styles.statsText} style={{ color: "#f93131" }}>
+            Wrong:&nbsp;{answers[1].value}
+          </span>
+          <span className={styles.statsText} style={{ color: "#d96400" }}>
+            Total:&nbsp;{testAnswers.length}
+          </span>
+        </div>
       </div>
       <Button
         className={styles.tryAgainBtn}
