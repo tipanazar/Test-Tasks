@@ -122,52 +122,5 @@
     }
 ],
 
-  "history": [
-   {
-        "creationDate": 1664994739367,
-        "answers": [
-            {
-                "answer": "Вогонь",
-                "isRight": false
-            },
-            {
-                "answer": "Собака",
-                "isRight": false
-            },
-            {
-                "answer": "123",
-                "isRight": false
-            },
-            {
-                "answer": "123",
-                "isRight": true
-            },
-            {
-                "answer": "Олень",
-                "isRight": true
-            },
-            {
-                "answer": "123",
-                "isRight": false
-            },
-            {
-                "answer": "Печиво",
-                "isRight": false
-            },
-            {
-                "answer": "Печиво",
-                "isRight": true
-            },
-            {
-                "answer": "Стул",
-                "isRight": false
-            },
-            {
-                "answer": "Чашка",
-                "isRight": true
-            }
-        ],
-        "id": 3
-    }
-  ]
+  "history": []
 }
