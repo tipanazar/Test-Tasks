@@ -1,0 +1,41 @@
+.alertText {
+  max-width: 800px;
+  font-size: 40px;
+  font-weight: 500;
+  color: white;
+  text-align: center;
+  letter-spacing: 0.1px;
+  line-height: 1.5;
+}
+
+.mainBlock {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
+
+  .startTestText {
+    font-size: 35px;
+    margin-bottom: 90px;
+    max-width: 90vw;
+    text-align: center;
+  }
+
+  .startTestBtn {
+    width: 40vw;
+    height: 130px;
+    border-radius: 30px;
+    border: 0;
+    font-size: 30px;
+    background-color: #ff6c00;
+    background-color: #ff9112;
+    transition: background-color 300ms;
+    color: white;
+    box-shadow: 0px 0px 18px 13px rgba(82, 82, 82, 0.2);
+
+    &:hover {
+      background-color: #ff6c00;
+    }
+  }
+}
