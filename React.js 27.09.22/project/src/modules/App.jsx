@@ -3,10 +3,10 @@ import { useDispatch } from "react-redux";
 import { Navigate, Route, Routes } from "react-router-dom";
 
 import { getWords } from "../redux/dictionary/operations";
+import { getTestsHistory } from "../redux/testing/operations";
 
 import Loader from "../shared/Components/Loader/Loader";
 import LayoutPage from "../pages/LayoutPage/LayoutPage";
-import { getTestsHistory } from "../redux/testing/operations";
 
 const WordsListPage = lazy(() =>
   import("../pages/WordsListPage/WordsListPage")

@@ -26,7 +26,7 @@ export const addNewTest = createAsyncThunk(
         creationDate: new Date().getTime(),
         answers: testData,
       };
-      const { data } = await addNewTestApi({newTest});
+      const { data } = await addNewTestApi({ newTest });
       return data;
     } catch (err) {
       return rejectWithValue(err);

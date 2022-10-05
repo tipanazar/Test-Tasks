@@ -1,5 +1,3 @@
-import { memo } from "react";
-
 import PropTypes from "prop-types";
 
 const Button = ({
@@ -27,10 +25,10 @@ const Button = ({
   );
 };
 
-export default memo(Button);
+export default Button;
 
 Button.propTypes = {
-  className: PropTypes.string.isRequired,
+  className: PropTypes.string,
   onClick: PropTypes.func,
   type: PropTypes.oneOf(["button", "submit", "reset"]).isRequired,
   form: PropTypes.string,

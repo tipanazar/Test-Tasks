@@ -24,7 +24,6 @@ const TestingHistory = () => {
 
   const historyMarkup = testsHistoryArr?.map((item) => {
     const parcedDate = parceDate(item.creationDate).split(", ");
-
     const answers = [
       {
         name: "correctAnswers",
@@ -35,9 +34,8 @@ const TestingHistory = () => {
         value: item.answers.filter((item) => !item.isRight).length,
       },
     ];
-
     return (
-      <li className={styles.listItem}>
+      <li className={styles.listItem} key={item.id}>
         <Button
           className={styles.removeTestBtn}
           type="button"

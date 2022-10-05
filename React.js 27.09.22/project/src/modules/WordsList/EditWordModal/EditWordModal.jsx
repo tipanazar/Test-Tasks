@@ -6,6 +6,7 @@ import Modal from "../../../shared/Components/Modal/Modal";
 import Input from "../../../shared/Components/Input/Input";
 import Button from "../../../shared/Components/Button/Button";
 import Icon from "../../../shared/Components/Icon/Icon";
+import InputLabel from "../../../shared/Components/InputLabel/InputLabel";
 
 import styles from "./editWordModal.module.scss";
 
@@ -45,12 +46,16 @@ const EditWordModal = ({ id, translated = "", orig = "", closeModal }) => {
           id="editWordForm"
           onSubmit={handleSubmit}
         >
-          <label style={{ marginLeft: "3px" }} for="translated">
-            Translated
-          </label>
-          <label style={{ textAlign: "end", marginRight: "3px" }} for="orig">
-            Original
-          </label>
+          <InputLabel
+            style={{ marginLeft: "3px" }}
+            inputId="translated"
+            text="Translated"
+          />
+          <InputLabel
+            style={{ textAlign: "end", marginRight: "3px" }}
+            inputId="orig"
+            text="Original"
+          />
           <Input
             className={styles.editWordInput}
             name="translated"

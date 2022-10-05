@@ -15,5 +15,6 @@ InputLabel.propTypes = {
   className: PropTypes.string,
   inputId: PropTypes.string.isRequired,
   text: PropTypes.string,
-  style: PropTypes.objectOf([PropTypes.string, PropTypes.bool]),
+  style: PropTypes.objectOf(PropTypes.string, PropTypes.bool),
+  children: PropTypes.node,
 };

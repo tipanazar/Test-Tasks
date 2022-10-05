@@ -10,9 +10,6 @@ body {
   text-rendering: optimizeSpeed;
   margin: 0;
   font-family: "Montserrat", sans-serif;
-  // &::-webkit-scrollbar {
-  //   display: none; // скрывает скроллбар со страницы
-  // }
 }
 
 div#root {
@@ -36,7 +33,6 @@ div#modalRoot {
 }
 
 main {
-  // flex-grow: 1; //что бы растягивалось на всю высоту экрана
   height: calc(100vh - 70px);
   overflow: auto;
   background-color: var(--mainBackgrColor);

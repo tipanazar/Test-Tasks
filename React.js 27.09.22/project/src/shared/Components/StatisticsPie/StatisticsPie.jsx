@@ -1,5 +1,5 @@
-import { PieChart, Pie, Cell } from "recharts";
 import PropTypes from "prop-types";
+import { PieChart, Pie, Cell } from "recharts";
 
 const StatisticsPie = ({ width, height, data, dataKey, pieRadius }) => {
   return (
@@ -15,7 +15,7 @@ const StatisticsPie = ({ width, height, data, dataKey, pieRadius }) => {
         label
         labelLine
       >
-        {data.map((entry, index) => (
+        {data.map((item, index) => (
           <Cell
             key={`cell-${index}`}
             fill={["#058f00b3", "#d70000b5"][index]}

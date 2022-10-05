@@ -43,4 +43,4 @@ Input.propTypes = {
   id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 
-export default memo(Input);
+export default Input;

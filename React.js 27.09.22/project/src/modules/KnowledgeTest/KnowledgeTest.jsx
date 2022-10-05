@@ -65,7 +65,7 @@ const KnowledgeTest = () => {
             <Button
               className={styles.startTestBtn}
               type="button"
-              onClick={() => startTest()}
+              onClick={startTest}
             >
               START TEST
             </Button>

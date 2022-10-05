@@ -5,10 +5,10 @@ import Input from "../../shared/Components/Input/Input";
 import Loader from "../../shared/Components/Loader/Loader";
 import { addWord } from "../../redux/dictionary/operations";
 import { getError, getIsLoading } from "../../redux/dictionary/selectors";
-
-import styles from "./wordAdding.module.scss";
 import AlertGradientScreen from "../../shared/Components/AlertGradientScreen/AlertGradientScreen";
 import InputLabel from "../../shared/Components/InputLabel/InputLabel";
+
+import styles from "./wordAdding.module.scss";
 
 const WordAdding = () => {
   const dispatch = useDispatch();

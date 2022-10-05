@@ -9,5 +9,5 @@ const AlertGradientScreen = ({ children }) => {
 export default AlertGradientScreen;
 
 AlertGradientScreen.propTypes = {
-  children: PropTypes.element,
+  children: PropTypes.node,
 };
