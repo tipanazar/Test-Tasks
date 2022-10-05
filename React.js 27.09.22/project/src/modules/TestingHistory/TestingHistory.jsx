@@ -1,4 +1,4 @@
-import { shallowEqual, useSelector } from "react-redux";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 import {
@@ -11,15 +11,16 @@ import Loader from "../../shared/Components/Loader/Loader";
 import Button from "../../shared/Components/Button/Button";
 import Icon from "../../shared/Components/Icon/Icon";
 import StatisticsPie from "../../shared/Components/StatisticsPie/StatisticsPie";
+import { removeTestFromHistory } from "../../redux/testing/operations";
 import { parceDate } from "../../shared/hooks/parceDate";
 
 import styles from "./testingHistory.module.scss";
 
 const TestingHistory = () => {
+  const dispatch = useDispatch();
   const testsHistoryArr = useSelector(getTestsHistoryArr, shallowEqual);
   const error = useSelector(getError, shallowEqual);
   const isLoading = useSelector(getLoading, shallowEqual);
-  console.log(testsHistoryArr);
 
   const historyMarkup = testsHistoryArr?.map((item) => {
     const parcedDate = parceDate(item.creationDate).split(", ");
@@ -40,8 +41,7 @@ const TestingHistory = () => {
         <Button
           className={styles.removeTestBtn}
           type="button"
-          // onClick={() => dispatch(deleteWord(item.id))}
-          onClick={() => console.log("delete test")}
+          onClick={() => dispatch(removeTestFromHistory(item.id))}
         >
           <Icon
             className={styles.btnIcon}
@@ -65,7 +65,7 @@ const TestingHistory = () => {
           <span className={styles.statsText} style={{ color: "#f93131" }}>
             Wrong:&nbsp;{answers[1].value}
           </span>
-          <span className={styles.statsText} style={{ color: "#d96400" }}>
+          <span className={styles.statsText} style={{ color: "#ff9e07" }}>
             Total:&nbsp;{item.answers.length}
           </span>
         </div>

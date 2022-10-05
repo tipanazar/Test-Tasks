@@ -6,8 +6,8 @@ export const getTestsHistoryApi = async () => {
   return await axios.get(BASE_URL);
 };
 
-export const addNewTestApi = async ({ testResults }) => {
-  return await axios.post(BASE_URL, testResults);
+export const addNewTestApi = async ({ newTest }) => {
+  return await axios.post(BASE_URL, newTest);
 };
 
 export const removeTestFromHistoryApi = async ({ testId }) => {

@@ -32,12 +32,14 @@ const testsHistorySlice = createSlice({
       state.loading = false;
     },
 
+    // - - - - - - - - - - - - - - - - - - - - -
+
     [addNewTest.pending]: (state) => {
       state.loading = true;
       state.error = null;
     },
     [addNewTest.fulfilled]: (state, { payload }) => {
-      const sortedArr = [...state.wordsArr, payload].sort(
+      const sortedArr = [...state.historyArr, payload].sort(
         (firstItem, secondItem) =>
           secondItem.creationDate - firstItem.creationDate
       );
@@ -49,12 +51,14 @@ const testsHistorySlice = createSlice({
       state.loading = false;
     },
 
+    // - - - - - - - - - - - - - - - - - - - - -
+
     [removeTestFromHistory.pending]: (state) => {
       state.loading = true;
       state.error = null;
     },
     [removeTestFromHistory.fulfilled]: (state, { payload }) => {
-      const filteredArr = [...state.wordsArr].filter(
+      const filteredArr = [...state.historyArr].filter(
         (item) => item.id !== payload
       );
       state.historyArr = filteredArr;

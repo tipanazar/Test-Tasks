@@ -1,5 +1,7 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { addNewTest } from "../../../redux/testing/operations";
 
 import Button from "../../../shared/Components/Button/Button";
 import Icon from "../../../shared/Components/Icon/Icon";
@@ -9,9 +11,10 @@ import InputLabel from "../../../shared/Components/InputLabel/InputLabel";
 import styles from "./testing.module.scss";
 
 const Testing = ({ questions, stopTest }) => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [questionIdx, setQuestionIdx] = useState(0);
   const [testAnswers, setTestAnswers] = useState([]);
-  const navigate = useNavigate();
   let temp = [];
 
   while (temp.length < questions.length + 1 && testAnswers.length === 0) {
@@ -36,6 +39,15 @@ const Testing = ({ questions, stopTest }) => {
       });
       return newArr;
     });
+  };
+
+  const handleFinish = () => {
+    if (
+      !testAnswers.find((item) => item.answer === "" && item.isRight === null)
+    ) {
+      dispatch(addNewTest(testAnswers));
+      navigate("/test-results", { state: { testAnswers } });
+    }
   };
 
   const answersMarkup = questions[questionIdx].answers.map((item, idx) => {
@@ -89,10 +101,8 @@ const Testing = ({ questions, stopTest }) => {
             : `${styles.mainBlockRightBtn} ${styles.disabledBtn}`
         }
         type="button"
-        // disabled={!isTestFilled}
-        // onClick={() => <Navigate to="test-results" />}
-        onClick={() => navigate("/test-results", {state:{ testAnswers }})}
-        // onClick={() => console.log("finish")}
+        disabled={!isTestFilled}
+        onClick={handleFinish}
       >
         Finish Test
       </Button>

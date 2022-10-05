@@ -13,34 +13,38 @@ export const getTestsHistory = createAsyncThunk(
       const { data } = await getTestsHistoryApi();
       return data;
     } catch (err) {
-      rejectWithValue(err);
+      return rejectWithValue(err);
     }
   }
 );
 
 export const addNewTest = createAsyncThunk(
   "history/addNewTest",
-  async ({ testData }, { rejectWithValue }) => {
+  async (testData, { rejectWithValue }) => {
     try {
-      const { data } = await addNewTestApi(testData);
+      const newTest = {
+        creationDate: new Date().getTime(),
+        answers: testData,
+      };
+      const { data } = await addNewTestApi({newTest});
       return data;
     } catch (err) {
-      rejectWithValue(err);
+      return rejectWithValue(err);
     }
   }
 );
 
 export const removeTestFromHistory = createAsyncThunk(
   "history/removeTestFromHistory",
-  async ({ testId }, { rejectWithValue }) => {
+  async (testId, { rejectWithValue }) => {
     try {
-      const { status } = await removeTestFromHistoryApi(testId);
+      const { status } = await removeTestFromHistoryApi({ testId });
       if (status === 200) {
         return testId;
       }
       return;
     } catch (err) {
-      rejectWithValue(err);
+      return rejectWithValue(err);
     }
   }
 );

@@ -29,6 +29,8 @@ const dictionarySlice = createSlice({
       state.loading = false;
     },
 
+    // - - - - - - - - - - - - - - - - - - - - -
+
     [addWord.pending]: (state) => {
       state.loading = true;
       state.error = null;
@@ -45,6 +47,8 @@ const dictionarySlice = createSlice({
       state.error = payload.message;
       state.loading = false;
     },
+
+    // - - - - - - - - - - - - - - - - - - - - -
 
     [editWord.pending]: (state) => {
       state.loading = true;
@@ -69,6 +73,8 @@ const dictionarySlice = createSlice({
       state.error = payload.message;
       state.loading = false;
     },
+
+    // - - - - - - - - - - - - - - - - - - - - -
 
     [deleteWord.pending]: (state) => {
       state.loading = true;

@@ -5,41 +5,26 @@ import StatisticsPie from "../../shared/Components/StatisticsPie/StatisticsPie";
 
 import styles from "./testResults.module.scss";
 
-const testAnswers = [
-  { isRight: false },
-  { isRight: true },
-  { isRight: false },
-  { isRight: false },
-  { isRight: false },
-  { isRight: true },
-  { isRight: true },
-  { isRight: false },
-  { isRight: true },
-  { isRight: true },
-];
-
-const answers = [
-  {
-    name: "correctAnswers",
-    value: testAnswers.filter((item) => item.isRight).length,
-  },
-  {
-    name: "wrongAnswers",
-    value: testAnswers.filter((item) => !item.isRight).length,
-  },
-];
-
 const TestResults = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  // console.log(new Date().getTime());
-  //   const testAnswers = location.state.testAnswers;
+  const testAnswers = location.state.testAnswers;
 
-  //   if (testAnswers.find((item) => item.answer === "" && item.isRight === null)) {
-  //     return <Navigate to="/" replace />;
-  //   }
+  if (testAnswers.find((item) => item.answer === "" && item.isRight === null)) {
+    return <Navigate to="/" replace />;
+  }
 
-  // console.log(testAnswers);
+  const answers = [
+    {
+      name: "correctAnswers",
+      value: testAnswers.filter((item) => item.isRight).length,
+    },
+    {
+      name: "wrongAnswers",
+      value: testAnswers.filter((item) => !item.isRight).length,
+    },
+  ];
+
   return (
     <div className={styles.mainBlock}>
       <div className={styles.statsWrapper}>

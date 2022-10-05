@@ -8,7 +8,7 @@ import {
 } from "../../shared/api/dictionaryApi";
 
 export const getWords = createAsyncThunk(
-  "words/getWords",
+  "dictionary/getWords",
   async (_, { rejectWithValue }) => {
     try {
       const { data } = await getWordsApi();
@@ -20,7 +20,7 @@ export const getWords = createAsyncThunk(
 );
 
 export const addWord = createAsyncThunk(
-  "words/addWord",
+  "dictionary/addWord",
   async ({ orig, translated }, { rejectWithValue }) => {
     try {
       const newWordData = {
@@ -39,7 +39,7 @@ export const addWord = createAsyncThunk(
 );
 
 export const editWord = createAsyncThunk(
-  "words/editWord",
+  "dictionary/editWord",
   async ({ editedWordData, id }, { rejectWithValue }) => {
     try {
       const { data } = await editWordApi(editedWordData, id);
@@ -51,7 +51,7 @@ export const editWord = createAsyncThunk(
 );
 
 export const deleteWord = createAsyncThunk(
-  "words/deleteWord",
+  "dictionary/deleteWord",
   async (wordId, { rejectWithValue }) => {
     try {
       const { status } = await deleteWordApi(wordId);
