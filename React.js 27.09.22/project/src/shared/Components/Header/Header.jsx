@@ -17,7 +17,7 @@ const Header = () => {
         <NavLink className={linkClassName} end to="testing">
           Knowledge Test
         </NavLink>
-        <NavLink className={linkClassName} to="testing-history">
+        <NavLink className={linkClassName} to="tests-history">
           Testing History
         </NavLink>
       </nav>

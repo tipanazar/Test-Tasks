@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect } from "react";
+import { lazy, Suspense } from "react";
 import { useDispatch } from "react-redux";
 import { Navigate, Route, Routes } from "react-router-dom";
 
@@ -6,6 +6,7 @@ import { getWords } from "../redux/dictionary/operations";
 
 import Loader from "../shared/Components/Loader/Loader";
 import LayoutPage from "../pages/LayoutPage/LayoutPage";
+import { getTestsHistory } from "../redux/testing/operations";
 
 const WordsListPage = lazy(() =>
   import("../pages/WordsListPage/WordsListPage")
@@ -26,6 +27,7 @@ const TestingHistoryPage = lazy(() =>
 function App() {
   const dispatch = useDispatch();
   dispatch(getWords());
+  dispatch(getTestsHistory());
 
   return (
     <Suspense fallback={<Loader />}>

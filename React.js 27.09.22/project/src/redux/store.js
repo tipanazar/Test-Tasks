@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 
-import wordsReducer from "./dictionary/slice.js";
+import dictionaryReducer from "./dictionary/slice.js";
+import testsHistoryReducer from "./testing/slice";
 
 export const store = configureStore({
   reducer: {
-    words: wordsReducer,
+    dictionary: dictionaryReducer,
+    testing: testsHistoryReducer,
   },
 });

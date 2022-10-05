@@ -134,13 +134,15 @@
         transition: height 400ms;
         background-color: white;
 
+        &:hover {
+          .btnIcon {
+            fill: #424242;
+          }
+        }
+
         .btnIcon {
           height: 0;
           transition: height 400ms, fill 150ms;
-
-          &:hover {
-            fill: #424242;
-          }
         }
       }
     }

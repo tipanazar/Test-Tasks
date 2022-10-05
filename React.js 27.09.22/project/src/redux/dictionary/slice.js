@@ -8,8 +8,8 @@ const initialState = {
   error: null,
 };
 
-const wordsSlice = createSlice({
-  name: "words",
+const dictionarySlice = createSlice({
+  name: "dictionary",
   initialState,
   extraReducers: {
     [getWords.pending]: (state) => {
@@ -26,7 +26,6 @@ const wordsSlice = createSlice({
     },
     [getWords.rejected]: (state, { payload }) => {
       state.error = payload.message;
-      console.log(payload);
       state.loading = false;
     },
 
@@ -44,7 +43,6 @@ const wordsSlice = createSlice({
     },
     [addWord.rejected]: (state, { payload }) => {
       state.error = payload.message;
-      console.log(payload);
       state.loading = false;
     },
 
@@ -85,10 +83,9 @@ const wordsSlice = createSlice({
     },
     [deleteWord.rejected]: (state, { payload }) => {
       state.error = payload.message;
-      console.log(payload);
       state.loading = false;
     },
   },
 });
 
-export default wordsSlice.reducer;
+export default dictionarySlice.reducer;

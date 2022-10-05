@@ -58,6 +58,7 @@ export const deleteWord = createAsyncThunk(
       if (status === 200) {
         return wordId;
       }
+      return;
     } catch (err) {
       return rejectWithValue(err);
     }

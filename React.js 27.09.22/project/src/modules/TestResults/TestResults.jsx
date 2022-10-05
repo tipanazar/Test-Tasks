@@ -1,7 +1,7 @@
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
 
-import { PieChart, Pie, Cell } from "recharts";
 import Button from "../../shared/Components/Button/Button";
+import StatisticsPie from "../../shared/Components/StatisticsPie/StatisticsPie";
 
 import styles from "./testResults.module.scss";
 
@@ -20,7 +20,7 @@ const testAnswers = [
 
 const answers = [
   {
-    name: "rightAnswers",
+    name: "correctAnswers",
     value: testAnswers.filter((item) => item.isRight).length,
   },
   {
@@ -32,6 +32,7 @@ const answers = [
 const TestResults = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  // console.log(new Date().getTime());
   //   const testAnswers = location.state.testAnswers;
 
   //   if (testAnswers.find((item) => item.answer === "" && item.isRight === null)) {
@@ -42,26 +43,13 @@ const TestResults = () => {
   return (
     <div className={styles.mainBlock}>
       <div className={styles.statsWrapper}>
-        <PieChart width={235} height={235}>
-          <Pie
-            data={answers}
-            cx="50%"
-            cy="50%"
-            isAnimationActive={true}
-            outerRadius={80}
-            fill="#8884d8"
-            dataKey="value"
-            label
-            labelLine
-          >
-            {answers.map((entry, index) => (
-              <Cell
-                key={`cell-${index}`}
-                fill={["#058f00b3", "#d70000b5"][index]}
-              />
-            ))}
-          </Pie>
-        </PieChart>
+        <StatisticsPie
+          width={235}
+          height={235}
+          pieRadius={80}
+          data={answers}
+          dataKey="value"
+        />
         <div className={styles.statsBlock}>
           <span className={styles.statsText} style={{ color: "green" }}>
             Correct:&nbsp;{answers[0].value}
