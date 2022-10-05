@@ -1,4 +1,4 @@
-import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 import {
@@ -18,9 +18,9 @@ import styles from "./testingHistory.module.scss";
 
 const TestingHistory = () => {
   const dispatch = useDispatch();
-  const testsHistoryArr = useSelector(getTestsHistoryArr, shallowEqual);
-  const error = useSelector(getError, shallowEqual);
-  const isLoading = useSelector(getLoading, shallowEqual);
+  const testsHistoryArr = useSelector(getTestsHistoryArr);
+  const error = useSelector(getError);
+  const isLoading = useSelector(getLoading);
 
   const historyMarkup = testsHistoryArr?.map((item) => {
     const parcedDate = parceDate(item.creationDate).split(", ");

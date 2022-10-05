@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { shallowEqual, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 import {
@@ -15,9 +15,9 @@ import Testing from "./Testing/Testing";
 import styles from "./knowledgeTest.module.scss";
 
 const KnowledgeTest = () => {
-  const wordsArr = useSelector(getWordsArr, shallowEqual);
-  const error = useSelector(getError, shallowEqual);
-  const isLoading = useSelector(getIsLoading, shallowEqual);
+  const wordsArr = useSelector(getWordsArr);
+  const error = useSelector(getError);
+  const isLoading = useSelector(getIsLoading);
   const [questions, setQuestions] = useState([]);
 
   const startTest = () => {
